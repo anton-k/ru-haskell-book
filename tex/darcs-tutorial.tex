@@ -1,0 +1,598 @@
+
+
+\section{Система контроля версий darcs}
+
+Вася, Коля и Петя решили написать библиотеку. Они учились
+в одной школе, потом разъехались, но как-то случайно
+встретились, обменялись адресами электронной почты
+и, повспоминав былое, решили написать на Haskell библиотеку.
+Для того чтобы слаженно работать на расстоянии они
+решили воспользоваться системой контроля версий. Их код
+будет лежать на отдельном компьютере-сервере, каждый из
+них будет иметь возможность писать и читать данные с сервера
+через интернет. Они будут вносить изменения в проект,
+а система контроля версий будет следить за тем, чтобы
+данные синхронно обновлялись, обеспечивать возможность
+отката, будет сообщать о конфликтах обновления. Конфликты
+случаются когда два пользователя хотят обновить одно и то
+же, но разными способами. 
+
+Они долго думали какой же системой воспользоваться, 
+но в итоге решили для начала попробовать \In{darcs}, 
+по отзывам в интернете они заметили, что все пользователи
+отмечают простоту и ясность интерфейса, удобство работы. 
+Как недостаток многие пользователи отмечают низкую
+в сравнении с другими системами скорость работы многих
+операций. Из того в чём мнения пользователей разделились
+они заметили отсутствие ветвления версий, \In{darcs} 
+является распределённой, децентраизованной системой, 
+для того чтобы создать новую ветвь проекта необходимо
+создать новый репозиторий и продолжить разработку в нём. 
+Некоторые пользователи считали это неудобством, а другие
+говорили, что  наконец-то такое появилось.
+
+Во многим на их выбор повлиял тот факт, что \In{darcs}
+написан на Haskell и многие проекты сообщества Haskell
+разрабатываются с помощью этой системы. Хотя против 
+использования \In{darcs} может выступить тот факт, что в 2006
+году разработка GHC велась на \In{darcs}, но два года спустя
+команда разработчиков основного компилятора Haskell решила отказаться
+от \In{darcs} в сторону \In{git} из-за низкой производительности
+\In{darcs}, ошибок в алгоритмах и низкого числа разработчиков.
+Но наши друзья решили, что у них проект не такой уж большой
+и они могут попробовать силы в \In{darcs}. Тем более,
+что с тех пор вышла новая стабильная версия \In{darcs 2},
+в которой разработчики \In{darcs} обещают заметный прирост
+производительности (на порядок, правда сравнения проводятся 
+только с самим \In{darcs} прошлых лет).
+
+Наша новая библиотека будет посвящена бинарным деревьям,
+Вася определит основной тип данных и базовые функции, 
+Коля допишет алгоритмы поиска на бинарных деревьях,
+а Петя напишет документацию, и файл описания и установки
+для системы \In{cabal}.
+
+Но для начала установим \In{darcs} с \In{Hackage}:
+
+\begin{code}
+cabal update
+cabal install darcs
+\end{code}
+
+\In{darcs} ведёт диалог с пользователем из командной
+строки. Далее будет много примеров, в которых мы будем
+общаться с \In{darcs}, но примеры эти будут для комндной
+строки Linux. Но я буду стараться больше проговаривать 
+команды словами, чтобы пользователи Windows тоже 
+смогли разобраться. Для начала создадим директорию проекта.
+Назовём её \In{btree}. Затем в ней создадим четыре
+директории. Три для каждого из участников проекта и одну для 
+удалённого репозитория. Назовём их соответственно
+\In{vasya}, \In{kolya}, \In{petya} и \In{remote}.
+Эти четыре директории будут имитировать четыре
+компьютера. 
+
+\subsection{Инициализация репозитория}
+
+Итак мы собираемся организовать совместное написание кода.
+Каждый из участников будет иметь свою версию проекта,
+в начале работы мы запрашиваем из сервера обновления,
+загружаем из в свою версию проекта, затем вносим свои 
+изменения, сохраняем их, опять вносим
+какие-нибудь изменения снова сохраняем их, в конце мы
+отправляем наши обновления на сервер. 
+Если какое-то из обновлений нам не понравится мы можем 
+отменить его. 
+
+Инициализируем \In{darcs} в каждой из
+директорий. Для этого нужно сделать директорию текущей
+и выполнить в ней команду:
+
+\begin{code}
+darcs init
+\end{code}
+
+Так мы создали четыре репозитория. В каждой из директорий 
+появилась директория \In{\_darcs}.
+В ней хранится служебная информация, необходимая для 
+оптимизации операций.
+Теперь разберёмся с терминологией \In{darcs}. С точки
+зрения \In{darcs} проект состоит из \emph{рабочей директории}
+(working directory) и последовательности \emph{патчей} (patch). 
+Каждое обновление это патч. Иногда в документации ещё говорят
+о \emph{нетронутом дереве} (prestine tree) этот термин 
+относится к служебной директории \In{\_darcs}
+то, что происходит в этой директории не должно касаться 
+пользователей. 
+
+\subsection{Добавление файлов в рабочую директорию.}
+
+В рабочую директорию входят все те файлы, за которыми
+\In{darcs} ведёт наблюдение. Для того чтобы \In{darcs}
+начал вести наблюдение за файлом необходимо сказать 
+ему об этом. Мы можем сделать это с помощью команды \In{add}.
+Предположим, что Вася начал работу и создал в своей
+директории директорию \In{src} для исходников, а в ней
+создал файл \In{BTree.hs}. Теперь он может добавить 
+этот файл в свою рабочую директорию:
+
+\begin{code}
+darcs add имя-файла
+\end{code}
+
+Также мы можем добавить целую директорию со всем, что 
+находится в ней, добавим в рабочую директорию директорию \In{src} со
+всем её содержимым:
+
+\begin{code}
+darcs add src -r
+\end{code}
+
+Флаг \In{r} означает \Quote{рекурсивно}. Теперь мы можем
+посмотреть за какими файлами следит \In{darcs}:
+
+\begin{code}
+darcs show files
+.
+./src
+./src/BTree.hs
+\end{code}
+
+Теперь Вася добавляет в файл \In{BTree.hs} определение для 
+дерева и функции свёртки-развёртки:
+
+\begin{code}
+module BTree where
+
+data BTree a = Leaf | BNode a (BTree a) (BTree a)
+    deriving (Show, Eq)
+
+foldB :: b -> (a -> b -> b -> b) -> BTree a -> b
+foldB leaf bnode = \x -> case x of
+    Leaf        -> leaf
+    BNode a l r -> bnode a (foldB leaf bnode l) (foldB leaf bnode r)
+
+unfoldB :: (b -> Maybe (a, b, b)) -> b -> BTree a
+unfoldB f = \s -> case f s of
+    Nothing         -> Leaf
+    Just (a, l, r)  -> BNode a (unfoldB f l) (unfoldB f r)
+\end{code}
+
+С помощью команды \In{whatsnew} мы можем спросить у \In{darcs}
+какие изменения прошли в рабочей директории. Если мы сейчас
+сохраним изменения в файле и наберём \In{darcs whatsnew}, то
+мы увидим добавленные строки. Когда изменений много бывает
+удобно посмотреть краткий отчёт об изменениях, это делается
+также командой \In{whatsnew}, но со специальным флагом \In{-s}
+
+\begin{code}
+darcs whatsnew -s
+\end{code}
+
+\subsection{Сохранение изменений. Патчи}
+
+Вася решил, что пора сохранить изменения, посмотрев в документацию,
+для этого он набрал:
+
+\begin{code}
+darcs record
+Each patch is attributed to its author, usually by email address (for
+example, `Fred Bloggs <fred@example.net>').  Darcs could not determine
+your email address, so you will be prompted for it.
+
+Your address will be stored in _darcs/prefs/author.
+It will be used for all patches recorded in this repository.
+If you move that file to ~/.darcs/author, it will be used for patches
+you record in ALL repositories.
+\end{code}
+
+\In{darcs} попросил нас ввести адрес электронной почты,
+по нему идентифицируется владелец репозитория. Позже 
+другие пользователи библиотеки могут отправлять на этот 
+адрес свои обновления. Вася ввёл свой email, после чего
+\In{darcs} спросил его какие из изменений он хочет сохранить:
+
+\begin{code}
+adddir ./src
+Shall I record this change? (1/3)  [ynWsfvplxdaqjk], or ? for help: y
+addfile ./src/BTree.hs
+Shall I record this change? (2/3)  [ynWsfvplxdaqjk], or ? for help: y
+hunk ./src/BTree.hs 1
++module BTree where
++
++data BTree a = Leaf | BNode a (BTree a) (BTree a)
++    deriving (Show, Eq)
++
++foldB :: b -> (a -> b -> b -> b) -> BTree a -> b
++foldB leaf bnode = \x -> case x of
++    Leaf        -> leaf
++    BNode a l r -> bnode a (foldB leaf bnode l) (foldB leaf bnode r)
++
++unfoldB :: (b -> Maybe (a, b, b)) -> b -> BTree a
++unfoldB f = \s -> case f s of
++    Nothing         -> Leaf
++    Just (a, l, r)  -> BNode a (unfoldB f l) (unfoldB f r)
+Shall I record this change? (3/3)  [ynWesfvplxdaqjk], or ? for help: y
+What is the patch name? "Type of BTree and (un)fold"
+Do you want to add a long comment? [yn]n
+\end{code}
+
+В самом конце \In{darcs} попросил дать краткое имя этим изменениям.
+А также спросил не хотим ли мы дать подробное описание, мы ответили 
+нет и сессия сохранения данных завершилась.
+Любое изменение, создание или удаление файла, обновление текста
+в терминологии \In{darcs} является патчем. Один патч может
+состоять из нескольких примитивных патчей. В данном случае мы сохранили
+патч с именем \texttt{"Type of BTree and (un)fold"}, который 
+состоит из трёх примитивных патчей.
+ Для того чтобы внести 
+все изменения одним разом и дать им имя, мы можем воспользоваться 
+командой:
+
+\begin{code}
+darcs record -am "Имя патча"
+\end{code}
+
+Флаг \In{a} говорит о том, что необходимо записать все изменения,
+а за флагом \In{m} следует имя патча. Теперь если мы вызовем
+команду \In{whatsnew}, то мы увидим, что у нас ничего нового, ведь
+все изменения были сохранены:
+
+\begin{code}
+darcs whatsnew
+No changes!
+\end{code}
+
+Посмотреть историю изменений можно с помощью команды \In{changes}:
+
+\begin{code}
+darcs changes
+Wed Oct 26 12:47:04 MSD 2011  vasya@email.ru
+  * "Type of BTree and (un)fold"
+\end{code}
+
+\In{Обновление репозитория}
+
+Вася на этом закончил первую часть работы и может
+загрузить обновления в общий котёл. Это делается с помощью
+команды \In{push}:
+
+\begin{code}
+darcs push адрес
+\end{code}
+
+На месте адреса может стоять электронный адрес удалённого сервера
+или имя директории, в которой находится репозиторий, на
+который мы хотим загрузить изменения. В данном случае мы хотим
+загрузить изменения в директорию \In{remote}, она находится
+в соседней директории, поэтому мы воспользуемся сокращением
+\In{..} оно означает подняться уровнем выше в иерархии директорий:
+
+\begin{code}
+darcs push ../remote
+Wed Oct 26 12:47:04 MSD 2011  vasya@email.ru
+  * "Type of BTree and (un)fold"
+Shall I push this patch? (1/1)  [ynWvplxdaqjk], or ? for help: y
+Finished applying...
+Push successful.
+\end{code}
+
+Вася сообщил Коле и Пете, что первый этап завершён 
+и они могут включаться в проект. Коле и Пете
+необходимо загрузить обновления, для этого они 
+выполняют команду \In{pull}:
+
+\begin{code}
+darcs pull ../remote
+\end{code}
+
+Эта команда дуальна к \In{push}. Переключимся в директории
+Коли и Пети и выполним там эту команду.
+И о чудо! Мы видим, что в директориях Коли и Пети появилась
+директория \In{src} с файлом \In{BTree.hs}, который содержит
+Васины труды.
+
+Петя быстро добавил комментарии к типу, функциям и модулю,
+теперь он выглядит так:
+
+\begin{code}
+-- | Binary trees
+module BTree(
+    -- * Type
+    BTree(..),
+    -- * Structural recursion
+    foldB, unfoldB) 
+where
+
+-- | Type for binary tree representatrion. Each node
+-- contains value of type @a@. 
+data BTree a = Leaf | BNode a (BTree a) (BTree a)
+    deriving (Show, Eq)
+
+-- | Folding binary trees.
+foldB :: b -> (a -> b -> b -> b) -> BTree a -> b
+foldB leaf bnode = \x -> case x of
+    Leaf        -> leaf
+    BNode a l r -> bnode a (foldB leaf bnode l) (foldB leaf bnode r)
+
+-- | Unfolding binary trees.
+unfoldB :: (b -> Maybe (a, b, b)) -> b -> BTree a
+unfoldB f = \s -> case f s of
+    Nothing         -> Leaf
+    Just (a, l, r)  -> BNode a (unfoldB f l) (unfoldB f r)
+\end{code}
+
+Затем он поспешил сохранить изменения.
+
+\begin{code}
+darcs record -am "Comments: Type and (un)fold"
+darcs push ../remote
+\end{code}
+
+А в это время Коля пишет алгоритмы поиска \dots
+
+\subsection{Откат обновлений}
+
+\begin{code}
+$ cd ../kolya
+\end{code}
+
+Он запланировал написать три алгоритма поиска, 
+поиск в глубину, поиск в ширину и эвристический
+поиск. Он начал с алгоритма поиска в глубину. 
+И добавил такую запись:
+
+\begin{code}
+-- Search 
+
+depthFirst :: BTree a -> [a]
+depthFirst = foldB [] (\a l r -> a : l)
+\end{code}
+
+Он сохранил изменения:
+
+\begin{code}
+darcs record -am "depth first search"
+\end{code}
+
+\noindent и вдруг понял, что поспешил. Он забыл 
+учесть правое колено дерева. Для исправления этой
+ошибки у нас есть несколько вариантов. Мы можем
+внести изменения опять и записать их, но 
+тогда у нас в очереди патчей будет холостой патч,
+который  сначала записывает, потом стирает, потом
+снова записывает туда же. Вместо этого мы можем
+стереть предыдущую запись с помощью команды
+\In{unrecord}:
+
+\begin{code}
+$ darcs unrecord
+Wed Oct 26 13:46:58 MSD 2011  kolya@email.au
+  * depth first search
+Shall I unrecord this patch? (1/2)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 12:47:04 MSD 2011  vasya@email.ru
+  * "Type of BTree and (un)fold"
+Shall I unrecord this patch? (2/2)  [ynWvplxdaqjk], or ? for help: n
+Finished unrecording.
+\end{code}
+
+\In{darcs} начинает обходить очередь патчей и предлагает
+нам их отменить. Мы выбрали отменить только последний патч.
+Обратите внимание на то, что при этом файл в рабочей директории
+не изменился. Вместо этого у нас появились не записанные
+обновления. Мы можем убедится в этом вызвав \In{whatsnew}:
+
+\begin{code}
+darcs whatsnew -s
+M ./src/BTree.hs +6
+\end{code}
+
+В обновлениях показана запись о шести добавленных строчках 
+к файлу \In{BTree.hs}. Они снова стали новыми, поскольку мы
+откатили одну запись. Тогда Коля написал:
+
+\begin{code}
+depthFirst :: BTree a -> [a]
+depthFirst = foldB [] (\a l r -> a : r)
+\end{code}
+
+И сохранил изменения с помощью \In{record} под тем же именем. 
+После этого он понял, что на этот раз забыл левое колено дерева
+в алгоритме. \Quote{Да что же это за день сегодня такой!} -- подумал
+в сердцах Коля. И решил всё начать заново. Откатить не только
+изменения, но и не записанные обновления. Это делается
+с помощью команды \In{obliterate}, ей специально дали длинное 
+и устрашающее имя, после её применения патч сгорает полностью.
+Например мы можем откатить саму команду отката \In{unrecord}
+с помощью команды \In{revert}. Но откатить \In{obliterate} 
+уже не удастся. Для уверенных в себе есть более краткое имя-синоним
+\In{unpull}.
+
+Итак Коля выполнил \In{unpull}:
+
+\begin{code}
+$ darcs unpull
+Wed Oct 26 13:58:10 MSD 2011  kolya@email.au
+  * depth first search
+Shall I unpull this patch? (1/2)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 12:47:04 MSD 2011  xxx@xx.x
+  * "Type of BTree and (un)fold"
+Shall I unpull this patch? (2/2)  [ynWvplxdaqjk], or ? for help: n
+Finished unpulling.
+\end{code}
+
+После этого в файле \In{BTree.hs} от Колиных усилий не осталось
+и следа. Он решил, остыть и пойти попить чаю. 
+
+В это время Вася решил посмотреть как идут дела у Пети и Коли
+Он загрузил обновления 
+и обрадовался появлению комментариев. Но вот только не
+заметил он алгоритмов поиска. Он подумал, что с Колей что-то
+случилось и решил позвонить ему. Коля рассказал ему о своих
+злоключениях с \In{darcs}. Тогда Вася сказал ему, что 
+он мог воспользоваться командой \In{amend-record},
+она проводит исправления в самих патчах, не дублируя 
+обновления. Коля мог внести исправления и затем
+вызвать \In{amend-record}, Коля сказал, что хорошо он так
+и сделает в следующий раз.
+
+Коля успокоился, слова друга подбодрили его и он 
+одним махом написал три алгоритма поиска и сохранил 
+обновления. Чтож пора внести обновления на сервер:
+
+\begin{code}
+hs@anton-desktop:~/lang/haskell-notes/code/ch-17/btree/kolya$ darcs push ../remote
+Pushing to "/home/hs/lang/haskell-notes/code/ch-17/btree/remote"...
+The remote repository has 1 patch to pull.
+Wed Oct 26 14:22:55 MSD 2011  kolya@email.au
+  * depth first search
+Shall I push this patch? (1/3)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 14:23:17 MSD 2011  kolya@email.au
+  * breadth first search
+Shall I push this patch? (2/3)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 14:29:24 MSD 2011  kolya@email.au
+  * heuristic search
+Shall I push this patch? (3/3)  [ynWsfvplxdaqjk], or ? for help: y
+
+darcs failed:  Refusing to apply patches leading to conflicts.
+If you would rather apply the patch and mark the conflicts,
+use the --mark-conflicts or --allow-conflicts options to apply
+These can set as defaults by adding
+ apply mark-conflicts
+to _darcs/prefs/defaults in the target repo. 
+Backing up ./src/BTree.hs(-darcs-backup1)
+There are conflicts in the following files:
+./src/BTree.hs
+Apply failed!
+\end{code}
+
+\subsection{Конфликты}
+
+Нам не удалось записать последний патч из-за возникшего
+конфликта. Конфликтующие патчи пытаются изменить одно и
+то же место в коде, видимо мы пытаемся писать в то же место,
+что и Петя. Сообщения, которые мы видим могут ввести в 
+заблуждение. Они говорят о том, что нам нужно применить флаг
+\In{mark-conflicts} в команде \In{push}, но на самом деле 
+такого флага у этой команды нет, эта печать относится 
+к команде \In{apply}, которая была вызвана внутри \In{push}.
+Команда \In{apply} применяет патчи. Что интересно патчи
+можно отправлять по почте с помощью команды \In{send}.
+Тогда мы получим набор патчей, мы можем применить их отдельно
+с помощью команды \In{apply}. Но вернёмся к нашему примеру. 
+
+Коля сказал Вася, что возник конфликт
+и он просит сохранить текущую версию на сервере под каким нибудь
+именем. Для этого Вася пользуется командой \In{tag}. 
+Сделаем директорию \In{remote} текущей и выполним:
+
+\begin{code}
+$ cd ../remote
+$ darcs tag "Version 1"
+\end{code}
+
+Мы пометили текущую версию 
+тегом \texttt{"Version 1"}. После этого с помощью команды \In{pull}
+Вася применяет патчи Коли, при этом в конце нам сообщают
+о том, что произошли конфликты:
+
+\begin{code}
+$ darcs pull ../kolya
+Wed Oct 26 14:22:55 MSD 2011  kolya@email.au
+  * depth first search
+Shall I pull this patch? (1/3)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 14:23:17 MSD 2011  kolya@email.au
+  * breadth first search
+Shall I pull this patch? (2/3)  [ynWsfvplxdaqjk], or ? for help: y
+Wed Oct 26 14:40:25 MSD 2011  kolya@email.au
+  * heuristic search
+Shall I pull this patch? (3/3)  [ynWsfvplxdaqjk], or ? for help: y
+Backing up ./src/BTree.hs(-darcs-backup1)
+We have conflicts in the following files:
+./src/BTree.hs
+Finished pulling and applying.
+\end{code}
+
+\noindent в строчке \In{We have conflicts in the following files}.
+Теперь мы можем попросить \In{darcs} разметить конфликты с 
+помощью команды \In{marc-conflicts}:
+
+
+\begin{code}
+$ darcs mark-conflicts
+This will trash any unrecorded changes in the working directory.
+Are you sure?  [yn]y
+Finished marking conflicts.
+\end{code}
+
+Теперь мы видим, что шапка нашего файла выглядит так:
+
+\begin{code}
+-- | Binary trees
+module BTree(
+    -- * Type
+    BTree(..),
+    -- * Structural recursion
+    foldB, unfoldB) 
+where
+
+v v v v v v v
+-- | Type for binary tree representatrion. Each node
+-- contains value of type @a@. 
+*************
+import Data.List(unfoldr)
+
+^ ^ ^ ^ ^ ^ ^
+\end{code}
+
+Сначала Петин патч поместил комментарий к типу, а затем 
+Колин патч добавил из модуля \In{Data.List} функцию \In{unfoldr}.
+\In{darcs} пометил конфликт специальными стрелочками. Звёздочками
+отмечена конфликтующая строка. Приведём файл в порядок.
+Для этого нам нужно убрать пометки \In{darcs} и поменять записи
+местами. После этого сохраним изменения.
+
+\begin{code}
+$ darcs record
+hunk ./src/BTree.hs 9
++import Data.List(unfoldr)
++
++-- | Type for binary tree representatrion. Each node
++-- contains value of type @a@. $
+Shall I record this change? (1/1)  [ynWesfvplxdaqjk], or ? for help: y
+What is the patch name? "merge conflict"
+Do you want to add a long comment? [yn]n
+Finished recording patch '"merge conflict"'
+\end{code}
+
+На завершающем этапе написания библиотеки Петя 
+загружает обновлённую версию и добавляет комментарии
+к функциям поиска, также добавляет файл \In{btree.cabal}
+и \In{Setup.hs}, после чего все изменения сохраняются и 
+отправляются на удалённый сервер. Теперь мы видим файл без конфликтов. 
+Закончим работу в \In{darcs}:
+
+\begin{code}
+$ darcs add Setup.hs
+$ darcs add btree.cabal
+$ darcs record -am "adds cabal files"
+Finished recording patch 'adds cabal files'
+\end{code}
+
+\subsection{Экспоненциальное время обновления}
+
+Необходимо отметить одну не решённую на данный момент 
+проблему \In{darcs}. При определённых условиях алгоритм 
+обновления репозитория \In{push/pull} может стать 
+экспоненциальным и не завершиться. Авторы делают всё
+возможное для того чтобы свести такие случаи к минимуму.
+Но в реальной практике они продолжают возникать. 
+Так что даже сами разработчики \In{dacs}, не рекомендуют 
+пользоваться своей системой, если проект достаточно большой. 
+Порядка 5000 патчей, шести лет разработки и более ста 
+разработчиков. Сам проект \In{darcs} пользуется при
+разработке своей системой и разработчики честно 
+признаются, что испытывают трудности при поддержке
+проекта.
+
+

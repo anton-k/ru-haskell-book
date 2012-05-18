@@ -1,0 +1,22 @@
+Name:           hello
+Version:        1.0
+Cabal-Version:  >= 1.2
+License:        BSD3
+Author:         Anton
+Synopsis:       Little example of cabal usage
+Category:       Example
+Build-Type:     Simple
+
+Library
+  Build-Depends: base == 4.*
+  Hs-Source-Dirs: src/
+  Exposed-modules:
+    Hello
+  Other-Modules:
+    Utility.Hello
+    Utility.World
+
+Executable hello
+  Build-Depends: base
+  Main-Is: Main.hs
+  Hs-Source-Dirs: src/

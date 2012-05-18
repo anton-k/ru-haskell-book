@@ -1,0 +1,106 @@
+\renewcommand{\emph}[1]{\Blue{\textit{#1}}}
+
+\newcommand{\addchapter}[1]{%
+\setcounter{secnumdepth}{-1}
+\chapter{#1}
+\setcounter{secnumdepth}{1}}
+
+
+\newcommand{\addsection}[1]{%
+\setcounter{secnumdepth}{-1}
+\section{#1}
+\setcounter{secnumdepth}{1}}
+
+\newcommand{\addsubsection}[1]{%
+\setcounter{secnumdepth}{-1}
+\subsection{#1}
+\setcounter{secnumdepth}{1}}
+
+
+
+\newcommand{\Cpp}[0]{\mbox{C\hspace{-.05em}+\hspace{-.30em}+}}
+
+\newcommand{\Quote}[1]{"#1"}
+\newcommand{\In}[1]{\mint{haskell}@#1@}
+% mint chokes on quotes, so here is the ugly fix:
+\newcommand{\InS}[1]{\texttt{#1}}   
+
+\newcommand{\Desc}[2]{
+    \noindent \In{#1} 
+
+    \hangindent=0.7cm \hangafter=0 \noindent #2}
+
+\newcommand{\EmphDesc}[2]{
+    \noindent \emph{#1} 
+
+    \hangindent=0.7cm \hangafter=0 \noindent #2} 
+
+\newcommand{\EmptyDesc}[1]{
+    \hangindent=0.7cm \hangafter=0 \noindent #1} 
+
+\newcommand{\JustDesc}[2]{
+    \noindent #1
+
+    \hangindent=0.7cm \hangafter=0 \noindent #2}
+
+\newcommand{\Blue}[1]{\textcolor{liteblue}{#1}}
+\newcommand{\Red}[1]{\textcolor{red}{#1}}
+\newcommand{\Magenta}[1]{\textcolor{magenta}{#1}}
+\newcommand{\Green}[1]{\textcolor{darkgreen}{#1}}
+
+
+\newcommand{\Ra}[0]{\rightarrow}
+\newcommand{\RA}[0]{\Rightarrow}
+\newcommand{\Or}[0]{\ |\ }
+\newcommand{\Br}[1]{\{#1\} }
+
+
+\newcommand{\Fig}[4]{
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=#4]{#2}
+        \caption{#1}
+        \label{fig:#3}
+    \end{figure}}
+
+\newcommand{\RefFig}[1]{рис.~\ref{fig:#1}}
+
+
+%--------------------------
+%\newenvironment{code}
+%{\ttfamily \begin{list}{}{\setlength{\leftmargin}{1em}}\item\small}
+%{\end{list} \normalfont}
+
+% index
+\newcommand{\TermI}[2]{\index{#1} \emph{#2}}
+\newcommand{\Term}[4]{\index{#1} \index{#2} \emph{#3} (#4)}
+
+\newcommand{\KeyWord}[1]{\index{Ключевые слова!#1}}
+\newcommand{\Types}[1]{\index{Типы!#1}}
+\newcommand{\Classes}[1]{\index{Классы типов!#1}}
+\newcommand{\Funs}[1]{\index{Функции!#1}}
+\newcommand{\Structs}[1]{\index{Структуры!#1}}
+\newcommand{\Docs}[0]{\index{документация}}
+\newcommand{\LibInstall}[0]{\index{установка библиотек}}
+\newcommand{\Strategy}[1]{\index{Стратегии вычислений!#1}}
+\newcommand{\NF}[1]{\index{Нормальная форма!#1}}
+
+%------------------------------
+% lambda
+
+\newcommand{\D}{.\ }
+\newtheorem{Ltheorem}{Теорема}
+
+%------------------------------
+% category
+\newcommand{\Co}{\footnotesize\textbf{~;~}\normalsize }
+\newcommand{\CoT}{\textbf{~$;_{T}$~} }
+\newcommand{\Ha}{\In{H}}
+\newcommand{\CatA}{\mathcal{A}}
+\newcommand{\CatB}{\mathcal{B}}
+\newcommand{\cata}[1]{\llparenthesis\,#1\,\rrparenthesis}
+\newcommand{\ana}[1]{[\hspace{-2.2pt}(\,#1\,)\hspace{-2.2pt}]}
+
+\newcommand{\Alg}{\textbf{Alg}(F)} 
+\newcommand{\CoAlg}{\textbf{CoAlg}(F)} 

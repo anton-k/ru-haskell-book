@@ -1,0 +1,2 @@
+map  <F5> :wa<cr>:! ghc --make % <cr> :! ./%:t:r -o pic.pdf <cr>
+imap  <F5> <Esc>:wa<cr>:! ghc --make % <cr> :! ./%:t:r -o pic.pdf <cr>

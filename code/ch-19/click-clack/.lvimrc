@@ -1,0 +1,5 @@
+
+map <F5>      :wa<cr> :! ghci %<cr>
+imap <F5> <Esc> :wa<cr> :! ghci %<cr>
+
+

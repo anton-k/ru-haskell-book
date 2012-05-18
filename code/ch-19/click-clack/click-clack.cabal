@@ -1,0 +1,26 @@
+Cabal-Version: >= 1.6
+Build-Type:    Simple
+Tested-With:   GHC
+Category:      Game
+Name:          click-clack
+Version:       1.0
+Stability:     provisional
+License:       OtherLicense
+License-File:  LICENSE
+Copyright:     (c) 2012 Anton Kholomiov
+Author:        Anton Kholomiov
+Maintainer:    <anton.kholomiov@gmail.com>
+Synopsis:      Toy game (tetris on billiard board). Hipmunk in action.
+Description:
+    Control red ball with mouse clicks. Avoid blue balls (minus one live) and
+    go for green balls (plus one live) and orange balls (bonus). 
+
+Executable click-clack
+    Build-Depends: base >= 3 && < 5, containers >= 0.1 && < 0.5,
+                 mtl >= 2, 
+                 random >= 1, MonadRandom >= 0 && < 1,
+                 Hipmunk >= 5.2 && < 5.3, transformers >= 0.2 && < 0.3,
+                 OpenGL >= 2.4 && < 2.6, StateVar >= 1.0 && < 1.1,
+                 GLFW >= 0.4 && < 0.6
+    Main-is: Main.hs
+    hs-source-dirs: src
