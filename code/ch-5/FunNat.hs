@@ -18,11 +18,11 @@ instance Num a => Num (t -> a) where
     abs      = fun1 abs
     signum   = fun1 signum
 
-    fromInteger n = \t -> fromInteger n
+    fromInteger = const . fromInteger
 
 
 fun1 :: (a -> b) -> (t -> a) -> (t -> b)
-fun1 op a = \t -> op (a t)
+fun1 = (.)
 
 fun2 :: (a -> b -> c) -> (t -> a) -> (t -> b) -> (t -> c)
 fun2 op a b = \t -> a t `op` b t
