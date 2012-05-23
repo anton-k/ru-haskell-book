@@ -1,11 +1,2 @@
-\indexentry{интерпретатор|hyperpage}{2}
-\indexentry{Ключевые слова!if then else|hyperpage}{5}
-\indexentry{Ключевые слова!let в интерпретаторе|hyperpage}{6}
-\indexentry{Типы!String, строки|hyperpage}{6}
-\indexentry{Ключевые слова!type|hyperpage}{6}
-\indexentry{Типы!Char, символы|hyperpage}{6}
-\indexentry{Ключевые слова!deriving|hyperpage}{8}
-\indexentry{Классы типов!Ord, сравнение на больше-меньше|hyperpage}{9}
-\indexentry{Классы типов!Num, арифметика|hyperpage}{10}
-\indexentry{Типы!Int, Integer, целые числа|hyperpage}{12}
-\indexentry{Типы!Double, Float, Rational, действительные числа|hyperpage}{12}
+\indexentry{Функции!высшего порядка|hyperpage}{2}
+\indexentry{Типы!кортежи|hyperpage}{11}
