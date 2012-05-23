@@ -1,2 +1,6 @@
-\indexentry{Функции!высшего порядка|hyperpage}{2}
-\indexentry{Типы!кортежи|hyperpage}{11}
+\indexentry{Стратегии вычислений!вычисление по значению|hyperpage}{3}
+\indexentry{Стратегии вычислений!вычисление по имени|hyperpage}{3}
+\indexentry{Стратегии вычислений!вычисление по необходимости|hyperpage}{5}
+\indexentry{Стратегии вычислений!ленивые вычисления|hyperpage}{5}
+\indexentry{Нормальная форма!нормальная форма|hyperpage}{6}
+\indexentry{Нормальная форма!слабая заголовочная нормальная форма|hyperpage}{6}

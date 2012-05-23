@@ -1,6 +1,12 @@
 (bang) Взрывной образец -> Энергичный образец (lionet)	уладить с взрывным подходом			средне
 ничего нет про память (сборщик мусора) (vshabanov)							сложно
 http://www.opensubscriber.com/message/haskell-cafe@haskell.org/5167000.html (описание GC)
+http://stackoverflow.com/questions/5132350/how-do-haskell-compilers-decide-whether-to-allocate-on-the-heap-or-the-stack
+	(memory management in haskell)
+http://research.microsoft.com/en-us/um/people/simonpj/papers/eval-apply/
+	(eval/apply vs push/enter)
+http://hackage.haskell.org/trac/ghc/wiki/Commentary/Rts/HaskellExecution
+	(oh my)
 отсутствует "мягкое" введение в рекурсию (рекурсия это же так естесственно! и?) (nponeccop)		средне
 	выявлено в 4.tex 840 (там сразу без пояснений идут определения для map, filter и foldr)
 единичный тип
