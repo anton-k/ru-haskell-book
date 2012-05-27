@@ -10,6 +10,10 @@ http://hackage.haskell.org/trac/ghc/wiki/Commentary/Rts/HaskellExecution
 	(oh my)
 http://www.haskell.org/haskellwiki/IO_inside	(Bulat on IO)
 http://www.haskell.org/haskellwiki/Ru/IO
+
+http://stackoverflow.com/questions/6121146/reading-ghc-core
+	(Core)
+
 http://en.wikipedia.org/wiki/Cheney%27s_algorithm (GC algorythm)
 отсутствует "мягкое" введение в рекурсию (рекурсия это же так естесственно! и?) (nponeccop)		средне
 	выявлено в 4.tex 840 (там сразу без пояснений идут определения для map, filter и foldr)
