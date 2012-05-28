@@ -13,6 +13,8 @@ http://www.haskell.org/haskellwiki/Ru/IO
 
 http://stackoverflow.com/questions/6121146/reading-ghc-core
 	(Core)
+http://stackoverflow.com/questions/6048194/good-introductory-text-about-ghc-implementation
+	(intro to ghc's guts)
 
 http://en.wikipedia.org/wiki/Cheney%27s_algorithm (GC algorythm)
 отсутствует "мягкое" введение в рекурсию (рекурсия это же так естесственно! и?) (nponeccop)		средне
