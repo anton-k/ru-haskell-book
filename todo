@@ -16,6 +16,11 @@ http://stackoverflow.com/questions/6121146/reading-ghc-core
 http://stackoverflow.com/questions/6048194/good-introductory-text-about-ghc-implementation
 	(intro to ghc's guts)
 
+dons :
+	ghc-core  - to see human-friendly core
+	ghc-gc-tune - tuning gc
+
+
 http://en.wikipedia.org/wiki/Cheney%27s_algorithm (GC algorythm)
 отсутствует "мягкое" введение в рекурсию (рекурсия это же так естесственно! и?) (nponeccop)		средне
 	выявлено в 4.tex 840 (там сразу без пояснений идут определения для map, filter и foldr)

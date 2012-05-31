@@ -1,8 +1,9 @@
-{-# LANGUAGE BangPatterns #-}
+{-# LANGUAGE BangPatterns, MagicHash #-}
 
 module Strict where
 
 import Data.List
+import GHC.Prim
 
 sum' :: Num a => [a] -> a
 sum' = iter 0 
@@ -57,6 +58,14 @@ mean'' :: [Double] -> Double
 mean'' = division . foldl' iter (0, 0)
     where iter (!sum, !leng) a = (sum  + a, leng + 1)
           division (sum, leng) = sum / fromIntegral leng
+
+
+data P a b = P {-# UNPACK #-} !a {-# UNPACK #-} !b
+
+mean''' :: [Double] -> Double
+mean''' = division . foldl' iter (P 0 0)
+    where iter (P sum leng) a = P (sum  + a) (leng + 1)
+          division (P sum leng) = sum / fromIntegral leng
 
 
 constBang :: a -> b -> a
