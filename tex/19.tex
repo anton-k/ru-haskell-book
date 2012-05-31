@@ -1,1327 +1,1124 @@
 \setcounter{chapter}{18}
-\chapter{Императивное программирование}
+\chapter{Ориентируемся по карте}
 
-В этой главе мы потренируемся в укрощении императивного 
-кода. В Haskell все побочные эффекты огорожены от
-чистых функций бетонной стеной \In{IO}.
-Однажды оступившись, мы не можем свернуть с пути побочных 
-эффектов, мы вынуждены тащить на себе груз \In{IO}
-до самого конца программы. Но, как мы видели в главах 11 и 12,
-тип  \In{IO}, хоть и обволакивает программу, всё же
-позволяет пользоваться благами чистых вычислений.
-От программиста зависит насколько сильна будет хватка \In{IO}.
-Необходимо уметь выделять точки, в которых применение
-побочных вычислений действительно необходимо, 
-подключая в них чистые функции через методы классов 
-\In{Functor}, \In{Applicative} и  \In{Monad}.
-Тип \In{IO} похож на дорогу с контрольными пунктами, 
-в которых необходимо отчитаться
-перед компилятором за \Quote{грязный код}. При неумелом
-проектировании написание программ, насыщенных
-побочными эффектами, может превратится в пытку. 
-Контрольные пункты будут встречаться в каждой функции.
+Рассмотрим задачу поиска маршрута на карте. 
+У нас есть карта метро и нам нужно проложить маршрут от
+одной станции к другой. Карта метро~-- это граф, 
+узлы обозначают станции, а рёбра соединяют соседние станции.
+Предположим, что мы знаем расстояния между
+всеми станциями и нам надо найти кратчайший путь
+от станции площадь Баха до станции Таинственный лес (\RefFig{metro}).
 
+\Fig{Схема метрополитена}{../pic/18/metro.ps}{metro}{0.9}
 
-Естественный источник побочных эффектов -- это пользователь программы.
-Но, к сожалению, это не единственный источник. Haskell
--- открытый язык программирования. В нём можно пользоваться
-программами из низкоуровневого языка C. Основное преимущество 
-С заключается в непревзойдённой скорости программ. 
-Этот язык позволяет программисту работать с памятью компьютера
-напрямую. Но за эту силу приходится платить. 
-Возможны очень неприятные и трудноуловимые ошибки. 
-Утечки памяти, обращение по неверному адресу в памяти, 
-неожиданное обновление переменных. Ещё один плюс С
-в том, что это язык с историей, на нём написано много хороших
-библиотек. Некоторые из них встроены в Haskell с помощью
-специального механизма FFI (foreign function interface).
-Обсуждение того, как устроен FFI выходит за рамки этой книги.
-Интересующийся читатель может обратиться к книге 
-\emph{Real World Haskell}. Мы же потренируемся в 
-использовании таких библиотек. Язык C является императивным,
-поэтому, применяя его функций в Haskell, мы неизбежно
-сталкиваемся с типом \In{IO}, поскольку большинство
-интересных функций в С изменяют состояние своих аргументов.
-В С пишут и чистые функции, такие функции 
-переносятся в Haskell без потери чистоты, но 
-это не всегда возможно. 
-
-В этой главе мы напишем небольшую 2D-игру, подключив
-две FFI-библиотеки, это графическая библиотека \In{OpenGL}
-и физический движок \In{Chipmunk}.
-
-\subsubsection{Описание игры}
-
-Игра происходит на бильярдной доске. Игрок управляет
-красным шаром, кликнув в любую точку экрана, он может
-изменить направление вектора скорости красного шара.
-Шар покатится туда, куда кликнул пользователь в 
-последний раз. Из луз будут вылетать шары трёх типов:
-синие, зелёные и оранжевые. Столкновение красного
-шара с синим означает минус одну жизнь, с зелёным --
-плюс одну жизнь, оранжевый шар означает бонус.
-Если шар игрока сталкивается с оранжевым шаром
-все шары в определённом радиусе от места столкновения
-исчезают и записываются в бонусные очки, за каждый шар по 
-одному очку, при этом шар с которым произошло 
-столкновение не считается. Все столкновения -- абсолютно упругие, 
-поэтому при столкновении энергия сохраняется и шары
-никогда не остановятся. Если шар попадает в лузу,
-то он исчезает. Если в лузу попал шар игрока -- 
-это означает, что игра окончена. Игрок стартует
-с несколькими жизнями, когда их число подходит к нулю
-игра останавливается. После столкновения с зелёным шаром,
-шар пропадает, а после столкновения с синим -- нет. 
-В итоге все против игрока, кроме зелёных и оранжевых шаров.
-
-
-\section{Основные библиотеки}
-
-Контролировать физику игрового мира будет библиотека
-\In{Chipmunk}, а библиотека \In{OpenGL} будет рисовать 
-(конечно если мы её этому научим). Пришло время с ними познакомится.
-
-\subsection{Изменяемые значения}
-
-Перед тем как мы перейдём к библиотекам нам
-нужно узнать ещё кое-что. 
-В Haskell мы не можем изменять значения. 
-Но в С это делается постоянно, а соответственно и в библиотеках
-написанных на С тоже. Для того чтобы имитировать в Haskell 
-механизм обновления значений были придуманы специальные типы. 
-Мы можем объявить изменяемое значение и обновлять
-его, но только в пределах типа \In{IO}.
-
-\subsubsection{IORef}
-
-Тип \In{IORef} из модуля \In{Data.IORef} 
-описывает изменяемые значения:
+Давайте переведём этот рисунок на Haskell. 
+Сначала опишем имена линий и станций:
 
 \begin{code}
-newIORef :: a -> IO IORef
+module Metro where
 
-readIORef   :: IORef a -> IO a
-writeIORef  :: IORef a -> a -> IO ()
-modifyIORef :: IORef a -> (a -> a) -> IO ()
+data Station = St Way Name
+    deriving (Show, Eq)
+
+data Way = Blue | Black | Green | Red | Orange
+    deriving (Show, Eq)
+
+data Name = Kosmodrom | UlBylichova | Zvezda 
+          | Zapad | Ineva | De | Krest | Rodnik | Vostok 
+          | Yug | Sirius | Til | TrollevMost | Prizrak | TainstvenniyLes 
+          | DnoBolota | PlBakha | Lao | Sever
+          | PlShekspira
+    deriving (Show, Eq)
 \end{code}
 
-Функция \In{newIORef} создаёт изменяемое значение
-и инициализирует его некоторым значением, которые
-мы можем считать с помощью функции \In{readIORef} 
-или обновить с помощью функций \In{writeIORef}
-или \In{modifyIORef}. Посмотрим как это работает:
+Предположим, что нам известны координаты каждой из станций.
+По ним мы можем вычислять расстояние между 
+станциями по прямой:
 
 \begin{code}
-module Main where
+data Point = Point 
+    { px :: Double
+    , py :: Double
+    } deriving (Show, Eq)
 
-import Data.IORef
+place :: Name -> Point
+place x = uncurry Point $ case x of
+    Kosmodrom           -> (-3,7)
+    UlBylichova         -> (-2,4) 
+    Zvezda              -> (0,1)
+    Zapad               -> (1,7)
+    Ineva               -> (0.5, 4)
+    De                  -> (0,-1)
+    Krest               -> (0,-3)
+    Rodnik              -> (0,-5)
+    Vostok              -> (-1,-7)
+    Yug                 -> (-7,-1)
+    Sirius              -> (-3,0)
+    Til                 -> (3,2)
+    TrollevMost         -> (5,4)
+    Prizrak             -> (8,6)
+    TainstvenniyLes     -> (11,7)
+    DnoBolota           -> (-7,-4)
+    PlBakha             -> (-3,-3)
+    Lao                 -> (3.5,0)
+    Sever               -> (6,1)
+    PlShekspira         -> (3,-3)
 
-main = var >>= (\v -> 
-       readIORef v >>= print 
-    >> writeIORef v 4 
-    >> readIORef v >>= print)
-    where var = newIORef 2    
+
+dist :: Point -> Point -> Double
+dist a b = sqrt $ (px a - px b)^2 + (py a - py b)^2
+
+stationDist :: Station -> Station -> Double
+stationDist (St n a) (St m b)
+    | n /= m && a == b  = penalty
+    | otherwise         = dist (place a) (place b)
+    where penalty = 1
 \end{code}
 
-Теперь посмотрим на ответ \In{ghci}:
+Расстояние между точками вычисляется по формуле Евклида (\In{dist}).
+Если у станций одинаковые имена, но они расположены на
+разных линиях мы будем считать, что расстояние между ними равно
+единице.
+Теперь нам необходимо описать связность станций.
+Мы опишем связность в виде функции, которая для данной станции
+возвращает список всех соседних с ней станций:
 
 \begin{code}
-*Main> :l HelloIORef
-[1 of 1] Compiling Main             ( HelloIORef.hs, interpreted )
-Ok, modules loaded: Main.
-*Main> main
-2
-4
+metroMap :: Station -> [Station]
+metroMap x = case x of
+    St Black Kosmodrom          -> [St Black UlBylichova]
+    St Black UlBylichova        -> 
+            [St Black Kosmodrom, St Black Zvezda, St Red UlBylichova]  
+    St Black  Zvezda            -> 
+            [St Black UlBylichova, St Blue  Zvezda, St Green Zvezda]
+    ...
 \end{code}
 
-Самое время вернуться к главе 16 и вспомнить о \In{do}-нотации.
-Такой императивный код гораздо нагляднее писать так:
+Приведён пример заполнения только для одной линии.
+Остальные линии заполняются аналогично. Обратите внимание на то, что
+некоторые станции  имеют одинаковые имена, но находятся на разных
+линиях.
+
+Всё готово для того чтобы написать функцию поиска
+маршрута. Для этого мы воспользуемся алгоритмом A*. 
+
+
+\section{Алгоритм эвристического поиска А*}
+
+Наша задача относится к задачам поиска путей на графе.
+Путём на графе называют такую последовательность узлов,
+в которой для любых двух соседних узлов существует ребро, 
+которое их соединяет. В нашем случае графом является карта метро,
+узлами~-- станции, рёбрами~-- линии между станциями, а
+путями~-- маршруты. 
+
+Представим, что мы находимся в узле \In{A} и нам необходимо
+попасть в узел \In{B} и единственное, что нам известно~-- это
+все соседние узлы с тем, в котором мы находимся. 
+У нас есть возможность перейти в один из соседних узлов и посмотреть
+нет ли среди их соседей узла \In{B}. В этом случае нам ничего не 
+остаётся кроме того как бродить по карте от станции к станции 
+в случайном порядке, пока мы не натолкнёмся на узел \In{B} 
+или все узлы не кончатся. Такой поиск называют слепым.
+
+Вот если бы у нас был компас, который в каждой точке 
+указывал в сторону цели нам было бы гораздо проще. 
+Такой компас принято называть \emph{эвристикой}. 
+Это функция, которая принимает узел и возвращает 
+число. Чем меньше число, тем ближе узел к цели. 
+Обычно эвристика указывает не точное расстояние до цели,
+поскольку мы не знаем где цель, а приблизительную оценку.
+Мы не знаем расстояние до цели, но догадываемся,
+нам кажется, что она где-то там, ещё чуть-чуть и
+мы найдём её. Примером эвристики для поиска по карте может быть 
+функция, которая вычисляет расстояние по прямой до цели.
+Предположим, что мы не знаем где находится цель (какая
+дорога к ней ведёт), но мы знаем её координаты. Также
+мы знаем координаты каждой вершины, в которой мы находимся.
+Тогда мы можем легко вычислить расстояние по прямой до
+цели и наш поиск станет гораздо более осмысленным.
+
+Так находясь в точке \In{A} мы можем сразу пойти
+в тот соседний узел, который ближе всех к цели.
+Такой поиск называют поиском по первому лучшему приближению.
+В поиске A* учитывается не только расстояние до цели, но и то
+расстояние, которое мы уже прошли. Мы выбираем не ту вершину,
+которая ближе к цели, а ту для которой полный путь до цели
+будет минимальным. Ведь пока мы идём мы можем запоминать какое
+расстояние мы уже прошли. Прибавив к этому значению, то
+которое мы получим с помощью эвристики мы получим
+полный (предполагаемый) путь до цели. 
+
+Поиск А* гораздо лучше поиска по первому лучшему приближению.
+Его часто применяют в компьютерных играх для поиска пути или
+принятия решений. 
+
+Принято разделять поиск на графе и поиск на дереве.
+Если мы идём по графу, то вершины могут повторятся (они
+образуют циклы). В случае поиска на дереве мы считаем, что
+все вершины уникальны. При поиске на графе очень важно 
+запоминать те вершины, в которых мы уже побывали. 
+Иначе мы будем очень часто ходить кругами.
+
+В Haskell очень удобно работать с данными, которые
+имеют иерархическую структуру. Их 
+можно представить в виде дерева, обычно в таких
+типах у нас есть конструкторы-константы и конструкторы,
+которые собирают составные значения. Граф выходит
+за рамки этого класса данных, потому что рёбра графов 
+могут образовывать циклы. Но мы схитрим и представим
+граф поиска в виде дерева. Корнем нашего дерева
+будет начальная точка поиска, а поддеревьями для 
+данной вершины узла будут все вершины-соседи.
+В таком дереве будет очень много повторяющихся
+узлов, так например мы можем пойти в соседнюю 
+вершину, потом вернуться обратно, опять пойти
+в туже соседнюю вершину, и так до бесконечности.
+Для того, чтобы избежать подобных ситуаций
+мы будем запоминать те вершины, в которых мы 
+уже побывали и не рассматривать их, если они
+встретятся нам ещё раз. 
+
+Сформулируем задачу поиска в типах. У нас есть
+дерево поиска, которое содержит все возможные
+разветвления, также каждая вершина содержит 
+значение эвристики, по нему мы знаем насколько
+близка данная вершина к цели. Также у нас есть
+специальный предикат, который определён на вершинах,
+по нему мы можем узнать является ли данная вершина 
+целью. Нам нужно получить путь, или цепочку 
+вершин, которая будет начинаться в корне дерева поиска 
+и заканчиваться в целевой вершине. 
 
 \begin{code}
-main = do
-    var <- newIORef 2
-    x <- readIORef var
-    print x
-    writeIORef var 4
-    x <- readIORef var
-    print x
+search :: Ord h => (a -> Bool) -> Tree (a, h) -> Maybe [a]
 \end{code}
 
-Эта запись выглядит как последовательность действий. 
-Не правда ли очень похоже на обычный императивный язык.
-Такие переменные встречаются очень часто в библиотеках,
-заимствованных из~С. 
-
-\subsubsection{StateVar}
-
-В модуле \In{Data.StateVar} определены типы, которые
-накладывают ограничение на права по чтению и записи.
-Мы можем определять переменные доступные 
-только для чтения (\In{GettableStateVar a}), 
-только для записи (\In{SettableStateVar a}) или 
-обычные изменяемые переменные (\In{SetVar a}).
-
-Операции чтения и записи описываются с помощью классов:
+Здесь \In{a} -- это значение вершины и \In{h} -- значение
+эвристики. Обратите внимание на зависимость \In{Ord h} в 
+контексте, ведь мы собираемся сравнивать эти значения
+по близости к цели. При обходе дерева мы будем запоминать
+повторяющиеся вершины, для этого мы воспользуемся 
+типом множество из стандартного модуля \In{Data.Set}. 
+Внутри \In{Set} могут хранится только значения,
+для которых определены операции сравнения, поэтому нам
+придётся добавить в контекст ещё одну зависимость:
 
 \begin{code}
-class HasGetter s where
-    get :: s a -> IO a
+import Data.Tree
+import qualified Data.Set as S
 
-class HasSetter s where
-    ($=) :: s a -> a -> IO ()
+search :: (Ord h, Ord a) => (a -> Bool) -> Tree (a, h) -> Maybe [a]
 \end{code}
 
-Тип \In{IORef} принадлежит и тому, и другому классу:
+Поиск будет заключаться в том, что мы будем обходить
+дерево от корня к узлам. При этом среди всех узлов-альтернатив
+мы будем просматривать узлы с наименьшим значением эвристики.
+В этом нам поможет специальная структура данных, которая называется 
+\emph{очередью с приоритетом} (priority queue). 
+Эта очередь хранит элементы с учётом их старшинства (приоритета).
+Мы можем добавлять в неё элементы и извлекать элементы. 
+При этом мы всегда будем извлекать элемент с наименьшим приоритетом.
+Мы воспользуемся очередями из библиотеки \In{fingertree}. 
+Для начала установим библиотеку:
 
 \begin{code}
-main = do
-    var <- newIORef 2
-    x   <- get var
-    print x
-    var $= 4
-    x   <- get var
-    print x
+cabal install fingertree
 \end{code}
 
-
-\subsection{OpenGL}
-
-\In{OpenGL} является ярким примером библиотеки 
-построенной на изменяемых переменных. \In{OpenGL}
-можно представить как большой конечный автомат. 
-Каждая строчка кода -- это запрос на изменение состояния.
-Причём этот автомат является глобальной переменной. 
-Его текущее состояние зависит от всей цепочки 
-предыдущих команд. Параметры рисования задаются
-глобальными переменными (тип \In{StateVar}).
-
-\In{OpenGL} не зависит от конкретной оконной системы, 
-она отвечает лишь за рисование. Для того чтобы создать окно 
-и перехватывать в нём действия пользователя нам понадобится 
-отдельная библиотека. Для этого мы воспользуемся \In{GLFW},
-это библиотека также пришла в Haskell из С. Интерфейсы 
-\In{GLFW} и \In{OpenGL} очень похожи. Мы будем обновлять
-различные параметры библиотеки с помощью типа \In{StateVar}.
-Давайте создадим окно и закрасим фон белым цветом:
+Теперь посмотрим в документацию и узнаем какие функции нам доступны.
+Документацию к пакету можно найти на сайте 
+\url{http://hackage.haskell.org/package/fingertree}.
+Пока отложим детальное изучение интерфейса, отметим
+лишь то, что мы можем добавлять элементы к очереди
+и извлекать элементы с учётом приоритета:
 
 \begin{code}
-module Main where
-
-import Graphics.UI.GLFW           
-import Graphics.Rendering.OpenGL
-import System.Exit
-
-title = "Hello OpenGL"
-
-width   = 700
-height  = 600
-
-main = do
-    initialize
-    openWindow (Size width height) [] Window
-    windowTitle $= title
-      
-    clearColor $= Color4 1 1 1 1
-    
-    windowCloseCallback $= exitWith ExitSuccess
-    loop
-
-loop = do
-    display
-    loop
-
-display = do
-    clear [ColorBuffer]
-    swapBuffers
+insert  :: Ord k => k -> v -> PQueue k v -> PQueue k v
+minView :: Ord k => PQueue k v -> Maybe (v, PQueue k v)
 \end{code}
 
-Мы инициализируем \In{GLFW}, задаём параметры
-окна. Устанавливаем
-цвет фона. Цвет имеет четыре параметра это RGB-цвета и
-параметр прозрачности. Затем мы говорим, что программе делать
-при закрытии окна. Мы устанавливаем функцию обратного вызова
-(callback) \In{windowCloseCallback}. В самом конце мы входим
-в цикл, который только и делает, что стирает окно цветом фона
-и делает рабочий буфер видимым. 
-Что такое буфер? Буфер -- это место в котором мы рисуем. 
-У нас есть два буфера.
-Один мы показываем пользователю, а в другом в это в время рисуем,
-когда приходит время обновлять картинку мы просто меняем 
-их местами командой \In{swapBuffers}.
+Вернёмся к функции \In{search}. Я бы хотел обратить ваше внимание
+на то, как мы будем разрабатывать эту функцию. 
+Вспомним, что Haskell -- ленивый язык. Это означает, что
+при обработке рекурсивных типов данных, функция \Quote{углубляется}
+в значение лишь тогда, когда функция, которая вызвала
+эту функцию попросит её об этом. Это даёт нам возможность
+работать с потенциально бесконечными структурами данных
+и, что более важно, разделять сложный алгоритм на независимые
+составляющие. 
 
-Посмотрим, что у нас получилось:
+В функции \In{search} нам необходимо обойти все элементы
+в порядке значения эвристики и остановиться в вершине,
+на которой целевой предикат вернёт \In{True}. Но для начала мы
+добавим к вершинам их пути из корня, для того чтобы в конце 
+мы смогли узнать как мы попали в текущую вершину. 
+Итак наша функция разбивается на три составляющие:
 
 \begin{code}
-$ ghc --make HelloOpenGL.hs
-$ ./HelloOpenGL
+search :: (Ord h, Ord a) => (a -> Bool) -> Tree (a, h) -> Maybe [a]
+search isGoal =  findPath isGoal . flattenTree . addPath 
 \end{code}
 
-Нарисуем упрощённое начальное положение нашей игры:
-прямоугольную рамку и в ней -- красный шар:
+выпишем типы составляющих функций и проверим код в интерпретаторе.
 
 \begin{code}
-module Main where
+un = undefined
 
-import Graphics.UI.GLFW           
-import Graphics.Rendering.OpenGL
+findPath :: (a -> Bool) -> [Path a] -> Maybe [a]
+findPath = un
 
-import System.Exit
+flattenTree :: (Ord h, Ord a) => Tree (Path a, h) -> [Path a]
+flattenTree = un
 
-title = "Hello OpenGL"
+addPath :: Tree (a, h) -> Tree (Path a, h)
+addPath = un
 
-width, height :: GLsizei
-
-width   = 700
-height  = 600
-    
-w2, h2 :: GLfloat
-
-w2 = (fromIntegral $ width) / 2
-h2 = (fromIntegral $ height)  / 2
-
-dw2, dh2 :: GLdouble
-
-dw2 = fromRational $ toRational w2
-dh2 = fromRational $ toRational h2
-
-main = do
-    initialize
-    openWindow (Size width height) [] Window
-    windowTitle $= title
-
-    clearColor $= Color4 1 1 1 1
-    ortho (-dw2-50) (dw2+50) (-dh2-50) (dh2+50) (-1) 1
-   
-    windowCloseCallback $= exitWith ExitSuccess
-    windowSizeCallback  $= (\size -> viewport $= (Position 0 0, size))
-
-    loop
-
-loop = do
-    display
-    loop
-
-display = do
-    clear [ColorBuffer]
-
-    color black
-    line (-w2) (-h2) (-w2) h2
-    line (-w2) h2    w2    h2
-    line w2    h2    w2    (-h2)
-    line w2   (-h2)  (-w2) (-h2)
-
-    color red
-    circle 0 0 10
-
-    swapBuffers
-
-
-vertex2f :: GLfloat -> GLfloat -> IO ()
-vertex2f a b = vertex (Vertex3 a b 0)
-
--- colors
-
-white = Color4 (0::GLfloat)
-black = Color4 (0::GLfloat) 0 0 1
-red   = Color4 (1::GLfloat) 0 0 1
-
--- primitives
-
-line :: GLfloat -> GLfloat -> GLfloat -> GLfloat -> IO ()
-line ax ay bx by = renderPrimitive Lines $ do
-    vertex2f ax ay
-    vertex2f bx by
-
-
-circle :: GLfloat -> GLfloat -> GLfloat -> IO ()
-circle cx cy rad = 
-    renderPrimitive Polygon $ mapM_ (uncurry vertex2f) points
-    where n = 50
-          points = zip xs ys
-          xs = fmap (\x -> cx + rad * sin (2*pi*x/n)) [0 .. n]
-          ys = fmap (\x -> cy + rad * cos (2*pi*x/n)) [0 .. n]
+data Path a = Path 
+	{ pathEnd   :: a
+	, path      :: [a]
+	}
 \end{code}
 
-\Fig{Начальное положение}{../pic/19/Static.ps}{pic-20-1}{0.4}
-
-Мы рисуем с помощью функции \In{renderPrimitive}. Она принимает
-метку элемента, который мы собираемся рисовать и набор вершин.
-Так метка \In{Lines} обозначает линии, а метка \In{Polygon} --
-закрашенные многоугольники. В \In{OpenGL} нет специальной
-операции для рисования окружностей, поэтому нам придётся
-представить окружность в виде многоугольника (\In{circle}). 
-Функция \In{ortho} устанавливает область видимости рисунка,
-шесть аргументов функции обозначают пары диапазонов по каждой
-из трёх координат. При этом вершины передаются
-не списком а в специальном \In{do}-блоке. За счёт этого
-мы можем изменить какие-нибудь параметры \In{OpenGL} во
-время рисования. Обратите внимание на то, как мы изменяем
-цвет примитива. Перед тем как рисовать примитив мы устанавливаем
-значение цвета (\In{color}). 
-
-\subsubsection{Анимация}
-
-Оживим нашу картинку. При клике мышкой шарик игрока 
-последует в направлении курсора. Для того чтобы картинка
-задвигалась нам необходимо обновлять рисунок с определённой частотой.
-Мы будем регулировать частоту обновления с помощью функции
-\In{sleep}, с её помощью мы можем задержать выполнение программы
-(время измеряется в секундах):
+Обратите внимание на то как поступающие на вход 
+данные разделились между функциями. Информация
+о приоритете вершин не идёт дальше функции \In{flattenTree},
+а предикат \In{isGoal} используется только в функции
+\In{findPath}. Модуль прошёл проверку типов и мы можем
+детализировать функции дальше:
 
 \begin{code}
-sleep :: Double -> IO ()
+addPath :: Tree (a, h) -> Tree (Path a, h)
+addPath = iter []
+    where iter ps t = Node (Path val (reverse ps'), h) $ 
+            iter ps' <$> subForest t
+            where (val, h)  = rootLabel t
+                  ps'       = val : ps
 \end{code}
 
-За перехват действий пользователя отвечает функции:
+В этой функции мы просто присоединяем к данной вершине
+все родительские вершины, так мы составляем маршрут 
+от данной вершины до начальной, поскольку мы всё время
+добавляем новые вершины в начало списка, в итоге у нас получаются
+перевёрнутые маршруты, поэтому перед тем как обернуть значение
+в конструктор \In{Path} мы переворачиваем список. 
+На самом деле нам нужно перевернуть только один путь. 
+Путь, который ведёт к цели, но за счёт того, что
+язык у нас ленивый, функция \In{reverse} будет применена
+не сразу, а лишь тогда, когда нам действительно понадобится
+значение пути. Это как раз и произойдёт лишь один раз,
+в самом конце программы, лишь для одного значения!
+
+Давайте пока пропустим функцию \In{flattenTree} и сначала 
+определим функцию \In{findPath}.
+Эта функция принимает все вершины, которые мы обошли
+если бы шли без цели (функции \In{isGoal}) и ищет среди
+них первую, которая удовлетворяет предикату. Для этого мы
+воспользуемся стандартной функцией \In{find} из 
+модуля \In{Data.List}:
+
 
 \begin{code}
-getMouseButton  :: MouseButton -> IO KeyButtonState
-mousePos        :: StateVar Position
+findPath :: (a -> Bool) -> [Path a] -> Maybe [a]
+findPath isGoal =  fmap path . find (isGoal . pathEnd)
 \end{code}
 
-Функция \In{getMouseButton} сообщает текущее состояние
-кнопок мыши, мы будем перехватывать положение мыши
-во время нажатия левой кнопки:
+Напомню тип функции \In{find}, она принимает предикат
+и список, а возвращает первое значение списка, на котором
+предикат вернёт \In{True}:
 
 \begin{code}
-onMouse ball = do
-    mb <- getMouseButton ButtonLeft
-    when (mb == Press) (get mousePos >>= updateVel ball)
+find :: (a -> Bool) -> [a] -> Maybe a
 \end{code}
 
-Стандартная функция \In{when} из модуля \In{Control.Monad}
-выполняет действие только в том случае, если первый аргумент
-равен \In{True}.
-Для обновления положения и направления скорости шарика
-нам придётся воспользоваться глобальной переменной типа 
-\In{IORef Ball}:
+Функция \In{fmap} применяется из-за того, что результат
+функции \In{find} завёрнут в \In{Maybe}, это частично
+определённая функция. В самом деле ведь в списке может и 
+не оказаться подходящего значения. 
+
+Осталось определить функцию \In{flattenTree}. Было бы 
+хорошо определить её так, чтобы она была развёрткой для
+списка. Поскольку функция \In{find} является свёрткой
+(может быть определена через \In{fold}), вместе эти функции
+работали бы очень эффективно. Мы определим функцию \In{flattenTree}
+через взаимную рекурсию. Две функции будут
+по очереди вызывать друг друга. Одна из них будет 
+извлекать следующее значение из очереди, а другая --
+проверять не встречалось ли нам уже такое значение,
+и добавлять новые элементы в очередь.
 
 \begin{code}
-data Ball = Ball
-    { ballPos :: Vec2d
-    , ballVel :: Vec2d
-    }
+flattenTree :: (Ord h, Ord a) => Tree (Path a, h) -> [Path a]
+flattenTree a = ping none (singleton a) 
+
+ping :: (Ord h, Ord a) => Visited a -> ToVisit a h -> [Path a]
+ping visited toVisit 
+    | isEmpty toVisit = []
+    | otherwise       = pong visited toVisit' a
+    where (a, toVisit') = next toVisit
+
+
+pong :: (Ord h, Ord a) 
+    => Visited a -> ToVisit a h -> Tree (Path a, h) -> [Path a]
+pong visited toVisit a 
+    | inside a visited  = ping visited toVisit
+    | otherwise         = getPath a : 
+        ping (insert a visited) (schedule (subForest a) toVisit)
 \end{code}
 
-Код программы:
+Типы \In{Visited} и \In{ToVisit} обозначают наборы вершин,
+которые мы уже посетили и которые только собираемся посетить.
+Не вдаваясь в подробности интерфейса этих типов, давайте присмотримся
+к функциям \In{ping} и \In{pong} с точки зрения функции, которая
+их будет вызывать, а именно функции \In{findPath}. Эта функция
+ожидает на входе список. Внутри она обходит список в поисках
+нужного элемента, поэтому она будет применять
+сопоставление с образцом, разбирая список на части. 
+Сначала она запросит сопоставление с пустым списком, 
+запустится функция \In{ping} с пустым множеством посещённых вершин
+(\In{none}) и одним элементом в очереди вершин (\In{singleton a}), которые
+предстоит посетить. Функция \In{ping} проверит не является
+ли очередь пустой, очередь содержит один элемент, поэтому
+она перейдёт к следующему случаю и извлечёт из очереди
+один элемент (\In{next}), который будет передан в функцию \In{pong}.
+Функция \In{pong} проверит нет ли в списке уже посещённых
+элементов того, который был только что извлечён 
+(\In{inside a visited}). Если это окажется так, то она 
+запросит следующий элемент у функции \In{ping}. Если
+же исходный элемент окажется новым, она добавит его в список
+(\In{getPath a : ...}) и запланирует обход всех дочерних деревьев
+данного элемента (\In{schedule (subForest a) toVisit}).
+При первом заходе исходный элемент окажется новым и функция
+\In{findPath} поймёт, что список не пустой и остановит 
+вычисление. Она немного передохнёт и примется за следующий
+случай. Там она будет извлекать первый элемент списка 
+и сопоставлять его с предикатом. При этом первый элемент 
+уже вычислен. Мы воспользуемся этим, убедимся в том, что
+он не является целью и рекурсивно вызовем функцию \In{find}
+на хвосте списка. Функция \In{findPath} запросит следующее 
+значение и так далее. 
+
+Наша функция \In{flattenPath} не является развёрткой,
+но очень похожа на неё тем, что позволяет вычислять результирующий
+список частично. Например функция \In{length} требует полного
+обхода списка. Мы не можем использовать её с бесконечными
+списками. Теперь давайте разберёмся с подчинёнными функциями:
 
 \begin{code}
-module Main where
-
-import Control.Applicative
-import Data.IORef
-import Graphics.UI.GLFW
-import Graphics.Rendering.OpenGL
-import System.Exit
-import Control.Monad
-
-type Time = Double
-
-title = "Hello OpenGL"
-
-width, height :: GLsizei
-
-fps :: Int
-fps = 60
-
-frameTime :: Time
-frameTime = 1000 * ((1::Double) / fromIntegral fps)
-
-width   = 700
-height  = 600
-    
-w2, h2 :: GLfloat
-
-w2 = (fromIntegral $ width) / 2
-h2 = (fromIntegral $ height)  / 2
-
-dw2, dh2 :: GLdouble
-
-dw2 = fromRational $ toRational w2
-dh2 = fromRational $ toRational h2
-
-type Vec2d = (GLfloat, GLfloat)
-
-data Ball = Ball
-    { ballPos :: Vec2d
-    , ballVel :: Vec2d
-    }
-
-initBall = Ball (0, 0) (0, 0)
-
-dt :: GLfloat
-dt = 0.3
-
-minVel = 10
-
-main = do
-    initialize
-    openWindow (Size width height) [] Window
-    windowTitle $= title
-
-    clearColor $= Color4 1 1 1 1
-    ortho (-dw2) (dw2) (-dh2) (dh2) (-1) 1
-    
-    ball <- newIORef initBall
-
-    windowCloseCallback $= exitWith ExitSuccess
-    windowSizeCallback  $= (\size -> viewport $= (Position 0 0, size))
-
-    loop ball
-
-loop :: IORef Ball -> IO ()
-loop ball = do    
-    display ball
-    onMouse ball
-    sleep frameTime
-    loop ball
-
-display ball = do
-    (px, py) <- ballPos <$> get ball
-    (vx, vy) <- ballVel <$> get ball
-    ball $= Ball (px + dt*vx, py + dt*vy) (vx, vy)
-
-    clear [ColorBuffer]
-
-    color black
-    line (-ow2) (-oh2) (-ow2) oh2
-    line (-ow2) oh2    ow2    oh2
-    line ow2    oh2    ow2    (-oh2)
-    line ow2   (-oh2)  (-ow2) (-oh2)
-
-    color red
-    circle px py 10
-
-    swapBuffers
-    where ow2 = w2 - 50 
-          oh2 = h2 - 50  
-    
-onMouse ball = do
-    mb <- getMouseButton ButtonLeft
-    when (mb == Press) (get mousePos >>= updateVel ball)
-   
-updateVel ball pos = do
-    (p0x, p0y) <- ballPos <$> get ball
-    v0  <- ballVel <$> get ball
-    size <- get windowSize
-    let (p1x, p1y) = mouse2canvas size pos 
-        v1 = scaleV (max minVel $ len v0) $ norm (p1x - p0x, p1y - p0y)
-    ball $= Ball (p0x, p0y) v1
-    where norm v@(x, y) = (x / len v, y / len v)
-          len  (x, y) = sqrt (x*x + y*y) 
-          scaleV k (x, y) = (k*x, k*y)
-
-mouse2canvas :: Size -> Position -> (GLfloat, GLfloat)
-mouse2canvas (Size sx sy) (Position mx my) = (x, y)
-    where d a b  = fromIntegral a / fromIntegral b
-          x  = fromIntegral width * (d mx sx - 0.5)
-          y  = fromIntegral height * (negate $ d my sy - 0.5)
-
-vertex2f :: GLfloat -> GLfloat -> IO ()
-vertex2f a b = vertex (Vertex3 a b 0)
-
--- colors
-... white, black, red  
-
--- primitives
-line    :: GLfloat -> GLfloat -> GLfloat -> GLfloat -> IO ()
-circle  :: GLfloat -> GLfloat -> GLfloat -> IO ()
+getPath :: Tree (Path a, h) -> Path a
+getPath = fst . rootLabel
 \end{code}
 
-
-Теперь функция \In{display} принимает ссылку на глобальную 
-переменную, которая отвечает за движение шарика.
-Функция \In{mouse2canvas} переводит координаты в окне \In{GLFW}
-в координаты \In{OpenGL}. В \In{GLFW} начало координат лежит 
-в левом верхнем углу окна и ось \In{Oy} направлена вниз. 
-Мы же переместили начало координат в центр окна и ось Oy 
-направлена вверх.
-
-Посмотрим что у нас получилось:
+Функции для множества вершин, которые мы уже посетили:
 
 \begin{code}
-$ ghc --make Animation.hs
-$ ./Animation
-\end{code}
-
-\subsection{Chipmunk}
-
-Картинка ожила, но шарик движется не реалистично. 
-Он проходит сквозь стены. Добавим в нашу программу
-немного физики. Воспользуемся библиотекой \In{Hipmunk}
-
-\begin{code}
-cabal install Hipmunk
-\end{code}
-
-Она даёт возможность вызывать из Haskell функции
-С-библиотеки \In{Chipmunk}. Эта библиотека позволяет
-строить двухмерные физические модели. 
-Основным элементом модели является пространство (\In{Space}).
-К нему мы можем добавлять различные объекты. Объект
-состоит из двух компонент: тела (\In{Body}) и формы (\In{Shape}).
-Тело отвечает за такие физические характеристики как масса,
-момент инерции, восприимчивость к силам. По форме определяются
-моменты столкновения тел. Форма может состоять из нескольких
-примитивов: окружностей, линий и выпуклых многоугольников. 
-Также мы можем добавлять различные ограничения 
-(\In{Constraint}) они имитируют пружинки, шарниры. 
-Мы можем назначать выполнение \In{IO}-действий на
-столкновения.
-
-Опишем в \In{Hipmunk} модель шарика бегающего в замкнутой 
-коробке:
-
-\begin{code}
-module Main where 
-
-import Data.StateVar
-import Physics.Hipmunk
-
-main = do
-    initChipmunk
-    space <- newSpace
-    initWalls space
-    ball <- initBall space initPos initVel
-    loop 100 space ball
-
-loop :: Int -> Space -> Body -> IO ()
-loop 0 _     _    = return ()     
-loop n space ball = do
-    showPosition ball
-    step space 0.5
-    loop (n-1) space ball
-  
-showPosition :: Body -> IO ()
-showPosition ball = do
-    pos <- get $ position ball
-    print pos
-
-initWalls :: Space -> IO ()
-initWalls space = mapM_ (uncurry $ initWall space) wallPoints
-
-initWall :: Space -> Position -> Position -> IO ()
-initWall space a b = do
-    body    <- newBody infinity infinity
-    shape   <- newShape body (LineSegment a b wallThickness) 0
-    elasticity shape $= nearOne
-    spaceAdd space body
-    spaceAdd space shape
-
-initBall :: Space -> Position -> Velocity -> IO Body
-initBall space pos vel = do
-    body    <- newBody ballMass ballMoment 
-    shape   <- newShape body (Circle ballRadius) 0
-    position body $= pos
-    velocity body $= vel
-    elasticity shape $= nearOne
-    spaceAdd space body
-    spaceAdd space shape
-    return body
-    
-----------------------------
--- inits
-
-nearOne = 0.9999
-ballMass = 20
-ballMoment = momentForCircle ballMass (0, ballRadius) 0
-ballRadius = 10
-    
-initPos = Vector 0 0
-initVel = Vector 10 5
-
-wallThickness = 1
-
-wallPoints = fmap (uncurry f) [
-    ((-w2, -h2), (-w2, h2)),
-    ((-w2, h2),  (w2, h2)),
-    ((w2, h2),   (w2, -h2)),
-    ((w2, -h2),  (-w2, -h2))]
-    where f a b = (g a, g b) 
-          g (a, b) = H.Vector a b  
-
-h2 = 100
-w2 = 100
-\end{code}
-
-
-Функция \In{initChipmunk} инициализирует библиотеку \In{Chipmunk}.
-Она должна быть вызвана один раз до любой из функций библиотеки
-\In{Hipmunk}. Функции \In{new[Body|Shape|Space]} создают 
-объекты модели. Мы сделали стены неподвижными, присвоив
-им бесконечную массу и момент инерции (\In{initWall}). 
-Упругость удара определяется переменной \In{elasticity},
-она не может быть больше единицы. Единица обозначает
-абсолютно упругое столкновение. В документации к \In{Hipmunk}
-не рекомендуют присваивать значение равное единице из-за
-возможных погрешностей округления, поэтому мы выбираем число
-близкое к единице. После инициализации элементов модели 
-мы запускаем цикл, в котором происходит обновление модели (\In{step})
-и печать положения шарика. Обратите внимание на то, что 
-координаты шарика никогда не выйдут за установленные рамки.
-
-Теперь объединим OpenGL и Hipmunk:
-
-\begin{code}
-module Main where
-
-import Control.Applicative
-
-import Control.Applicative
-import Data.StateVar
-import Data.IORef
-import Graphics.UI.GLFW
-import System.Exit
-import Control.Monad
-
-import qualified Physics.Hipmunk  as H
-import qualified Graphics.UI.GLFW as G
-import qualified Graphics.Rendering.OpenGL as G
-  
-title = "in the box"
-
-----------------------------
--- inits
-
-type Time = Double
-
--- frames per second
-fps :: Int
-fps = 60
-
--- frame time in milliseconds
-frameTime :: Time
-frameTime = 1000 * ((1::Double) / fromIntegral fps)
-
-
-nearOne = 0.9999
-ballMass = 20
-ballMoment = H.momentForCircle ballMass (0, ballRadius) 0
-ballRadius = 10
-    
-initPos = H.Vector 0 0
-initVel = H.Vector 0 0
-
-wallThickness = 1
-
-wallPoints = fmap (uncurry f) [
-    ((-ow2, -oh2), (-ow2, oh2)),
-    ((-ow2, oh2),  (ow2, oh2)),
-    ((ow2, oh2),  (ow2, -oh2)),
-    ((ow2, -oh2),   (-ow2, -oh2))]
-    where f a b = (g a, g b) 
-          g (a, b) = H.Vector a b  
-
-dt :: Double
-dt = 0.5
-
-minVel :: Double
-minVel = 10
-
-width, height :: Double
-
-height = 500
-width = 700
-
-w2, h2 :: Double
-
-h2 = height / 2
-w2 = width / 2
-
-ow2, oh2 :: Double
-    
-ow2 = w2 - 50 
-oh2 = h2 - 50  
-
-data State = State 
-    { stateBall     :: H.Body
-    , stateSpace    :: H.Space
-    }
-
-ballPos :: State -> StateVar H.Position
-ballPos = H.position . stateBall
-
-ballVel :: State -> StateVar H.Velocity
-ballVel = H.velocity . stateBall
-
-
-main = do
-    H.initChipmunk
-    initGLFW
-    state <- newIORef =<< initState
-    loop state
-
-loop :: IORef State -> IO ()
-loop state = do    
-    display state
-    onMouse state
-    sleep frameTime
-    loop state
-
-simulate :: State -> IO Time
-simulate a = do
-    t0 <- get G.time
-    H.step (stateSpace a) dt 
-    t1 <- get G.time
-    return (t1 - t0)
-
-initGLFW :: IO ()
-initGLFW = do
-    G.initialize
-    G.openWindow (G.Size (d2gli width) (d2gli height)) [] G.Window
-    G.windowTitle $= title
-    G.windowCloseCallback $= exitWith ExitSuccess
-    G.windowSizeCallback  $= (\size -> G.viewport $= (G.Position 0 0, size))
-    G.clearColor $= G.Color4 1 1 1 1
-    G.ortho (-dw2) (dw2) (-dh2) (dh2) (-1) 1
-    where dw2 = realToFrac w2
-          dh2 = realToFrac h2  
-
-initState :: IO State
-initState = do
-    space <- H.newSpace 
-    initWalls space
-    ball <- initBall space initPos initVel
-    return $ State ball space
-
-initWalls :: H.Space -> IO ()
-initWalls space = mapM_ (uncurry $ initWall space) wallPoints
-
-initWall :: H.Space -> H.Position -> H.Position -> IO ()
-initWall space a b = do
-    body    <- H.newBody H.infinity H.infinity
-    shape   <- H.newShape body (H.LineSegment a b wallThickness) 0
-    H.elasticity shape $= nearOne
-    H.spaceAdd space body
-    H.spaceAdd space shape
-
-initBall :: H.Space -> H.Position -> H.Velocity -> IO H.Body
-initBall space pos vel = do
-    body    <- H.newBody ballMass ballMoment 
-    shape   <- H.newShape body (H.Circle ballRadius) 0
-    H.position body $= pos
-    H.velocity body $= vel
-    H.elasticity shape $= nearOne
-    H.spaceAdd space body
-    H.spaceAdd space shape
-    return body
-
--------------------------------
--- graphics
-
-display state = do
-    drawState =<< get state
-    simTime <- simulate =<< get state    
-    sleep (max 0 $ frameTime - simTime) 
-    
-
-drawState :: State -> IO ()
-drawState st = do
-    pos <- get $ ballPos st
-    G.clear [G.ColorBuffer]
-    drawWalls
-    drawBall pos
-    G.swapBuffers
-
-drawBall :: H.Position -> IO ()
-drawBall pos = do
-    G.color red
-    circle x y $ d2gl ballRadius
-    where (x, y) = vec2gl pos
-
-drawWalls :: IO ()
-drawWalls = do
-    G.color black
-    line (-dow2) (-doh2) (-dow2) doh2
-    line (-dow2) doh2    dow2    doh2
-    line dow2    doh2    dow2    (-doh2)
-    line dow2   (-doh2)  (-dow2) (-doh2)
-    where dow2 = d2gl ow2 
-          doh2 = d2gl oh2  
-
-
-onMouse state = do    
-    mb <- G.getMouseButton ButtonLeft
-    when (mb == Press) (get G.mousePos >>= updateVel state)
-   
-updateVel state pos = do   
-    size <- get G.windowSize
-    st <- get state
-    p0 <- get $ ballPos st
-    v0 <- get $ ballVel st
-    let p1 = mouse2canvas size pos
-    ballVel st $= 
-        H.scale (H.normalize $ p1 - p0) (max minVel $ H.len v0)
-
-mouse2canvas :: G.Size -> G.Position -> H.Vector
-mouse2canvas (G.Size sx sy) (G.Position mx my) = H.Vector x y
-    where d a b  = fromIntegral a / fromIntegral b
-          x  = width * (d mx sx - 0.5)
-          y  = height * (negate $ d my sy - 0.5)
-
-
-vertex2f :: G.GLfloat -> G.GLfloat -> IO ()
-vertex2f a b = G.vertex (G.Vertex3 a b 0)
-
-vec2gl :: H.Vector -> (G.GLfloat, G.GLfloat)
-vec2gl (H.Vector x y) = (d2gl x, d2gl y)
-
-d2gl :: Double -> G.GLfloat
-d2gl = realToFrac
-
-d2gli :: Double -> G.GLsizei
-d2gli = toEnum . fromEnum . d2gl
-
+import qualified Data.Set as S
 ...
+
+type Visited a   = S.Set a
+
+none :: Ord a => Visited a
+none = S.empty
+
+insert :: Ord a => Tree (Path a, h) -> Visited a -> Visited a
+insert = S.insert . pathEnd . getPath
+
+inside :: Ord a => Tree (Path a, h) -> Visited a -> Bool
+inside = S.member . pathEnd . getPath
 \end{code}
 
-Функции не претерпевшие особых изменений пропущены. 
-Теперь наше глобальное состояние (\In{State}) содержит
-тело шара (оно пригодится нам для вычисления его положения)
-и пространство, в котором живёт наша модель. 
-Стоит отметить функцию \In{simulate}. В ней происходит
-обновление состояния модели. При этом мы возвращаем
-время, которое ушло на вычисление этой функции. 
-Оно нужно нам для того, чтобы показывать новые кадры
-равномерно. Мы вычтем время симуляции из общего времени,
-которое мы можем потратить на один кадр (\In{frameTime}). 
-
-\section{Боремся с IO}
-
-Кажется, что мы попали в какой-то другой язык. 
-Это совсем не тот элегантный Haskell, знакомый нам по 
-предыдущим главам. Столько \In{do} и \In{IO} разбросано
-по всему коду. И такой примитивный результат в итоге.
-Если так будет продолжаться и дальше, то мы можем 
-не вытерпеть и бросить и нашу задачу и Haskell\dots
-
-Не отчаивайтесь! 
-
-Давайте лучше подумаем как свести этот псевдо-Haskell
-к минимуму. Подумаем какие источники \In{IO} точно будут
-в нашей программе. Это инициализация \In{GLFW} и \In{Hipmunk},
-клики мышью, обновление модели в \In{Hipmunk}, также
-для рисования нам придётся считывать положения шаров. 
-Нам придётся удалять и создавать новые шары, добавляя
-их к пространству модели. Также в \In{IO} происходит
-отрисовка игры. \In{Hipmunk} будет контролировать столкновения
-шаров, и эти данные нам тоже надо будет считывать из глобальных
-переменных. Сколько всего! Голова идёт кругом. 
-
-Но помимо 
-всего этого у нас есть логика игры. Логика игры отвечает
-за реакцию игрового мира на различные события. 
-Например столкновение с \Quote{плохим} шаром влечёт
-к уменьшению жизней, если игрок сталкивается с бонусным шаром,
-определённые шары необходимо удалить. Приходит
-момент и мы выпусткаем новый шар из лузы новый шар. 
-Давайте подумаем как сохранить логику игры в чистоте.
-
-Тип \In{IO} обычно отвечает за связь с внешним миром,
-это глаза, уши, руки и ноги программы. Через \In{IO}
-мы получаем информацию из внешнего мира и отправляем
-её обратно. Но в нашем случае он проник в сердце программы.
-За обновление объектов отвечает насыщенная \In{IO}
-библиотека \In{Hipmunk}.
-
-Мы постараемся побороться с \In{IO}-кодом так. 
-Сначала мы выделем те параметры, которые могут быть обновлены
-чистыми функциями. Это все те параметры, для которых не нужен
-\In{Hipmunk}. Этот шаг разбивает наш мир на два лагеря:
-\Quote{чистый} и \Quote{грязный}:
+Функции для очереди тех вершин, что мы только собираемся посетить:
 
 \begin{code}
-data World = World 
-    { worldPure   :: Pure
-    , worldDirty  :: Dirty }
-\end{code}
-
-Чистые данные хотят как-то узнать о том, что происходит
-в грязных данных. Также чистые данные могут рассказать
-грязным, как им нужно измениться. Это приводит 
-нас к определению двух языков запросов, на которых
-чистый и грязный мир общаются между собой:
-
-\begin{code}
-data Query = Remove Ball | HeroVelocity H.Velocity | MakeBall Freq
-
-data Event = Touch Ball | UserClick H.Position
-
-data Sense = Sense 
-    { senseHero     :: HeroBall
-    , senseBalls    :: [Ball]  }
-\end{code}
-
-Через \In{Query} чистые данные могут рассказать грязным
-о том, что необходимо удалить шар из игры, обновить скорость
-шара игрока или создать новый шар (\In{Freq} отвечает 
-за параметры создания шара). Грязные данные могут рассказать
-чистым на языке \In{Event} и \In{Sense} о том, что один
-из шаров коснулся до шара игрока, или игрок кликнул мышкой
-в определённой точке. Также мы сообщаем все обновлённые
-положения параметры шаров в типе \In{Sense}. Тип
-\In{Event} отвечает за события, которые происходят
-иногда, а тип \In{Sense} за те параметры, которые мы наблюдаем
-непрерывно (это типы глазарук), \In{Query} -- это язык действий
-(это тип руконог). Нам понадобится ещё один маленький
-язык, на котором мы будем объясняться с \In{OpenGL}. 
-
-
-\begin{code}
-data Picture = Prim Color Primitive
-             | Join Picture Picture
-
-data Primitive = Line Point Point | Circle Point Radius
-
-data Point  = Point Double Double
-type Radius = Double   
-
-data Color = Color Double Double Double
-\end{code}
-
-Эти три языка станут барьером, которым мы ограничим
-влияние \In{IO}. У нас будут функции:
-
-\begin{code}
-percept     :: Dirty -> IO (Sense, [Event])
-updatePure  :: Sense -> [Event] -> Pure -> (Pure, [Query])
-react       :: [Query] -> Dirty -> IO Dirty
-updateDirty :: Dirty -> IO Dirty
-picture     :: Pure -> Picture
-draw        :: Picture -> IO ()
-\end{code}
-
-Вся логика игры будет происходить в чистой функции 
-\In{updatePure}, обновлять модель мира мы будем в \In{updateDirty}. 
-Давайте опять начнём проектироваание сверху-вниз. 
-С этими функциями мы уже можем написать основную функцию
-цикла игры:
-
-\begin{code}
-loop :: IORef World -> IO ()
-loop worldRef = do
-    world <- get worldRef
-    drawWorld world
-    (world, dt) <- updateWorld world
-    worldRef $= world
-    G.addTimerCallback (max 0 $ frameTime - dt) $ loop worldRef
-
-updateWorld :: World -> IO (World, Time)
-updateWorld world = do
-    t0 <- get G.elapsedTime
-    (sense, events) <- percept dirty
-    let (pure', queries) = updatePure sense events pure
-    dirty' <- updateDirty =<< react queries dirty    
-    t1 <- get G.elapsedTime
-    return (World pure' dirty', t1 - t0)
-    where dirty = worldDirty world
-          pure  = worldPure  world  
-
-drawWorld :: World -> IO ()
-drawWorld = draw . picture . worldPure
-\end{code}
-
-\section{Определяемся с типами}
-
-Давайте подумаем, из чего состоят типы \In{Dirty} и \In{Pure}.
-Начнём с \In{Pure}. Там точно будет вся информация необходимая
-нам для рисования картинки (ведь функция \In{picture} 
-определена на \In{Pure}). Для рисования нам необходимо знать
-положения всех шаров и их типы (они определяют цвет). 
-На картинке мы будем показывать разную статистику 
-(данные о жизнях, бонусные очки). Также из типа \In{Pure}
-мы будем управлять созданием шаров. Так мы приходим к типу:
-
-\begin{code}
-data Pure = Pure
-    { pureScores     :: Scores
-    , pureHero       :: HeroBall
-    , pureBalls      :: [Ball]
-    , pureStat       :: Stat
-    , pureCreation   :: Creation
-    }
-\end{code}
-
-Что нам нужно знать о шаре героя? Нам нужно его положение 
-для отрисовки и модуль вектора скорости (он понадобится
-нам при обновлении вектора скорости шара игрока):
-
-\begin{code}
-data HeroBall = HeroBall
-    { heroPos   :: H.Position
-    , heroVel   :: H.CpFloat
-    }
-\end{code}
-
-Для остальных шаров нам нужно знать только тип шара,
-его положение и идентификатор шара. По идентификатору
-потом мы сможем понять какой шар удалить из грязных
-данных:
-
-\begin{code}
-data Ball = Ball
-    { ballType      :: BallType
-    , ballPos       :: H.Position
-    , ballId        :: Id
-    }
-
-data BallType = Hero | Good | Bad | Bonus
-    deriving (Show, Eq, Enum)
-
-type Id = Int
-\end{code}
-
-
-Статистика игры состоит из числа жизней и бонусных очков:
-
-\begin{code}
-data Scores = Scores 
-    { scoresLives :: Int
-    , scoresBonus :: Int
-    } 
-\end{code}
-
-Как будет происходить создание новых шаров? 
-Если плохих шаров будет слишком много, то играть будет не интересно,
-игрок слишком быстро проиграет. Если хороших шаров будет
-слишком много, то игроку также быстро надоест. Будет
-очень легко. Нам необходимо поддерживать определённый баланс
-шаров. Создание шаров будет происходить случайным
-образом через равные промежутки времени, но создание 
-нового шара будет зависеть от пропорции
-шаров на доске в данный момент. Если у нас слишком много
-плохих шаров, то скорее всего мы создадим хороший шар
-и наоборот. Если общее число шаров велико, то мы не будем
-усложнять игроку жизнь новыми шарами, дождёмся пока
-какие-нибудь шары не покинут пределы поля или
-не будут уничтожены игроком. Эти рассуждения приводят
-нас к типам:
-
-\begin{code}
-data Creation = Creation 
-    { creationStat      :: Stat
-    , creationGoalStat  :: Stat
-    , creationTick      :: Int
-    }
-
-data Stat = Stat
-    { goodCount     :: Int
-    , badCount      :: Int
-    , bonusCount    :: Int
-    } 
-
-data Freq = Freq 
-    { freqGood      :: Float
-    , freqBad       :: Float
-    , freqBonus     :: Float
-    } 
-\end{code}
-
-Поле \In{creationStat} содержит текущее число шаров на поле,
-поле \In{creationGoalStat} -- число шаров, к которому мы стремимся.
-Значение типа \In{Freq} содержит веса вероятностей создания
-нового шара определённого типа. На каждом шаге мы будем 
-прибавлять единицу к \In{creationTiсk}, как только оно достигнет
-определённого значения мы попробуем создать новый шар.
-
-Перейдём к грязным данным. Там мы будем хранить информацию,
-необходимую для обновления модели в \In{Hipmunk},
-и значение, в которое \In{GLFW} будет записывать
-состояние мыши, также мы будем следить за тем, кто
-столкнулся с шаром игрока в данный момент:
-
-\begin{code}
-data Dirty = Dirty 
-    { dirtyHero     :: Obj
-    , dirtyObjs     :: IxMap Obj
-    , dirtySpace    :: H.Space
-    , dirtyTouchVar :: Sensor H.Shape
-    , dirtyMouse    :: Sensor H.Position
-    }
-
-data Obj = Obj 
-    { objType     :: BallType
-    , objShape    :: H.Shape
-    , objBody     :: H.Body
-    } 
-
-type Sensor a = IORef (Maybe a)
-\end{code}
-
-Особая структура \In{IxMap} отвечает за хранение
-значений вместе с индексами. Пока остановимся на самом 
-простом представлении:
-
-\begin{code}
-type IxMap a = [(Id, a)]
-\end{code}
-
-\section{Структура проекта}
-
-Наметим структуру проекта. У нас уже есть модуль \In{Types.hs}.
-Основной цикл игры будет описан в модуле \In{Loop.hs}. 
-Общие функции обновления состояния будут определены в
-\In{World.hs}, также у нас будет два модуля отвечающие
-за обновление чистых и грязных данных -- \In{Pure.hs} и
-\In{Dirty.hs}. Мы выделим отдельный модуль для описания
-всех констант игры (\In{Inits.hs}). Так нам будет удобно настроить
-игру, когда мы закончим с кодом. Отдельный модуль
-\In{Utils} будет содержать все функции общего назначения,
-преобразования между типами \In{OpenGL} и \In{Hipmunk}.
-
-\section{Детализируем функции обновления состояния игры}
-
-Начнём с восприятия:
-
-\begin{code}
-module World where
-
-import qualified Physics.Hipmunk as H
-
 import Data.Maybe
-import Types
-import Utils
-
-import Pure
-import Dirty
-
-percept :: Dirty -> IO (Sense, [Event])
-percept a = do
-    hero    <- obj2hero $ dirtyHero a
-    balls   <- mapM (uncurry obj2ball) $ setIds dirtyObjs a
-    evts1   <- fmap maybeToList $ getTouch (dirtyTouchVar a) $ dirtyObjs a
-    evts2   <- fmap maybeToList $ getClick $ dirtyMouse a
-    return $ (Sense hero balls, evts1 ++ evts2)
-    where setIds = zip [0..]
-
--- в Dirty.hs
-obj2hero    :: Obj -> IO HeroBall
-obj2ball    :: Id -> Obj -> IO Ball
-getTouch    :: Sensor H.Shape -> IxMap Obj -> IO (Maybe Event)
-getClick    :: Sensor H.Position -> IO (Maybe Event)
-\end{code}
-
-Далее мы не будем каждый раз выписывать новые неопределённые
-функции, мы будем просто оставлять объявления типов без определений.
-Итак мы написали одну функцию, и получили ещё четыре новых.
-
-Мы сделаем предположение о том, что сначала мы реагируем
-на непрерывные события, а затем на дискретные. Причём к 
-запросам на реакции могут привести только дискретные события:
-
-\begin{code}
-updatePure :: Sense -> [Event] -> Pure -> (Pure, [Query])
-updatePure s evts = updateEvents evts . updateSenses s 
-
--- в Pure.hs
-updateSenses :: Sense -> Pure -> Pure
-updateEvents :: [Event] -> Pure -> (Pure, [Query])
-\end{code}
-
-В функции \In{react} мы предполагаем, что реакции
-мира на события независимы друг от друга. 
-\In{foldQuery}~-- функция свёртки для типа \In{Query}.
-
-\begin{code}
-import Control.Monad
+import qualified Data.PriorityQueue.FingerTree as Q
 ...
 
-react :: [Query] -> Dirty -> IO Dirty
-react = foldr (<=<) return   
-    . fmap (foldQuery removeBall heroVelocity makeBall)
+type ToVisit a h = Q.PQueue h (Tree (Path a, h))
 
--- в Dirty.hs
-removeBall      :: Ball         -> Dirty -> IO Dirty
-heroVelocity    :: H.Velocity   -> Dirty -> IO Dirty
-makeBall        :: Freq         -> Dirty -> IO Dirty
+priority t = (snd $ rootLabel t, t)
+
+singleton :: Ord h => Tree (Path a, h) -> ToVisit a h
+singleton = uncurry Q.singleton . priority 
+
+next :: Ord h => ToVisit a h -> (Tree (Path a, h), ToVisit a h)
+next = fromJust . Q.minView
+
+isEmpty :: Ord h => ToVisit a h -> Bool
+isEmpty = Q.null
+
+schedule :: Ord h => [Tree (Path a, h)] -> ToVisit a h -> ToVisit a h
+schedule = Q.union . Q.fromList . fmap priority
 \end{code}
 
-Обратите внимание на то, как мы воспользовались
-функциями \In{foldr}, \In{return} и \In{<=<}
-для того чтобы нанизать друг на друга функции
-типа \In{Dirty -> IO Dirty}. Напомню, что 
-функция \In{<=<}~-- это аналог композиции
-для монадных функций. 
+Эти функции очень простые, они специализируют более общие
+функции для типов \In{Set} и \In{PQueue}, вы наверняка легко
+разберётесь с ними, заглянув в документацию к модулям
+\In{Data.Set} и \In{Data.PriorityQueue.FingerTree}.
 
-Обновление модели:
+Осталось только написать функцию, которая будет
+составлять дерево поиска для алгоритма A*.
+Она принимает функцию ветвления, а также функцию
+расстояния до цели и строит по ним дерево поиска:
 
 \begin{code}
-updateDirty :: Dirty -> IO Dirty
-updateDirty = stepDirty dt
-
--- в Dirty.hs
-stepDirty :: H.Time -> Dirty -> IO Dirty
-
--- в Inits.hs
-dt :: H.Time
-dt = 0.5
+astarTree :: (Num h, Ord h) 
+    => (a -> [(a, h)]) -> (a -> h) -> a -> Tree (a, h)
+astarTree alts distToGoal s0 = unfoldTree f (s0, 0)
+    where f (s, h) = ((s, heur h s), next h <$> alts s)
+          heur h s = h + distToGoal s  
+          next h (a, d) = (a, d + h)
 \end{code}
 
-Функции рисования поместим в отдельный модуль \In{Graphics.hs}
+
+\subsection{Поиск маршрутов в метро}
+
+Теперь давайте посмотрим как наша функция справится 
+с задачей поиска маршрутов в метро:
 
 \begin{code}
--- переместим из Loop.hs в World.hs 
-drawWorld :: World -> IO ()
-drawWorld = draw . picture . worldPure
+metroTree :: Station -> Station -> Tree (Station, Double)
+metroTree init goal = astarTree distMetroMap (stationDist goal) init
 
--- в Graphics.hs
-draw :: Picture -> IO ()
+connect :: Station -> Station -> Maybe [Station]
+connect a b = search (== b) $ metroTree a b
 
--- в Pure.hs
-picture     :: Pure -> Picture
+main = print $ connect (St Red Sirius) (St Green Prizrak)
 \end{code}
 
-Добавим функцию инициализации игры:
+К примеру найдём маршрут от станции \Quote{Дно Болота} до 
+станции \Quote{Призрак}:
 
 \begin{code}
-initWorld :: IO World
-initWorld = do
-    dirty   <- initDirty
-    (sense, events) <- percept dirty
-    return $ World (initPure sense events) dirty
-
--- в Dirty.hs
-initDirty :: IO Dirty
--- в Pure.hs
-initPure :: Sense -> [Event] -> Pure
+*Metro> connect (St Orange DnoBolota) (St Green Prizrak)
+Just [St Orange DnoBolota,St Orange PlBakha,
+    St Red PlBakha,St Red Sirius,St Green Sirius,
+    St Green Zvezda,St Green Til,
+    St Green TrollevMost,St Green Prizrak]
+*Metro> connect (St Red PlShekspira) (St Blue De)
+Just [St Red PlShekspira,St Red Rodnik,St Blue Rodnik,
+    St Blue Krest,St Blue De]
+*Metro> connect (St Red PlShekspira) (St Orange De)
+Nothing
 \end{code}
 
-\section{Детализируем дальше}
+В третьем случае маршрут не был найден, поскольку у нас 
+нет станции \In{De} на оранжевой ветке.
 
-Вот так на самом интересном месте\dots 
-Мы вынуждены прерваться. Я надеюсь, что вы уловили 
-основную идею метода и сможете закончить эту игру
-самостоятельно. Вся логика игры будет описана
-в модуле \In{Pure.hs}. Причём в этом модуле будут
-только чистые функции. Осталось примерно 1000 строк 
-кода. Я не буду выписывать своё решение, если 
-вы где-то запнётесь или у вас что-то не будет получаться,
-вы можете свериться с ним (оно входит в код, что
-прилагается с книгой). 
+\section{Тестирование с помощью QuickCheck}
+
+Мы проверили три случая, ещё три случая, ещё три случая,
+ожидаемый результат сходится с тем, что возвращает
+нам интерпретатор, но можем ли мы быть уверены в том, что
+алгоритм действительно работает? Для Haskell была
+разработана специальная библиотека тестирования \In{QuickCheck},
+которая упрощает процесс проверки программ. 
+Мы можем сформулировать свойства, которые обязательно
+должны выполняться, а \In{QuickCheck} сгенерирует
+случайный набор данных и проверит наши свойства на них.
+
+Например в нашей задаче путь из \In{A} в \In{B}
+должен совпадать с перевёрнутым путём из \In{B} в \In{A}.
+Также все станции в маршруте должны быть соседними.
+Давайте проверим эти свойства. Для этого нам нужно
+сформулировать их в виде предикатов:
+
+\begin{code}
+module Test where
+
+import Control.Applicative 
+
+import Metro
+
+prop1 :: Station -> Station -> Bool
+prop1 a b = connect a b == (fmap reverse $ connect b a)
+
+prop2 :: Station -> Station -> Bool
+prop2 a b = maybe True (all (uncurry near) . pairs) $ connect a b
+
+pairs :: [a] -> [(a, a)]
+pairs xs = zip xs (drop 1 xs)
+
+near :: Station -> Station -> Bool
+near a b = a `elem` (fst <$> distMetroMap b)
+\end{code}
+
+Установим \In{QuickCheck}:
+
+
+\begin{code}
+cabal install QuickCheck
+\end{code}
+
+Теперь нам нужно подсказать \In{QuickCheck} как
+генерировать случайные значения типа \In{Station}.
+\In{QuickCheck} тестирует функции, которые принимают 
+значения из класса \In{Arbitrary} и возвращают \In{Bool}.
+Класс \In{Arbitrary} отвечает за генерацию случайных значений.
+
+Основной метод \In{arbitrary} возвращает генератор случайных значений:
+
+\begin{code}
+class Arbitrary a where
+    arbitrary :: Gen a
+\end{code}
+
+Мы воспользуемся тем, что этот класс уже определён для
+многих стандартных типов. Кроме того класс \In{Gen}
+явялется монадой. Мы сгенерируем случайное целое число
+и отобразим его в одну из станций. Сделать это можно разными
+способами, мы начнём из одной станции и будем случайно 
+блуждать по карте:
+
+\begin{code}
+import Test.QuickCheck
+...
+
+instance Arbitrary Station where
+    arbitrary = ($ s0) . foldr (.) id . fmap select <$> ints
+        where ints = vector =<< choose (0, 100)
+              s0 = St Blue De
+
+select :: Int -> Station -> Station
+select i s = as !! mod i (length as)
+    where as = fst <$> distMetroMap s
+\end{code}
+
+Мы воспользовались двумя функциями из бибилотеки \In{QuickCheck}.
+Это \In{vector} и \In{choose}. Первая строит список случайных
+чисел заданной длины, а вторая выбирает случайное число из заданного
+диапазона. Теперь мы можем протетстировать наши предикаты
+с помощью функции \In{quickCheck}:
+
+\begin{code}
+*Test Prelude> quickCheck prop1
++++ OK, passed 100 tests.
+*Test Prelude> quickCheck prop2
++++ OK, passed 100 tests.
+*Test Prelude> 
+\end{code}
+
+Свойства прошли тестирование на выборке из 100 
+комбинаций аргументов.
+Если нам интересно, мы можем с помощью функции
+\In{verboseCheck} посмотреть на каких именно
+значениях проводилось тестирование:
+
+\begin{code}
+*Test Prelude> verboseCheck prop2
+Passed:  
+St Black Kosmodrom
+St Red UlBylichova
+Passed: 
+St Black UlBylichova
+St Orange Sever
+Passed:  
+St Red Sirius
+St Blue Krest
+...
+\end{code}
+
+
+
+Если бы свойство не выполнилось, \In{QuickCheck}
+сообщил бы нам об этом и показал бы те элементы,
+для которых свойство не выполнилось. Давайте составим
+такое свойство искусственно. Например, проверим, 
+находятся ли все станции на одной линии:
+
+\begin{code}
+fakeProp :: Station -> Station -> Bool
+fakeProp (St a _) (St b _) = a == b
+\end{code}
+
+Посмотрим, что на это скажет \In{QuickCheck}:
+
+\begin{code}
+*Test Prelude> quickCheck fakeProp
+*** Failed! Falsifiable (after 1 test):  
+St Green Sirius
+St Blue Rodnik
+\end{code}
+
+По умолчанию \In{QuickCheck} проверит свойство сто раз.
+Для изменения этих настроек, мы можем воспользоваться функцией
+\In{quickCheckWith}, дополнительным параметром она принимает 
+значение типа \In{Arg}, которое содержит параметры тестирования.
+Например протестируем первое свойство 500 раз:
+
+\begin{code}
+*Test> quickCheckWith (stdArgs{ maxSuccess = 500 }) prop1
++++ OK, passed 500 tests.
+\end{code}
+
+Мы воспользовались стандартными настройками (\In{stdArgs}) и изменили 
+один параметр. 
+
+
+\subsection{Формирование тестовой выборки}
+
+Предположим, что мы уверены в правильной работе 
+алгоритма для голубой и чёрной ветки метро, но сомневаемся
+в остальных. Как раз для этого случая в \In{QuickCheck}
+предусмотрена функция \In{a==>b}. Это функция обозначает
+условную проверку, свойство \In{b} будет протестировано
+только в том  случае, если свойство \In{a} окажется
+верным. Иначе тестовые данные будут отброшены.
+
+\begin{code}
+notBlueAndBlack a b = cond a && cond b ==> prop1 a b 
+    where cond (St a _) = a /= Blue && a /= Black
+\end{code}
+
+Далее тестируем как обычно:
+
+\begin{code}
+*Test> quickCheck notBlueAndBlack 
++++ OK, passed 100 tests.
+\end{code}
+
+Также с помощью функции \In{forAll} мы можем 
+подсказать \In{QuickCheck} на каких данных тестировать свойство.
+
+
+\begin{code}
+forAll :: (Show a, Testable prop) => Gen a -> (a -> prop) -> Property
+\end{code}
+
+Эта функция принимает генератор случайных значений 
+и свойство, которое зависит от тех значений, которые 
+создаются этим генератором. К примеру, пусть нас интересуют только все
+возможные пути между четырьмя станциями: \In{(St Blue De)}, \In{(St Red Lao)},
+ \In{(St Green Til)} и \In{(St Orange Sever)}.
+ Воспользуемся функцией \In{elements :: [a] -> Gen a}, она как раз 
+ принимает список значений, и возвращает генератор, который
+ случайным образом выбирает любое значение из этого списка.
+
+\begin{code}
+testFor = forAll (liftA2 (,) gen gen) $ uncurry prop1
+    where gen = elements [St Blue De, St Red Lao, 
+                    St Green Til, St Orange Sever]
+\end{code}
+
+Проверим, те ли значения попали в выборку:
+
+\begin{code}
+*Test> verboseCheckWith (stdArgs{ maxSuccess = 3 }) testFor
+Passed:  
+(St Blue De,St Orange Sever)
+Passed: 
+(St Orange Sever,St Red Lao)
+Passed:  
+(St Red Lao,St Red Lao)
++++ OK, passed 3 tests.
+\end{code}
+
+Мы можем настроить формирование выборки ещё одним способом.
+Для этого мы сделаем специальный тип обёртку над \In{Station}
+и определим для ненго свой экземпляр класса \In{Arbitrary}:
+
+\begin{code}
+newtype OnlyOrange = OnlyOrange Station
+newtype Only4      = Only4       Station
+
+instance Arbitrary OnlyOrange where
+    arbitrary = OnlyOrange . St Orange <$> 
+        elements [DnoBolota, PlBakha, Krest, Lao, Sever]
+
+instance Arbitrary Only4 where
+    arbitrary = Only4 <$> elements [St Blue De, St Red Lao, 
+                    St Green Til, St Orange Sever]
+\end{code}
+
+После этого мы можем очень легко комбинировать
+различные выборки при тестировании.
+
+\begin{code}
+*Test> quickCheck $ \(Only4 a) (Only4 b) -> prop1 a b
++++ OK, passed 100 tests.
+*Test> quickCheck $ \(Only4 a) (OnlyOrange b) -> prop1 a b
++++ OK, passed 100 tests.
+*Test> quickCheck $ \a (OnlyOrange b) -> prop2 a b
++++ OK, passed 100 tests.
+\end{code}
+
+\subsection{Классификация тестовых случаев}
+
+Мы можем попросить у \In{QuickCheck}, чтобы
+он разбил тестовую выборку на классы и в конце
+тестирования сообщил бы нам сколько элементов в 
+какой класс попали. Это делается с помощью функции
+\In{classify}:
+
+\begin{code}
+classify :: Testable prop => Bool -> String -> prop -> Property
+\end{code}
+
+Она принимает условие классификации, метку класса и свойство.
+Например так мы можем разбить выборку по типам линий:
+
+\begin{code}
+prop3 :: Station -> Station -> Property
+prop3 a@(St wa _) b@(St wb _) = 
+    classify (wa == Orange || wb == Orange) "Orange" $
+    classify (wa == Black  || wb == Black)  "Black"  $
+    classify (wa == Red    || wb == Red)    "Red"    $ prop1 a b
+\end{code}
+
+Протестируем:
+
+\begin{code}
+*Test> quickCheck prop3
++++ OK, passed 100 tests:
+34% Red
+15% Orange
+ 9% Black
+ 8% Orange, Red
+ 6% Black, Red
+ 5% Orange, Black
+\end{code}
+
+
+\section{Оценка шустродействия с помощью criterion}
+
+Недавно появилась библиотека \In{unordered-containers}. 
+Она предлагает более эффективную реализацию нескольких
+структур из стандартной библиотеки \In{containers}.
+Например там мы можем найти тип \In{HashSet}. 
+Почему бы нам не заменить на него стандартный тип \In{Set}?
+
+\begin{code}
+cabal install unordered-containers
+\end{code}
+
+Изменения отразятся лишь на контекстах объявлений типов. 
+Элементы принадлжежащие множеству \In{HashSet}
+должны быть экземплярами классов \In{Eq} и \In{Hashable}.
+Новый класс \In{Hashable} нужен для ускорения работы
+с данными. Давайте посмотрим на этот класс:
+
+\begin{code}
+Prelude> :m Data.Hashable
+Prelude Data.Hashable> :i Hashable
+class Hashable a where
+  hash :: a -> Int
+  hashWithSalt :: Int -> a -> Int
+  	-- Defined in `Data.Hashable'
+...
+... много экземпляров
+\end{code}
+
+Обязательный метод класса \In{hash} даёт нам возможность
+преобразовать элемент в целое число. Это число называют
+хеш-ключом. Хеш-ключи используеются для хранения элементов в
+хеш-таблицах. Мы не будем подробно на них останавливаться,
+отметим лишь то, что они позволяют очень быстро извлекать
+данные из контейнеров и  обновлять данные. 
+
+Теперь просто скопируйте модуль \In{Astar.hs} 
+измените одну строчку, и добавьте ещё одну (в шапке модуля):
+
+\begin{code}
+import qualified Data.HashSet as S
+import Data.Hashable
+\end{code}
+
+Попробуйте загрузить модуль в интерпретатор. 
+\In{ghci} выдаст длинный список ошибок, это -- хорошо.
+По ним вы сможете легко догадать в каких местах необходимо
+заменить \In{Ord a} на \In{(Hashable a, Eq a)}.
+
+Теперь для поиска маршрутов нам необходимо определить
+экземпляр класса \In{Hashable} для типа \In{Station}.
+В модуле \In{Data.Hashable} уже определены экземпляры
+для многих стандартных типов. Мы воспользуемся экземпляром
+для целых чисел.
+
+Добавим в \In{driving} подчинённых типов
+класс \In{Enum} и воспользуемся им в экземпляре
+для \In{Hashable}: 
+
+\begin{code}
+instance Hashable Station where
+    hash (St a b) = hash (fromEnum a, fromEnum b)
+\end{code}
+
+Теперь определим две функции определения маршрута:
+
+\begin{code}
+import qualified AstarSet       as S
+import qualified AstarHashSet   as H
+...
+
+connectSet :: Station -> Station -> Maybe [Station]
+connectSet a b = S.search (== b) $ metroTree a b
+
+connectHashSet :: Station -> Station -> Maybe [Station]
+connectHashSet a b = H.search (== b) $ metroTree a b
+\end{code}
+
+Как нам сравнить быстродействие двух алгоримтов? Оценка быстродействия
+программ, написанных на Haskell, может таить в себе подвохи.
+Например если мы запустим оба алгоритма в одной программе,
+возможно случится такая ситуация, что часть данных, одинаковая 
+для каждого из методов будет вычислена один раз, а во втором
+алгоритме переиспользована, и нам может показаться, что второй
+алгоритм гораздо быстрее первого. Также необходимо учитывать
+внешние факторы. Тестовая программа вычисляется на одном компьютере,
+и если алгоритмы тестируются в разное время, может статься так,
+что мы сидели-сидели и ждали пока тест завершится, в это
+время работал первый алгоритм, потом нам надоело ждать, мы решили 
+включить музыку, проверить почту, и второму алгоритмку 
+досталось меньше вычислительных ресурсов.
+Все эти факторы необходимо учитывать при тестировании.
+Как раз для этого и существует замечательная бибилиотека 
+\In{criterion}.
+
+Она проводит серию тестов и по ним оценивает показатели быстродействия.
+При этом учитывается достоверность тестов. По результатам
+тестирования показатели сверяются между собой, и если разброс
+оказывается слишком большим, программа сообщает нам: что-то 
+тут не чисто, данным не стоит доверять.
+Более того результаты оформляются в наглядные графики, мы можем
+на глаз оценить распределения и разброс показателей.
+
+\subsection{Основные типы criterion}
+
+Центральным элементом бибилиотеки является класс \In{Benchmarkable}.
+Он объединяет данные, которые можно тестировать. Среди них
+чистые функции (тип \In{Pure}) и значения с побочными эффектами
+(тип \In{IO a}). 
+
+Мы можем превращать данные в тесты (тип \In{Benchmark}) 
+с помощью функции \In{bench}:
+
+
+\begin{code}
+benchSource :: Benchmarkable b => String -> b -> Benchmark
+\end{code}
+
+Она добавляет к данным комментарий и превращает их в тесты.
+Как было отмечено, существует одна тонкость при тестировании
+чистых функций: чистые функции в \In{Haskell} могут разделять
+данные между собой, поэтому для независимого тестирования мы
+оборачиваем функции в специальный тип \In{Pure}. У нас есть
+два варианта тестирования:
+
+Мы можем протестировать приведение результата к
+заголовочной нормальной форме (вспомните главу о ленивых вычислениях):
+
+\begin{code}
+nf :: NFData b => (a -> b) -> a -> Pure
+\end{code}
+
+или к слабой заголовочной нормальной форме:
+
+\begin{code}
+whnf :: (a -> b) -> a -> Pure
+\end{code}
+
+Аналогичные функции (\In{nfIO, whnfIO}) есть и для данных с 
+побочными эффектами. Класс \In{NFData} обозначает все 
+значения, для которых заголовочная нормальная форма определена.
+Этот класс пришёл в бибилиотеку \In{criterion} из
+библиотеки \In{deepseq}. Стоит отметить эту бибилотеку.
+В ней определён аналог функции \In{seq}. Функция \In{seq}
+приводит значения к слабой заголовочной нормальной форме 
+(мы заглядываем вглюбь значения лишь на один конструктор),
+а функция \In{deepseq} проводит полное вычисление значения.
+Значение приводится к заголовочной нормальной форме.
+
+Также нам пригодится функция группировки тестов:
+
+\begin{code}
+bgroup :: String -> [Benchmark] -> Benchmark
+\end{code}
+
+С её помощью мы объединяем список тестов в один, 
+под некоторым именем. Тестирование проводится
+с помощью функции \In{defaultMain}:
+
+\begin{code}
+defaultMain :: [Benchmark] -> IO ()
+\end{code}
+
+Она принимает список тестов и выполняет их. 
+Выполнение тестов заключается в компиляции программы.
+После компиляции мы получим исполняемый файл 
+который проводит тестирование в зависимости от
+параметров, указываемых фланами. До них мы ещё доберёмся,
+а пока опишем наши тесты:
+
+\begin{code}
+-- | Module: Speed.hs
+module Main where
+
+import Criterion.Main
+import Control.DeepSeq
+
+import Metro
+
+instance NFData Station where
+    rnf (St a b) = rnf (rnf a, rnf b)
+
+instance NFData Way  where
+instance NFData Name where
+
+pair1 = (St Orange DnoBolota, St Green Prizrak)
+pair2 = (St Red Lao, St Blue De)
+
+test name search = bgroup name $ [
+            bench "1" $ nf (uncurry search) pair1,
+            bench "2" $ nf (uncurry search) pair2]
+
+main = defaultMain [        
+        test "Set"  connectSet,
+        test "Hash" connectHashSet]
+\end{code}
+
+Экземпляр для класса \In{NFData} похож на экземпляр
+для \In{Hashable}. Мы также определили метод значения
+через методы для типов, из которых он состоит.
+Класс \In{NFData} устроен так, что 
+для типов из класса \In{Enum} мы можем воспользоваться
+определением по умолчанию (как в случае для \In{Way} и \In{Name}).
+
+Теперь перейдём в командную строку, переключимся на 
+директорию с нашим модулем и скомпилируем его:
+
+\begin{code}
+$ ghc -O --make Speed.hs
+\end{code}
+
+Флаг \In{-O} говорит \In{ghc}, что не обходимо провести
+оптимизацию кода. Появится исполняемый файл \In{Speed}.
+Что мы можем делать с этим файлом? Узнать это можно,
+запустив его с флагом \In{--help}:
+
+Мы можем узнать какие функции нам доступны, набрав:
+
+\begin{code}
+$ ./Speed --help
+I don't know what version I am.
+Usage: Speed [OPTIONS] [BENCHMARKS]
+  -h, -?       --help               print help, then exit
+  -G           --no-gc              do not collect garbage between iterations
+  -g           --gc                 collect garbage between iterations
+  -I CI        --ci=CI              bootstrap confidence interval
+  -l           --list               print only a list of benchmark names
+  -o FILENAME  --output=FILENAME    report file to write to
+  -q           --quiet              print less output
+               --resamples=N        number of bootstrap resamples to perform
+  -s N         --samples=N          number of samples to collect
+  -t FILENAME  --template=FILENAME  template file to use
+  -u FILENAME  --summary=FILENAME   produce a summary CSV file of all results
+  -V           --version            display version, then exit
+  -v           --verbose            print more output
+If no benchmark names are given, all are run
+Otherwise, benchmarks are run by prefix match
+\end{code}
+
+Из этих настроек самые интресные, это \In{-s} и \In{-o}. \In{-s} указывает
+число сэмплов выборке (столько раз будет запущен каждый тест).
+а \In{-o} говорит, о том в какой файл поместить результаты.
+Результаты представлены в виде графиков, формируется файл,
+который можно открыть в любом браузере. Записать данные
+в таблицу (например для отчёта) можно с помощью флага \In{-u}.
+
+Проверим результаты:
+
+\begin{code}
+./Speed -o res.html -s 100 
+\end{code}
+
+Откроем файл \In{res.html} и посмотрим на графики.
+Оказалось, что  для данных двух случаев первый алгоритм работал
+немного лучше. Но выборку из двух вариантов вряд ли можно считать
+убедительной. Давайте расширим выборку с помощью \In{QuickCheck}.
+Мы запустим проверку какого-нибудь свойства тем и другим методом.
+В итоге \In{QuickCheck} сам сгенерирует достаточное число 
+случайных данных, а \In{criterion} оценит быстродействие. 
+Мы проверим самое первое свойство (о перевёрнутых маршрутах)
+на том и другом алгоритме.
+
+\begin{code}
+module Main where
+
+import Control.Applicative
+
+import Test.QuickCheck
+import Metro
+
+instance Arbitrary Station where
+    arbitrary = ($ s0) . foldr (.) id . fmap select <$> ints
+        where ints = vector =<< choose (0, 100)
+              s0 = St Blue De
+
+select :: Int -> Station -> Station
+select i s = as !! mod i (length as)
+    where as = fst <$> distMetroMap s
+
+prop :: (Station -> Station -> Maybe [Station]) 
+	-> Station -> Station -> Bool
+prop search a b = search a b == (reverse <$> search b a)
+
+main = defaultMain [
+	bench "Set"  $ quickCheck (prop connectSet),
+	bench "Hash" $ quickCheck (prop connectHashSet)]
+\end{code}
+
+В этом тесте метод \In{Set} также оказался совсем немного быстрее.
+
+Как интерпретировать результаты? С левой стороны мы видим 
+оценку плотности вероятности распределения быстродействия.
+Под графиком мы видим среднее (mean) и дисперсию значения (std dev).
+Показаны три числа. Это нижняя грань доверительного интервала, 
+оценка величины и верхняя грань доверительного интервала 
+(ci, confidence interval). Среднее значение показывает оценку
+величины, мы говорим, что алгоритм работает примерно 100 миллисекунд.
+Дисперсия -- это разброс результатов вокруг среднего значения. 
+С правой стороны мы видим графики с точками. Каждая точка обозначает
+отдельный запуск алгоритма. Количество запусков соответствует
+флагу \In{-s}. В последнеё строке под графиком \In{criterion}
+сообщает степень недоверия к результатам. В последнем 
+опыте этот показатель достаточно высок. Возможно это связано с тем,
+что наш алгоритм выбора случайных станций имеет сильный разброс по времени.
+Ведь сначала мы генерируем слуайное число \In{n} от 0 до 100, и затем
+начинаем блуждать по карте от начальной точке \In{n} раз.
+Также может влиять то, что время работы алгоритма зависит
+от положения станций.
 
 \section{Краткое содержание}
 
-В этой главе мы посмотрели на две интересные библиотеки.
-Физический движок \In{Hipmunk} и графическую библиотеку
-\In{OpenGL} и узнали метод укрощения императивного
-кода. Мы разделили состояние игры на две части. В одну
-поместили все те параметры, для которых невозможно обойтись
-без \In{IO}-функций, а в другой те параметры, которые
-необходимы для реализации логики игры. Все функции,
-отвечающие за логику игры являются чистыми. Параметры 
-императивной части не обновляются сразу, сначала
-мы делаем с них снимок, потом передаём этот снимок в
-чистую часть, и она разбирается с тем как их обновлять.
-Части общаются между собой на специальных маленьких языках,
-которые закодированы в типах. Это язык наблюдений (\In{Event}),
-язык реакций (\In{Query}) и язык отрисовки игрового мира
-(\In{Picture}).
+В этой главе мы реализовали алгоритм эвристического поиска А*.
+Также мы узнали несколько стандартных структур данных.
+Это множества и очереди с приоритетом и освежили в памяти
+ленивые вычисления. 
+
+Мы научились проверять свойства программ (\In{QuickCheck}), а 
+также оценивать быстродействие программ (\In{criterion}).  
 
 \section{Упражнения}
 
-Закончите код игры. Или, возможно, при знакомстве
-с \In{Hipmunk} у вас появилась идея новой игры с невероятной
-динамикой. Ещё лучше! Напишите её. При этом продумайте проект
-игры так, чтобы \In{IO}-типы не разбежались по всей программе. 
+\begin{itemize}
 
+\item Я говорил о том, что два варианта алгоритмов дают 
+одинаковые результаты, но так ли это на самом деле? 
+Проверьте это в \In{QuickCheck}.
+
+\item Алгоритм эвристического поиска может применятся
+не только для поиска маршрутов на карте. Часто алгоритм А*
+применяется в играх. Встройте этот алгоритм в игру пятнашки (глава 12).
+Если игрок запутался и не знает как ходить, он может попросить у 
+компьютера совет. В этой задаче альтернативы~-- это вершины
+графа, соседние вершины~-- это те вершины, в которые
+мы можем попасть за один ход.
+
+Подсказка: воспользуйтесь манхэттенским расстоянием.
+
+\item Оцените эффективность двух алгоритмов поиска
+в игре пятнашки. Рассмотрите зависимость быстродействия
+от степени сложности игры.
+
+\end{itemize}
 
