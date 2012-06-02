@@ -1,51 +1,15 @@
-(bang) Взрывной образец -> Энергичный образец (lionet)	уладить с взрывным подходом			средне
-?Аннотация строгости?
-ничего нет про память (сборщик мусора) (vshabanov)							сложно
-http://www.opensubscriber.com/message/haskell-cafe@haskell.org/5167000.html (описание GC, интересный разбор примера, выжимание лени)
-http://stackoverflow.com/questions/5132350/how-do-haskell-compilers-decide-whether-to-allocate-on-the-heap-or-the-stack
-	(memory management in haskell)
-http://research.microsoft.com/en-us/um/people/simonpj/papers/eval-apply/
-	(eval/apply vs push/enter)
-http://hackage.haskell.org/trac/ghc/wiki/Commentary/Rts/HaskellExecution
-	(oh my)
-http://www.haskell.org/haskellwiki/IO_inside	(Bulat on IO)
-http://www.haskell.org/haskellwiki/Ru/IO
-
-http://stackoverflow.com/questions/6121146/reading-ghc-core
-	(Core)
-http://stackoverflow.com/questions/6048194/good-introductory-text-about-ghc-implementation
-	(intro to ghc's guts)
+http://www.haskell.org/haskellwiki/Performance/GHC
 
 dons :
 	ghc-core  - to see human-friendly core
 	ghc-gc-tune - tuning gc
 
-
-http://en.wikipedia.org/wiki/Cheney%27s_algorithm (GC algorythm)
 отсутствует "мягкое" введение в рекурсию (рекурсия это же так естесственно! и?) (nponeccop)		средне
 	выявлено в 4.tex 840 (там сразу без пояснений идут определения для map, filter и foldr)
 единичный тип (убрал, не забыть пояснить где потом встретится, кажется 6 глава)				легко
 невнятные ориентированные деревья (d_ao)								легко
 переместить пример с функц калькулятором в конец главы (фвп глава) (odrdo)				легко
 рассказать про CAF в связи с MR	(nponeccop)								средне
-
-
-
-Jason Dagit experience:
-
-I've been using haskell on and off for over a year now but still
-consider myself to be mostly a newbie as well.  I started using
-haskell at work recently on a project and I've found that although
-haskell makes it so that I don't spend much time debugging (thanks
-referential transparency!), testing (thanks quickcheck!), or writing
-code (thanks haskell in general!), I do spend a lot of time profiling
-and optimizing for time/space.  I think it's interesting that the
-development is mostly quick and easy but polishing and making it ready
-for general use can still be hard because of performance issues.
-Although, I'd rather spend my time optimizing something that works
-than debugging pointer problems. 
-
-
 
 
 
