@@ -18,8 +18,8 @@ $(PNAME).pdf: *.tex Makefile
 	$(PDFLATEX) $(PNAME)
 	make $(PNAME).ind
 	$(PDFLATEX) $(PNAME)
-	while grep 'Label(s) may have changed' $(PNAME).log > /dev/null 2>&1 ; do \
-		$(PDFLATEX) $(PNAME) ; \
+#	while grep 'Label(s) may have changed' $(PNAME).log > /dev/null 2>&1 ; do \
+#		$(PDFLATEX) $(PNAME) ; \
 	done
 
 .PHONY: 1
