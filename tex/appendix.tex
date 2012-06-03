@@ -156,6 +156,9 @@ Haskell Platform содержит стабильную версию компил
 \item Bulat Ziganshin. Haskell I/O inside: Down the Rabbit's Hole. 
     Статья на HaskellWiki.
 
+\item Simon Peyton Jones. Tackling the Awkward Squad:
+    monadic input/output, concurrency, exceptions, and
+    foreign-language calls in Haskell.
 \end{itemize}
 
 \subsubsection{Ленивые вычисления}
@@ -216,6 +219,12 @@ Haskell Platform содержит стабильную версию компил
     Курс лекций по функциональному программированию, который
     читался в Университете Кэмбридж.
 
+\item А. Филд, П. Харрисон, Функциональное программирование,
+    Москва \Quote{Мир}, 1993. 
+
+    Большая книга для читателей, всерьёз заинтересовавшихся
+    функциональным программированием.  
+
 \end{itemize}
 
 \subsubsection{Теория категорий}
@@ -245,7 +254,7 @@ Haskell Platform содержит стабильную версию компил
 \begin{itemize}
 
 \item Varmo Vene. Categorical Programming 
-    with Inductive and Coinductive Types. Phd-тезиз.
+    with Inductive and Coinductive Types. Phd-диссертация.
     
 \item Erik Meijer, Graham Hutton.
     Bananas in Space: Extending Fold and Unfold to Exponential Types.
@@ -265,10 +274,6 @@ Haskell Platform содержит стабильную версию компил
 \item Johan Tibell. High Performance Haskell. Слайды с выступления. 
 
 \item Simon Marlow. Parallel and Concurrent Programming in Haskell.
-
-\item Simon Peyton Jones. Tackling the Awkward Squad:
-    monadic input/output, concurrency, exceptions, and
-    foreign-language calls in Haskell.
 
 \item Edward Z. Yang. Блог о Haskell в картинках. Много
     полезной информации о лени и устройстве ghc.
@@ -464,7 +469,21 @@ on stock hardware: the Spineless Tagless G-machine.
 
 \end{itemize}
 
+\addsubsection{Разработка программ}
 
+\begin{itemize}
+
+\item Тестирование, проверка инвариантов: \In{QuickCheck}
+
+\item Оценка быстродействия: \In{criterion}
+
+\item Просмотр Core в человеческом виде: \In{ghc-core}
+
+\item Настройка сборки мусора: \In{ghc-gc-tune}
+
+\item Трассировка программ: \In{hat}
+
+\end{itemize}
 
 \addsubsection{И все-все-все}
 
