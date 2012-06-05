@@ -101,6 +101,11 @@ Haskell Platform содержит стабильную версию компил
     
     \url{http://book.realworldhaskell.org/}
 
+\item Готовится к выходу к книга Сайсона Марлоу о 
+    параллельных вычислениях в Haskell. Обещает
+    быть очень интересной, уже известно, что книга
+    будет доступна в интернете.
+
 \end{itemize}
 
 \addsubsection{Тематический сборник}
@@ -191,7 +196,7 @@ Haskell Platform содержит стабильную версию компил
 
 \end{itemize}
 
-\subsubsection{Лямбда-исчисление}
+\subsubsection{Лямбда-исчисление и функциональное программирование}
 
 \begin{itemize}
 \item Шалак В.И. Шейнфинкель и комбинаторная логика.
@@ -223,7 +228,16 @@ Haskell Platform содержит стабильную версию компил
     Москва \Quote{Мир}, 1993. 
 
     Большая книга для читателей, всерьёз заинтересовавшихся
-    функциональным программированием.  
+    функциональным программированием. Прочитав её, вы 
+    сможете не только пользоваться ФП-языками но и написать 
+    такой язык самостоятельно.
+
+\item Rinus Plasmeijer and Marko van Eekelen. Functional Programming
+    and Parallel Graph Rewriting.
+
+    Также глубокая книга по ФП. Исследуются вопросы распараллеливания
+    функциональных программ, построение компиляторов. 
+
 
 \end{itemize}
 
@@ -279,6 +293,10 @@ Haskell Platform содержит стабильную версию компил
     полезной информации о лени и устройстве ghc.
     \url{http://blog.ezyang.com/about/}
 
+\item Oleg Kiselyov. Блог в том числе и о Haskell. Много решений интересных
+    и нетривиальных задач. 
+\url{http://okmij.org/ftp/}
+
 \end{itemize}
 
 \subsection{Как работает GHC}
@@ -288,6 +306,9 @@ Haskell Platform содержит стабильную версию компил
 \url{http://hackage.haskell.org/trac/ghc/wiki/Commentary}
 
 \item Don Stewart. Multi-paradigm Just-In-Time Compilation. BS Thesis, 2002.
+
+    Автор пробует компилировать Haskell-код в Java-код. При этом
+    очень доступно объясняеются внутренности STG. 
 
 \item Simon Marlow, Simon Peyton Jones. The Glasgow Haskell Compiler. 
     The Architecture of Open Source Application, Volume 2, 2012.
@@ -312,9 +333,14 @@ on stock hardware: the Spineless Tagless G-machine.
 
 \item Simon Marlow, Simon Peyton Jones. 
     Secrets of Glasgow Haskell Compiler inliner. 1999
+
+    Статья о тонкостях реализации прагмы \In{INLINE}.
+
+\item Simon Peyton Jones, Andrew Tolmach, Tony Hoare.
+    Playing by the Rules, ICFP 2001
+
+    Статья о прагме \In{RULES}.
 \end{itemize}
-
-
 
 
 \addsubsection{И все-все-все}
@@ -501,7 +527,8 @@ on stock hardware: the Spineless Tagless G-machine.
 \item \textbf{3д графика}: \In{OpenGL}, \In{GLFW}, \In{GLUT} 
 
 \item \textbf{Базы данных}: \In{HDBC}
-
+\item \textbf{Встраиваемые приложения реального времени 
+    с жёсткими ограничениями}: \In{atom}
 
 \item \textbf{GUI}: \In{wxHaskell}, \In{gtk2hs}
 
@@ -516,3 +543,49 @@ on stock hardware: the Spineless Tagless G-machine.
 \item \textbf{Линейная алгебра}: \In{vector-space}, \In{hmatrix}
 
 \end{itemize}
+
+\newpage
+\addsection{Места}
+
+Где культивируется Haskell? 
+
+\addsubsection{Университеты}
+
+Посмотрим на университеты, в которых 
+Haskell преподают, развивают и применяют:
+
+\begin{itemize}
+\item Британия: Эдинбург, Ноттингем, Оксфорд (лаборатория информатики),
+    Глазго.
+
+\item Америка: Йельский, Коннектикут, Техас, Оклахома, Портлэнд
+
+\item Нидерланды: Утрехт
+
+\item Швеция: Технологический Чалмерса, Гёттинген. 
+
+\item Австралия: Новый Южный Уэльс, Западной Австралии
+
+\item и другие, полный список на 
+\url{http://www.haskell.org/haskellwiki/Haskell_in_education}. 
+
+\end{itemize}
+
+\addsubsection{Компании}
+
+\begin{itemize}
+\item Microsoft Research -- разрабатывают GHC.
+
+\item Galios -- ведут исследования и решают практические
+задачи на ФП-языках, особенно на Haskell.
+
+\item Well-Typed -- решают практические задачи, консультируют
+    и всё на Haskell. Также занимаются организацией Haskell-слётов,
+    поддержкой стандартных библиотек. 
+
+\item и другие, полный список на 
+\url{http://www.haskell.org/haskellwiki/Haskell_in_industry}
+
+\end{itemize}
+
+
