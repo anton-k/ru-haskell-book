@@ -950,55 +950,10 @@ instance Show (f (Fix f)) => Show (Fix f) where
 f = show
 \end{code}
 
-То компилятор сообщит нам об ошибке:
-
-\begin{code}
-Test.hs:5:5:
-    Ambiguous type variable `a0' in the constraint:
-      (Show a0) arising from a use of `show'
-    Possible cause: the monomorphism restriction applied to the following:
-      f :: a0 -> String (bound at Test.hs:5:1)
-    Probable fix: give these definition(s) an explicit type signature
-                  or use -XNoMonomorphismRestriction
-    In the expression: show
-    In an equation for `f': f = show
-\end{code}
-
-\noindent и предложит воспользоваться расширением 
-\In{NoMonomorphismRestriction}. Это расширение отменяет
-ограничение мономорфизма. Считается, что если у значения 
-нет объявления типа, то тип значения должен быть мономорфным,
-т.е.~это должен быть конкретный тип, без параметров.
-
-По соображениям, которые остались
-для меня не ясными, такой код сработает:
-
-\begin{code}
-f x = show x
-\end{code}
-
-Зачем нужно ограничение мономорфизма? Есть примеры,
-в которых из-за отсутствия мономорфизма локальные переменные
-приходится вычислять несколько раз. Часто приводится такой пример:
-
-\begin{code}
-genericLength :: Num a => [b] -> a
-genericLength = foldr (const (+1)) 0 
-
-f xs = (len,len)
-     where len = genericLength xs
-\end{code}
-
-Без ограничения мономорфизма, для функции \In{f}
-будет выведен тип:
-
-\begin{code}
-f :: (Num a, Num b) => [x] -> (a, b)
-\end{code}
-
-Это приведёт к тому, что переменная \In{len} 
-будет вычислена дважды. Часто в сильно обобщённых
-библиотеках, с большими зависимостями в типах
+То компилятор сообщит нам об ошибке. Это выражение приводит
+к ошибке, которая вызвана ограничением мономорфизма. 
+Мы говорили о нём в главе о типах.
+Часто в сильно обобщённых библиотеках, с большими зависимостями в типах
 выписывать типы крайне неудобно. Например в библиотеке
 создания парсеров \In{Parsec}. С этим ограничением 
 приходится писать огромные объявления типов
@@ -1006,6 +961,7 @@ f :: (Num a, Num b) => [x] -> (a, b)
 
 \begin{code}
 fun :: (Stream s m t, Show t) => ParsecT s u m a -> ParsecT s u m [a]
+fun = g . h (q x) y
 \end{code}
 
 И так для любого выражения. В этом случае лучше просто выключить
