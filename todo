@@ -1,18 +1,11 @@
+какие-то глюки с ST и ленью (nponeccop)
+
 													средне
 расскать почему в STG нет классов и как они имитируются
-
-
-расширения														
-	ScopedTypeVariables										легко
-
 
 глава о библиотеках:											легко
 	как собирать бибилотеки для профилирования
 	как устанавливать флаги ghc в cabal
 		(если библиотека пользуется прагмами оптимизации)
-
-
-extensions
-http://www.reddit.com/r/haskell/comments/ufenx/most_important_ghc_extensions_to_learnuse/
 
 
