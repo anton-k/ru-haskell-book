@@ -1034,13 +1034,18 @@ cha = delay (dur mel1 + dur mel2) $ loop 10 $ rideCymbal $ delay 1 b1
 Соберём всё вместе и послушаем:
 
 \begin{code}
-res = chord [drums, harmony, high $ mel, louder 40 $ cha, rest 0]
+res = chord [
+        drums, 
+        harmony, 
+        high mel, 
+        louder 40 cha, 
+        rest 0]
 
 main = out res
 \end{code}
 
-В конце стоит \In{rest 0} для того чтобы было удобно глушить 
-инструменты комментированием.
+В конце стоит фиктивный элемент \In{rest 0} для 
+того чтобы было удобно глушить инструменты комментированием.
 
 \section{Эффективное представление музыкальной нотации}
 
@@ -1084,7 +1089,7 @@ data Tfm t = Tfm !t !t
 можно представить так:
 
 \begin{code}
-TFun (4 2) Single a
+TFun (4 2) (Single a)
 \end{code}
 
 Значение \In{Tfm k d} обозначает линейную функцию
@@ -1104,7 +1109,7 @@ fromTList :: TList t a -> [Event t a]
 \end{code}
 
 И конечно переопределить все функции композиции.
-Но все функции, которые отвечают за перевод 
+Но все сложные функции, которые отвечают за перевод 
 из \In{Track} в \In{Midi} останутся прежними.
 
 
