@@ -1,0 +1,37 @@
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw,  
+    minimum width=2em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=4cm,
+    minimum height=2em]
+
+\begin{tikzpicture}[node distance = 1.5cm, auto]
+\node (file) {Файл .hs};
+\node [block, below of=file] (parse) {Построение синтаксического дерева};
+\node [block, below of=parse] (names)  {Разрешение имён};
+\node [block, below of=names] (typecheck) {Проверка типов};
+\node [block, below of=typecheck] (desugar) {Устранение синтаксического сахара};
+\node [block, below of=desugar] (simplify) {Упрощение Core};
+\node [block, right of=simplify, node distance=5cm] (ghci) 
+    {Генерация кода для ghci};
+\node [block, below of=simplify] (cmm) {Генерация Cmm};
+\node [block, below of=cmm] (native) {Native};
+\node [block, left of=native, node distance=2cm] (c) {C} ;
+\node [block, right of=native, node distance=2cm] (llvm) {LLVM};
+
+\node [below of=desugar, node distance=0.7cm, left of=desugar] {Core};
+\node [below of=simplify, node distance=0.7cm, left of=simplify] {STG};
+
+\path [line] (file) -- (parse);
+\path [line] (parse) -- (names);
+\path [line] (names) -- (typecheck);
+\path [line] (typecheck) -- (desugar);
+\path [line] (desugar) -- (simplify);
+\path [line] (simplify) -- (cmm);
+\path [line] (simplify) -- (ghci);
+\path [line] (cmm) -- (native);
+\path [line] (cmm) -- (c);
+\path [line] (cmm) -- (llvm);
+\end{tikzpicture}

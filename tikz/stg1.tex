@@ -1,0 +1,53 @@
+\input{category-commands}
+
+\[
+\begin{array}{rrlll}
+\text{Переменные}   & x,y,f,g   &       &   &  \\
+\text{Конструкторы} & C         &       &   & 
+    \text{Объявлены в определениях типов}  \\
+\text{Литералы}     & lit       & ::=   & i \Or d & 
+    \text{Незапакованные целые} \\
+ & & & & \text{или действительные числа} \\
+\text{Атомы}        & a, v      & ::=   & lit \Or x & 
+    \text{Аргументы функций атомарны} \\
+\text{Арность функции} & k      & ::=   & \bullet   & 
+    \text{Арность неизвестна} \\
+                       &        & \Or   & n         & 
+    \text{Арность известна } n \geq 1 \\
+\\
+\text{Выражения}       &   e     & ::=  & a         & \text{Атом} \\
+                       &         & \Or  & f^k\ a_1 \dots a_n & 
+    \text{Вызов функции } (n \geq 1) \\ 
+                       &         & \Or  & \oplus\ a_1 \dots a_n & 
+    \text{Вызов примитивной функции } (n \geq 1) \\  
+\\
+                       &         & \Or  & 
+            \texttt{let}\ x\ \texttt{=}\ obj\ \texttt{in}\ e  & 
+    \text{Выделение нового объекта } obj \text{ в куче} \\ 
+                       &         & \Or  & 
+            \texttt{case } e \texttt{ of } \{ alt_1; \dots ;alt_n \}  & 
+    \text{Приведение выражения } e \text{ к СЗНФ} \\  
+\\
+\text{Альтернативы}    & alt     & ::=  & C\ x_1 \dots x_n \Ra e &
+    \text{Сопоставление с образцом } (n \geq 1) \\
+                       &         & \Or  & x \Ra e &
+    \text{Альтернатива по умолчанию} \\
+\\
+\text{Объекты в куче}  & obj     & ::=  & FUN(x_1 \dots x_n \Ra e)  &
+    \text{Функция арности } n \geq 1 \\
+                        &        & \Or  & PAP(f\ a_1 \dots a_n) &
+    \text{Частичное применение } f \text{ может} \\
+ & & & & \text{указывать только на } FUN \\
+                        &        & \Or  & CON(C\ a_1 \dots a_n) &
+        \text{Полное применение конструктора } (n \geq 0) \\
+                        &        & \Or  & THUNK\ e  & 
+        \text{Отложенное вычисление}  \\   
+                        &        & \Or  & BLACKHOLE &
+        \text{Используется только во время} \\
+ & & & & \text{выполнения программы} \\
+\text{Программа}        & prog  & ::=   & 
+    f_1 \texttt{=} obj_1\ ; \dots ;\ f_n \texttt{=} obj_n & \\
+
+\end{array}
+\]
+

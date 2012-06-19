@@ -1,0 +1,9 @@
+\[\begin{array}{lll}
+x;\quad s; \quad H[x \Ra THUNK\ e]  &\quad \RA  \quad & 
+    e; \quad Upd\ \ x\ \ \bullet\ :\ s; \quad H[x \Ra BLACKHOLE] \\
+\\
+
+y;\quad Upd\ \ x\ \ \bullet\ :\ s; \quad H
+&\quad \RA  \quad & y; \quad s; \quad H[x \Ra H[y]] \\ 
+& & \text{если } H[y] \text{ является значением} \\
+\end{array}\]

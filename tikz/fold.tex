@@ -1,0 +1,9 @@
+\tikzset{commutative diagrams/row sep/normal=1.7cm}
+\tikzset{commutative diagrams/column sep/normal=2.0cm}
+
+\begin{tikzcd}
+\texttt{Fix f} \rar{\texttt{f}} 
+    & \texttt{f (Fix f)} \rar{\texttt{fmap (fold f)}}
+    & \texttt{f a} \rar{\texttt{f}} & \texttt{a} 
+\end{tikzcd}
+

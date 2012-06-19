@@ -1,0 +1,9 @@
+\tikzset{commutative diagrams/row sep/normal=1.7cm}
+\tikzset{commutative diagrams/column sep/normal=2.0cm}
+
+\begin{tikzcd}
+\texttt{Fix f} & \texttt{f (Fix f)} \lar[swap]{\texttt{Fix}} 
+& \texttt{f a} \lar[swap]{\texttt{fmap (unold f)}} 
+& \texttt{a} \lar[swap]{\texttt{f}}
+\end{tikzcd}
+

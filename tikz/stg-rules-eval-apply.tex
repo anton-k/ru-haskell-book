@@ -1,0 +1,30 @@
+
+\[\begin{array}{lll}
+\multicolumn{3}{l}{f^{\bullet}\ a_1 \dots a_n;\quad s;\quad 
+    H[f \Ra FUN(x_1 \dots x_n \Ra e)]} \\
+    & \quad \RA  \quad &  e[a_1/x_1 \dots a_n/x_n];\quad s;\quad H \\
+\\
+\multicolumn{3}{l}{f^k\ a_1 \dots a_m;\quad s;\quad 
+    H[f \Ra FUN(x_1 \dots x_n \Ra e)]} \\
+    & \quad \RA  \quad &  e[a_1/x_1 \dots a_n/x_n];\quad 
+        (\bullet \ a_{n+1} \dots a_m)\ :\ s;\quad H \\ 
+    & &  \text{при } m \geq n \\
+    & \quad \RA  \quad & p;\quad s ;\quad H[p \Ra PAP(f\ a_1 \dots a_m)] \\
+    & &  \text{при } m < n,\ p \text{ -- новый адрес} \\
+    \\
+\multicolumn{3}{l}{f^{\bullet}\ a_1 \dots a_m;\quad s;\quad 
+    H[f \Ra THUNK\ e]} \\
+    & \quad \RA  \quad &  f;\quad (\bullet \ a_1 \dots a_m)\ :\ s;\quad H \\ 
+\\
+\multicolumn{3}{l}{f^k\ a_{n+1} \dots a_m;\quad s;\quad 
+    H[f \Ra PAP(g\ a_1 \dots a_n)]} \\
+    & \quad \RA  \quad &  g^\bullet\ a_1 \dots a_n\ a_{n+1} \dots a_m; 
+        \quad s; \quad H \\ 
+\\
+f;\quad (\bullet \ a_1 \dots a_n)\ :\ s;\quad H 
+    & \quad \RA  \quad & f^\bullet\ a_1 \dots a_n;\quad s;\quad H \\ 
+    & & H[f] \text{ является } FUN \text{ или } PAP
+\\
+\end{array}\]
+
+

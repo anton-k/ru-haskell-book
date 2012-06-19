@@ -1,0 +1,45 @@
+\documentclass[crop]{standalone}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{shapes,arrows}
+
+
+\usepackage[cm-default]{fontspec} % or install lmodern and remove cm-default opt
+\usepackage{xunicode} % some extra unicode support
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{fancyhdr} 
+\usepackage{amsfonts}
+
+\tolerance=1000
+\emergencystretch=0.74cm
+
+\usepackage{indentfirst} % I believe it is better for Russian
+\usepackage[russian]{babel} % babel is not fully supported by XeLaTeX!
+\usepackage{xecyr}
+\usepackage{xltxtra}
+
+
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setromanfont{Charis SIL}
+\setsansfont{Liberation Sans}
+\setmonofont{DejaVu Sans Mono}
+
+\newfontfamily\footfont{Ubuntu:style=Bold} 
+\newfontfamily\headfont{Monaco:style=Bold} 
+
+\tikzset{commutative diagrams/row sep/normal=1.6cm}
+\tikzset{commutative diagrams/column sep/normal=1.8cm}
+
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{mathtext}
+\usepackage{amsfonts}
+% all other packages and stuff you need for the picture
+
+\input{category-commands}
+
+\begin{document}
+\input{ghc}
+\end{document}

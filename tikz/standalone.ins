@@ -1,0 +1,15 @@
+\input ydocstrip.tex
+\keepsilent
+\askforoverwritefalse
+
+\generate{%
+  \nopreamble
+  \file{standalone.cls}{\from{standalone.dtx}{standalone.cls}}%
+  \file{standalone.sty}{\from{standalone.dtx}{standalone.sty}}%
+  \nopostamble
+  \file{standalone.tex}{\from{standalone.dtx}{standalone.tex}}%
+  \file{standalone.cfg}{\from{standalone.dtx}{standalone.cfg}}%
+  %\file{standalone.ins}{\from{standalone.dtx}{install}}%
+}
+\endbatchfile
+%% vim: ft=tex

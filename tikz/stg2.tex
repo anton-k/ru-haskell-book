@@ -1,0 +1,16 @@
+\input{category-commands}
+
+\begin{equation*}\begin{array}{llll}
+k   & ::=  & \mathtt{case}\ \bullet\ \mathtt{of}\  \{ alt_1; \dots alt_n \} & 
+        \text{контекст \texttt{case}-выражения}  \\
+    & \Or  & Upd\ \ t\ \ \bullet                &  
+        \text{Обновить отложенное вычисление} \\
+    & \Or  & (\bullet \ a_1 ... a_n )     &  
+        \text{Применить функцию к аргументам, только для} \\
+    &      &                             &  
+        \text{стратегии вычисление-применение} \\
+    & \Or  & Arg\ a                      &  
+        \text{Аргумент на потом, только для}  \\
+    &      &                             &  
+        \text{стратегии вставка-вход} \\ 
+\end{array}\end{equation*}

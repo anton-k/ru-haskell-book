@@ -1,0 +1,21 @@
+\[\begin{array}{lll}
+\texttt{case}\ v\ \texttt{of}\ \{\dots;C\ x_1\dots x_n \Ra e ;\dots\};
+    &\quad \RA  \quad &  e[a_1/x_1 \dots a_n / x_n]; \quad s; \quad H \\
+s;\quad H[v \Ra CON(C\ a_1\dots a_n)] & & \\    
+\\
+\texttt{case}\ v\ \texttt{of}\ \{\dots; x \Ra e\};\quad s;\quad H 
+    &\quad \RA  \quad & e[v/x];\quad s; \quad  H \\
+    & & \text{Если } v \text{ -- литерал или } H[v] \text{ -- значение,} \\
+    & & \text{которое не подходит ни по одной из альтернатив} \\
+\\
+\texttt{case}\ e\ \texttt{of}\ \{\dots\};\quad s; \quad H 
+    & \quad \RA \quad & e;\quad 
+    \texttt{case}\ \bullet \ \texttt{of}\ \{\dots\}\ :\ s; \quad H \\
+\\
+
+v;\quad \texttt{case}\ \bullet \ \texttt{of}\ \{\dots\}\ :\ s; \quad H 
+    & \quad \RA \quad & \texttt{case}\ v\ \texttt{of}\ \{\dots\}; 
+    \quad s; \quad H \\ 
+\end{array}\]
+
+
