@@ -163,14 +163,13 @@ Learn You A Haskell for a Great Good и книга Хал Дама
 Спасибо Оксане Станевич за редактирование и правки первой главы. 
 
 Технические благодарности: команде GHC, за компилятор Haskell,
-команде TexLive, авторам XeLatex, авторам пакетов diagrams
-для LaTeX (Пол Тэйлор (Paul Taylor)) и diagrams для Haskell 
-(Брент Йорги (Brent Yorgey), Райан Йэйтс (Ryan Yates)), все 
-картинки нарисованы в этих приложениях, автору
+команде TexLive, авторам XeLatex, автору
 пакета minted Конараду Рудольфу (Konrad Rudolph) и авторам
 Pygments за подсветку синтаксиса в LaTeX, авторам пакетов
 c Hackage:
-QuickCheck (Коэн Клаессен (Koen Claessen), Бьорн Брингерт (Bjorn Bringert),
+diagrams (Брент Йорги (Brent Yorgey), Райан Йэйтс (Ryan Yates))
+QuickCheck (Коэн Клаессен (Koen Claessen), 
+Бьорн Брингерт (Bjorn Bringert),
 Ник Смолбоун (Nick Smallbone)), 
 criterion (Брайан О'Салливан (Bryan O'Sullivan)), 
 HCodecs (Джордж Гиоргадзе (George Giorgidze)), 

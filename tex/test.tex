@@ -1,41 +1,6 @@
 %\input{16.tex}
 
-\newcommand{\Dia}[1]{\fbox{\text{#1}}}
-
-\begin{tikzpicture}[scale=5]
-\draw (2,2) circle (1);
-\end{tikzpicture}
-
-\tikz \draw (0,0) --  +(1,0) --  +(0,1) --  +(1,1);
-
-\begin{tikzpicture}[line width=2pt]
-  \draw (0,0) node [below left]  {$A$} -- 
-        (1,0) node [below right] {$B$} -- 
-        (1,1) node [above right] {$C$} -- 
-        (0,1) node [above left]  {$D$} -- 
-        cycle;
-\end{tikzpicture}
-
-\begin{comment}
-\begin{diagram}
- &          & \text{Файл .hs} \\
- &          & \dTo  \\
- &          & \Dia{Построение синтаксического дерева} \\
- &          & \dTo \\
- &          & \Dia{Разрешение имён} \\
- &          & \dTo \\
- &          & \Dia{Проверка типов} \\
- &          & \dTo \\
- &          & \Dia{Устранение синтаксического сахара} \\
- &          & \dTo^{\text{Core}} \\
- &          & \Dia{Упрощение Core}     & \rTo & \Dia{Генерация кода для ghci} \\
- &          & \dTo^{\text{STG}} \\
- &          & \Dia{Генерация Cmm} \\ 
- &          & \dTo \\
- &          & \Dia{Cmm}    &        &  \\
- & \ldTo    & \dTo          & \rdTo  &  \\
-\Dia{C} &  & \Dia{Native} &        & \Dia{LLVM}  \\
-\end{diagram}
-\end{comment}
-
+\begin{tikzcd}
+A \rar{f}  & B \\
+\end{tikzcd}
 
