@@ -1929,3 +1929,4 @@ qsortST left right arr = do
     изменяйте их внутри типа `ST`.  
 
 
+
