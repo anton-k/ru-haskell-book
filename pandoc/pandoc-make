@@ -1,6 +1,0 @@
-pandoc --latexmathml -S -s 2.txt -o 2.html
-
--s  -- standalone
--S  -- smart punctuation
-
-
