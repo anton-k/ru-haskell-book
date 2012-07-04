@@ -5,12 +5,6 @@
 добавить в `IO` про strict `readFile` объяснить                        легко
 почему бывают проблемы если читаешь и пишешь в один файл
 
-добавить в ссылки (практика управление памятью)                        легко
-http://gregorycollins.net/posts/2011/06/11/announcing-hashtables		
--- hashtables
-http://johantibell.com/files/stanford-2011/performance.html#%2836%29		
--- память в хаскель
-
 какие-то глюки с `ST` и ленью (nponeccop)                                средне
 
 ?расскать почему в `STG` нет классов и как они имитируются?              ? 
