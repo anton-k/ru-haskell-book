@@ -211,11 +211,7 @@ fold f = f . fmap (fold f) . unFix
 Проверим эту функцию по типам. Для этого 
 нарисуем схему композиции:
 
-\begin{diagram}
-\texttt{Fix f} && \rTo^{\texttt{unFix}} && \texttt{f (Fix f)} 
-    && \rTo^{\texttt{fmap (fold f)}} && \texttt{f a} 
-    && \rTo^{\texttt{f}} && \texttt{a} \\ 
-\end{diagram}
+\InFig{../pic/16/fold.ps}
 
 Сначала мы разворачиваем обёртку \In{Fix} и получаем
 значение типа \In{f (Fix f)}, затем с помощью \In{fmap}
@@ -235,11 +231,7 @@ unfold f = Fix . fmap (unfold f) . f
 
 Схема композиции:
 
-\begin{diagram}
-\texttt{Fix f} && \lTo^{\texttt{Fix}} && \texttt{f (Fix f)} 
-    && \lTo^{\texttt{fmap (unfold f)}} && \texttt{f a} 
-    && \lTo^{\texttt{f}} && \texttt{a} \\ 
-\end{diagram}
+\InFig{../pic/16/unfold.ps}
 
 Возможно вы уже догадались о том, что функция \In{fold}
 дуальна по отношению к функции \In{unfold}, это особенно
@@ -412,11 +404,7 @@ a -> f a
 Стрелку $h : A \Ra B$ называют \mbox{$F$-\emph{гомоморфизмом}}, 
 если следующая диаграмма коммутирует: 
 
-\begin{diagram}
-FA           &  \rTo^{\alpha}   & A \\
-\dTo^{Fh}    &                  & \dTo_{h} \\
-FB           &  \rTo_{\beta}    & B \\
-\end{diagram}
+\InFig{../pic/16/alg1.ps}
 
 Или можно сказать по другому, для $F$-алгебр $\alpha:FA \Ra A$ 
 и $\beta : FB \Ra B$ выполняется:
@@ -447,11 +435,7 @@ FB           &  \rTo_{\beta}    & B \\
 то определён катаморфизм, который переводит объекты $FA \Ra A$
 в стрелки $T \Ra A$. Причём следующая диаграмма коммутирует:
 
-\begin{diagram}
-FT           &  \rTo^{in_F}   & T \\
-\dTo^{F\cata{\alpha}}    &                  & \dTo_{\cata{\alpha}} \\
-FA           &  \rTo_{\alpha}    & A \\
-\end{diagram}
+\InFig{../pic/16/alg2.pdf}
 
 Этот катаморфизм и будет функцией свёртки для рекурсивного
 типа $Т$. Понятие $\Alg$  можно перевернуть и получить 
@@ -476,11 +460,7 @@ $out_F : T \Ra FT$, то определён анаморфизм, который
 переводит объекты $A \Ra FA$ в стрелки $A \Ra T$.  
 Причём следующая диаграмма коммутирует:
 
-\begin{diagram}
-T           &  \rTo^{in_F}   & FT \\
-\dTo^{\ana{\alpha}}    &                  & \dTo_{F\ana{\alpha}} \\
-A           &  \rTo_{\alpha}    & FA \\
-\end{diagram}
+\InFig{../pic/16/alg3.ps}
 
 Если для категории $\CatA$ и функтора
 $F$ определены стрелки $in_F$  и $out_F$, то они

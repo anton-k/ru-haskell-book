@@ -264,9 +264,10 @@ map f = foldr ((:) . f) []
 Если смысл выражения \In{((:) . f)} не совсем понятен, давайте
 распишем его типы:
 
-\begin{diagram}
-\texttt{a} && \rTo^{\texttt{f}} && \texttt{b} && \rTo^{\texttt{(:)}}& && \texttt{([b] -> [b])} \\
-\end{diagram}
+\begin{code}
+      f           (:)
+a  ------->  b  ------->  ([b] -> [b])
+\end{code}
 
 Напишем функцию фильтрации:
 
