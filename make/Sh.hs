@@ -55,7 +55,19 @@ instance MonadIO Sh where
 
 ------------------------------------------
 
+sh1 :: S.ShIO a -> Sh a
 sh1 = Sh . fmap return
+
+lift1 :: (S.ShIO a -> S.ShIO b) -> (Sh a -> Sh b)
+lift1 f = Sh . (mapM (f . return) =<< ) . unSh
+
+lift2 :: (S.ShIO a -> S.ShIO b -> S.ShIO c) -> (Sh a -> Sh b -> Sh c)
+lift2 f a b = Sh $ join $ liftA2 (mapM2 f') (unSh a) (unSh b)
+    where f' = \a b -> f (return a) (return b)
+
+mapM2 :: Monad m => (a -> b -> m c)-> [a] -> [b] -> m [c]
+mapM2 f as bs = sequence $ liftA2 f as bs 
+
 
 sh :: Sh () -> IO ()
 sh = (>> return ()) . shelly 

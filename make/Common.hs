@@ -10,7 +10,7 @@ import qualified System.IO.Strict as StrictIO
 import Data.String(fromString)
 -- import Shelly hiding ((</>))
 -- import Shelly.Find
-import Sh
+import Shelly.Pipe
 
 import Data.Text.Lazy as LT hiding (init, filter, all, find)
 import Filesystem.Path
@@ -38,7 +38,7 @@ isPdf = hasExt "pdf"
 isCss = hasExt "css"
 isHtml = hasExt "html"
 
-lsBy pred dir = findWhen dir (return . pred) 
+lsBy pred = findWhen (return . pred) 
 
 remake dir =  rm_rf dir >> mkdir dir
 copyFromTo from to = ls from >>= flip cp to

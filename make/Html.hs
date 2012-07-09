@@ -10,11 +10,11 @@ import qualified System.IO.Strict as StrictIO
 import Data.String(fromString)
 -- import Shelly hiding ((</>))
 -- import Shelly.Find
-import Sh
+import Shelly.Pipe
 
 import Data.Text.Lazy as LT hiding (init, filter, all, find)
-import Filesystem.Path
-import Filesystem.Path.CurrentOS
+import Filesystem.Path hiding ((</>))
+import Filesystem.Path.CurrentOS hiding ((</>))
 
 import Text.Pandoc
 
@@ -34,7 +34,7 @@ cssFiles  = lsBy isCss "html"
 htmlFiles = lsBy isHtml "html"
 
 main :: IO ()
-main = sh $ do
+main = shs $ do
     init
     tfmSrc
     makeHtml
@@ -58,7 +58,7 @@ rmSrc = txtFiles >>= rm_f
 rmNotUsedPictures = lsBy (not . isPic) "html/pic" >>= rm_f
 
 
-makeHtml = phi =<< unRoll cssFiles
+makeHtml = phi =<< unroll cssFiles
     where phi css = txtFiles >>= makeFile css
 
 makeFile css a = pandoc_ (flagsByName css a) a
