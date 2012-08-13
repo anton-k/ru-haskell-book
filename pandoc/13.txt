@@ -244,7 +244,11 @@ data Game = Game {
 Ещё один плюс решения сверху вниз состоит в экономии усилий.
 Мы можем написать всю программу в виде функций, которые 
 состоят лишь из определений типов. И утрясти общую схему
-программы на типах. Мы не тратим время на реализацию, а смотрим как
+программы на типах. Также при реализации отдельных 
+частей программы, мы можем воспользоваться упрощёнными
+алгоритмами, достаточными для тестирования приложения, 
+оставив отрисовку деталей на потом. 
+Мы не тратим время на реализацию, а смотрим как
 программа выглядит "вцелом". Если общий набросок нас устраивает
 мы можем начать заполнять дыры и детализировать отдельные
 выражения. Так мы будем детализировать-детализировать 
@@ -262,6 +266,17 @@ data Game = Game {
 мы можем распределить нагрузку, распределив разные `undefined`
 между участниками проекта.
 
+Слово `undefined` будет встречаться очень часто, 
+буквально в каждом значении. Оно очень длинное,
+и часто писать его будет слишком утомительно.
+Определим удобный синоним. Я обычно использую
+`un` или `lol` (что-нибудь краткое и удобное для 
+автоматического поиска):
+
+~~~
+un :: a
+un = undefined
+~~~
 
 Но давайте приступим к реализации нашей игры. Самая
 верхняя функция, будет запускать программу. Назовём её
@@ -270,7 +285,7 @@ data Game = Game {
 
 ~~~
 play :: IO ()
-play = undefined
+play = un
 ~~~
 
 Итак у нас появилась корневая функция. Что мы будем
@@ -289,13 +304,13 @@ play :: IO ()
 play = greetings >> setup >>= gameLoop
 
 greetings :: IO ()
-greetings = undefined
+greetings = un
 
 setup :: IO Game
-setup = undefined
+setup = un
 
 gameLoop :: Game -> IO ()
-gameLoop = undefined
+gameLoop = un
 ~~~
 
 Сохраним эти определения в модуле `Loop` и загрузим модуль 
@@ -340,12 +355,12 @@ setup = putStrLn "Начнём новую игру?" >>
     getLine >>= maybe setup shuffle . readInt 
 
 readInt :: String -> Maybe Int
-readInt = undefined
+readInt = un
 
 -- в модуль Game:
 
 shuffle :: Int -> IO Game
-shuffle = undefined
+shuffle = un
 ~~~
 
 Функция `shuffle` возвращает состояние игры `Game`,
@@ -400,21 +415,21 @@ gameLoop game
 
 
 showResults :: Game -> IO ()
-showResults = undefined
+showResults = un
 
 showGame :: Game -> IO ()
-showGame = undefined
+showGame = un
 
 askForMove :: IO Query
-askForMove = undefined
+askForMove = un
 
 reactOnMove :: Game -> Query -> IO ()
-reactOnMove = undefined
+reactOnMove = un
 
 -- в модуль Game
 
 isGameOver :: Game -> Bool
-isGameOver = undefined
+isGameOver = un
 ~~~
 
 Как определить закончилась игра или нет это скорее дело
@@ -458,7 +473,7 @@ showGame = putStrLn . show
 -- в модуль Game
 
 instance Show Game where
-    show = undefined
+    show = un
 ~~~
 
 #### Реакция на реплики пользователя
@@ -520,7 +535,7 @@ quit = putStrLn "До встречи." >> return ()
 
 -- в модуль Game
 move :: Move -> Game -> Game
-move = undefined
+move = un
 ~~~
 
 Функция `move` обновляет согласно правилам текущую
@@ -553,16 +568,16 @@ askForMove = showAsk >>
 
 
 parseQuery :: String -> Maybe Query
-parseQuery = undefined
+parseQuery = un
 
 wrongMove :: IO ()
 wrongMove = putStrLn "Не могу распознать ход." >> remindMoves
 
 showAsk :: IO ()
-showAsk = undefined
+showAsk = un
 
 remindMoves :: IO ()
-remindMoves = undefined
+remindMoves = un
 ~~~
 
 Механизм распознавания похож на случай с распознаванием числа.
@@ -635,17 +650,17 @@ askForMove = showAsk >>
     where askAgain = wrongMove >> askForMove
 
 parseQuery :: String -> Maybe Query
-parseQuery = undefined
+parseQuery = un
 
 readInt :: String -> Maybe Int
-readInt = undefined
+readInt = un
 ~~~
 
 #### Ответы пользователю (`putStrLn`)
 
 ~~~
 greetings :: IO ()
-greetings = undefined
+greetings = un
 
 showResults :: Game -> IO ()
 showResults g = showGame g >> putStrLn "Игра окончена."
@@ -654,7 +669,7 @@ showGame :: Game -> IO ()
 showGame = putStrLn . show
 
 showAsk :: IO ()
-showAsk = undefined
+showAsk = un
 
 quit :: IO ()
 quit = putStrLn "До встречи." >> return ()
@@ -767,7 +782,7 @@ Ok, modules loaded: Game, Loop.
 ### Последние штрихи
 
 В модуле `Loop` нам осталось определить несколько маленьких
-функций. Поиск по слову `undefined` говорит нам о том, что
+функций. Поиск по слову `un` говорит нам о том, что
 осталось определить функции ``
 
 
@@ -819,7 +834,7 @@ greetings = putStrLn "Привет! Это игра пятнашки" >>
 -- в модуль Game
 
 initGame :: Game
-initGame = undefined
+initGame = un
 ~~~
 
 Сначала мы приветствуем игрока, затем показываем состояние
@@ -846,7 +861,7 @@ isGameOver  :: Game -> Bool
 move        :: Move -> Game -> Game
 
 instance Show Game where
-    show = undefined
+    show = un
 ~~~
 
 Таков наш план. 
@@ -974,7 +989,7 @@ shuffle :: Int -> IO Game
 shuffle n = (iterate (shuffle1 =<<) $ pure initGame) !! n
 
 shuffle1 :: Game -> IO Game
-shuffle1 = undefined
+shuffle1 = un
 ~~~
 
 Функция `shuffle1` перемешивает фишки один раз. 
@@ -1003,10 +1018,10 @@ shuffle1 :: Game -> IO Game
 shuffle1 g = flip move g <$> (randomElem $ nextMoves g)
 
 randomElem :: [a] -> IO a
-randomElem = undefined
+randomElem = un
 
 nextMoves :: Game -> [Move]
-nextMoves = undefined
+nextMoves = un
 ~~~
 
 Нам осталось определить всего две функции, и всё готово для игры.

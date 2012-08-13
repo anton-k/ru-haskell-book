@@ -235,7 +235,11 @@ data Game = Game {
 Ещё один плюс решения сверху вниз состоит в экономии усилий.
 Мы можем написать всю программу в виде функций, которые 
 состоят лишь из определений типов. И утрясти общую схему
-программы на типах. Мы не тратим время на реализацию, а смотрим как
+программы на типах. Также при реализации отдельных 
+частей программы, мы можем воспользоваться упрощёнными
+алгоритмами, достаточными для тестирования приложения, 
+оставив отрисовку деталей на потом. 
+Мы не тратим время на реализацию, а смотрим как
 программа выглядит \Quote{вцелом}. Если общий набросок нас устраивает
 мы можем начать заполнять дыры и детализировать отдельные
 выражения. Так мы будем детализировать-детализировать 
@@ -253,6 +257,17 @@ data Game = Game {
 мы можем распределить нагрузку, распределив разные \In{undefined}
 между участниками проекта.
 
+Слово \In{undefined} будет встречаться очень часто, 
+буквально в каждом значении. Оно очень длинное,
+и часто писать его будет слишком утомительно.
+Определим удобный синоним. Я обычно использую
+\In{un} или \In{lol} (что-нибудь краткое и удобное для 
+автоматического поиска):
+
+\begin{code}
+un :: a
+un = undefined
+\end{code}
 
 Но давайте приступим к реализации нашей игры. Самая
 верхняя функция, будет запускать программу. Назовём её
@@ -261,7 +276,7 @@ data Game = Game {
 
 \begin{code}
 play :: IO ()
-play = undefined
+play = un
 \end{code}
 
 Итак у нас появилась корневая функция. Что мы будем
@@ -280,13 +295,13 @@ play :: IO ()
 play = greetings >> setup >>= gameLoop
 
 greetings :: IO ()
-greetings = undefined
+greetings = un
 
 setup :: IO Game
-setup = undefined
+setup = un
 
 gameLoop :: Game -> IO ()
-gameLoop = undefined
+gameLoop = un
 \end{code}
 
 Сохраним эти определения в модуле \In{Loop} и загрузим модуль 
@@ -331,12 +346,12 @@ setup = putStrLn "Начнём новую игру?" >>
     getLine >>= maybe setup shuffle . readInt 
 
 readInt :: String -> Maybe Int
-readInt = undefined
+readInt = un
 
 -- в модуль Game:
 
 shuffle :: Int -> IO Game
-shuffle = undefined
+shuffle = un
 \end{code}
 
 Функция \In{shuffle} возвращает состояние игры \In{Game},
@@ -391,21 +406,21 @@ gameLoop game
 
 
 showResults :: Game -> IO ()
-showResults = undefined
+showResults = un
 
 showGame :: Game -> IO ()
-showGame = undefined
+showGame = un
 
 askForMove :: IO Query
-askForMove = undefined
+askForMove = un
 
 reactOnMove :: Game -> Query -> IO ()
-reactOnMove = undefined
+reactOnMove = un
 
 -- в модуль Game
 
 isGameOver :: Game -> Bool
-isGameOver = undefined
+isGameOver = un
 \end{code}
 
 Как определить закончилась игра или нет это скорее дело
@@ -449,7 +464,7 @@ showGame = putStrLn . show
 -- в модуль Game
 
 instance Show Game where
-    show = undefined
+    show = un
 \end{code}
 
 \subsubsection{Реакция на реплики пользователя}
@@ -511,7 +526,7 @@ quit = putStrLn "До встречи." >> return ()
 
 -- в модуль Game
 move :: Move -> Game -> Game
-move = undefined
+move = un
 \end{code}
 
 Функция \In{move} обновляет согласно правилам текущую
@@ -544,16 +559,16 @@ askForMove = showAsk >>
 
 
 parseQuery :: String -> Maybe Query
-parseQuery = undefined
+parseQuery = un
 
 wrongMove :: IO ()
 wrongMove = putStrLn "Не могу распознать ход." >> remindMoves
 
 showAsk :: IO ()
-showAsk = undefined
+showAsk = un
 
 remindMoves :: IO ()
-remindMoves = undefined
+remindMoves = un
 \end{code}
 
 Механизм распознавания похож на случай с распознаванием числа.
@@ -626,17 +641,17 @@ askForMove = showAsk >>
     where askAgain = wrongMove >> askForMove
 
 parseQuery :: String -> Maybe Query
-parseQuery = undefined
+parseQuery = un
 
 readInt :: String -> Maybe Int
-readInt = undefined
+readInt = un
 \end{code}
 
 \subsubsection{Ответы пользователю (\In{putStrLn})}
 
 \begin{code}
 greetings :: IO ()
-greetings = undefined
+greetings = un
 
 showResults :: Game -> IO ()
 showResults g = showGame g >> putStrLn "Игра окончена."
@@ -645,7 +660,7 @@ showGame :: Game -> IO ()
 showGame = putStrLn . show
 
 showAsk :: IO ()
-showAsk = undefined
+showAsk = un
 
 quit :: IO ()
 quit = putStrLn "До встречи." >> return ()
@@ -758,7 +773,7 @@ Ok, modules loaded: Game, Loop.
 \subsection{Последние штрихи}
 
 В модуле \In{Loop} нам осталось определить несколько маленьких
-функций. Поиск по слову \In{undefined} говорит нам о том, что
+функций. Поиск по слову \In{un} говорит нам о том, что
 осталось определить функции \In{}
 
 
@@ -810,7 +825,7 @@ greetings = putStrLn "Привет! Это игра пятнашки" >>
 -- в модуль Game
 
 initGame :: Game
-initGame = undefined
+initGame = un
 \end{code}
 
 Сначала мы приветствуем игрока, затем показываем состояние
@@ -837,7 +852,7 @@ isGameOver  :: Game -> Bool
 move        :: Move -> Game -> Game
 
 instance Show Game where
-    show = undefined
+    show = un
 \end{code}
 
 Таков наш план. 
@@ -966,7 +981,7 @@ shuffle :: Int -> IO Game
 shuffle n = (iterate (shuffle1 =<<) $ pure initGame) !! n
 
 shuffle1 :: Game -> IO Game
-shuffle1 = undefined
+shuffle1 = un
 \end{code}
 
 Функция \In{shuffle1} перемешивает фишки один раз. 
@@ -995,10 +1010,10 @@ shuffle1 :: Game -> IO Game
 shuffle1 g = flip move g <$> (randomElem $ nextMoves g)
 
 randomElem :: [a] -> IO a
-randomElem = undefined
+randomElem = un
 
 nextMoves :: Game -> [Move]
-nextMoves = undefined
+nextMoves = un
 \end{code}
 
 Нам осталось определить всего две функции, и всё готово для игры.
