@@ -374,7 +374,7 @@ Ok, modules loaded: Game, Loop.
 \subsection{Цикл игры}
 
 Функция цикла игры принимает текущую позицию. При этом
-у на два варианта. Возможно игра пришла в конечное положение
+у нас два варианта. Возможно игра пришла в конечное положение
 (\In{isGameOver}) и мы можем сообщить игроку о том, что 
 он победил (\In{showResults}), если это не так, то мы 
 покажем текущее положение (\In{showGame}),
@@ -962,35 +962,44 @@ emptyLabel = 15
 образом. Количество ходов определяет сложность игры:
 
 \begin{code}
-randomGame :: Int -> IO Game
-randomGame n = (iterate (shuffle =<<) $ pure initGame) !! n
+shuffle :: Int -> IO Game
+shuffle n = (iterate (shuffle1 =<<) $ pure initGame) !! n
 
-shuffle :: Game -> IO Game
-shuffle g = flip move g <$> (randomElem $ nextMoves g)
-   
-randomElem :: [a] -> IO a
-randomElem = undefined
-
-nextMoves :: Game -> [Move]
-nextMoves = und
+shuffle1 :: Game -> IO Game
+shuffle1 = undefined
 \end{code}
 
-Сначала разберёмся с функцией \In{shuffle} она перемешивает
-позицию один раз. Мы делаем ход в текущей позиции, который мы 
-выбрали случайным образом из списка доступных ходов. 
-Выбором случайного элемента из списка, будет заниматься функция
-\In{randomElem}. Теперь вернёмся к функции составления случайной
-позиции. В ней мы пользуемся функцией \In{iterate} для того
-чтобы \In{n} раз перемешать позицию. Но мы не можем просто написать:
+Функция \In{shuffle1} перемешивает фишки один раз. 
+С помощью функции \In{iterate} мы строим список 
+расстановок, которые мы получаем на каждом шаге перемешивания. 
+В самом конце мы выбираем из списка \In{n}-тую позицию. 
+Обратите внимание на то, что мы не можем просто написать:
 
 \begin{code}
-iterate shuffle initGame
+iterate shuffle1 initGame
 \end{code}
 
 Так у нас не совпадут типы. Для функции \In{iterate} нужно
 чтобы вход и выход функции имели одинаковые типы. 
-Поэтому мы пользуемся в функции \In{iterate} функцией
-применения специальных значений. 
+Поэтому мы пользуемся в функции \In{iterate} методами
+классов \In{Monad} и \In{Applicative} (глава 6). 
+
+Теперь определим функцию \In{shuffle1}. Мы делаем ход в текущей 
+позиции, который мы выбрали случайным образом из списка доступных 
+ходов. Выбором случайного элемента из списка, будет заниматься 
+функция \In{randomElem}, а функция \In{nextMoves} будет
+возвращать список доступных ходов для данного положения:
+
+\begin{code}
+shuffle1 :: Game -> IO Game
+shuffle1 g = flip move g <$> (randomElem $ nextMoves g)
+
+randomElem :: [a] -> IO a
+randomElem = undefined
+
+nextMoves :: Game -> [Move]
+nextMoves = undefined
+\end{code}
 
 Нам осталось определить всего две функции, и всё готово для игры.
 Определим выбор случайного элемента из списка:
@@ -1009,8 +1018,9 @@ randomElem xs = (xs !! ) <$> randomRIO (0, length xs - 1)
 
 \begin{code}
 nextMoves :: Game -> [Move]
-nextMoves g = filter (within . flip shift (emptyField g) . orient) 
-    [Up, Down, Left, Right]
+nextMoves g = filter (within . moveEmptyTo . orient) allMoves
+    where moveEmptyTo v = shift v (emtyField g)
+          allMoves = [Up, Down, Left, Right]
 \end{code}
 
 Мы выполняем схожие операции с теми, что были в функции \In{move}.

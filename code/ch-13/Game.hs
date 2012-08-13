@@ -91,8 +91,9 @@ randomElem :: [a] -> IO a
 randomElem xs = (xs !! ) <$> randomRIO (0, length xs - 1)
 
 nextMoves :: Game -> [Move]
-nextMoves g = filter (within . flip shift (emptyField g) . orient) 
-    [Up, Down, Left, Right]
+nextMoves g = filter (within . moveEmptyTo . orient) allMoves
+    where moveEmptyTo v = shift v (emptyField g)
+          allMoves = [Up, Down, Left, Right]
 
 
 initGame :: Game

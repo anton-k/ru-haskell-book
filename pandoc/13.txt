@@ -383,7 +383,7 @@ Ok, modules loaded: Game, Loop.
 ### Цикл игры
 
 Функция цикла игры принимает текущую позицию. При этом
-у на два варианта. Возможно игра пришла в конечное положение
+у нас два варианта. Возможно игра пришла в конечное положение
 (`isGameOver`) и мы можем сообщить игроку о том, что 
 он победил (`showResults`), если это не так, то мы 
 покажем текущее положение (`showGame`),
@@ -970,35 +970,44 @@ emptyLabel = 15
 образом. Количество ходов определяет сложность игры:
 
 ~~~
-randomGame :: Int -> IO Game
-randomGame n = (iterate (shuffle =<<) $ pure initGame) !! n
+shuffle :: Int -> IO Game
+shuffle n = (iterate (shuffle1 =<<) $ pure initGame) !! n
 
-shuffle :: Game -> IO Game
-shuffle g = flip move g <$> (randomElem $ nextMoves g)
-   
-randomElem :: [a] -> IO a
-randomElem = undefined
-
-nextMoves :: Game -> [Move]
-nextMoves = und
+shuffle1 :: Game -> IO Game
+shuffle1 = undefined
 ~~~
 
-Сначала разберёмся с функцией `shuffle` она перемешивает
-позицию один раз. Мы делаем ход в текущей позиции, который мы 
-выбрали случайным образом из списка доступных ходов. 
-Выбором случайного элемента из списка, будет заниматься функция
-`randomElem`. Теперь вернёмся к функции составления случайной
-позиции. В ней мы пользуемся функцией `iterate` для того
-чтобы `n` раз перемешать позицию. Но мы не можем просто написать:
+Функция `shuffle1` перемешивает фишки один раз. 
+С помощью функции `iterate` мы строим список 
+расстановок, которые мы получаем на каждом шаге перемешивания. 
+В самом конце мы выбираем из списка `n`-тую позицию. 
+Обратите внимание на то, что мы не можем просто написать:
 
 ~~~
-iterate shuffle initGame
+iterate shuffle1 initGame
 ~~~
 
 Так у нас не совпадут типы. Для функции `iterate` нужно
 чтобы вход и выход функции имели одинаковые типы. 
-Поэтому мы пользуемся в функции `iterate` функцией
-применения специальных значений. 
+Поэтому мы пользуемся в функции `iterate` методами
+классов `Monad` и `Applicative` (глава 6). 
+
+Теперь определим функцию `shuffle1`. Мы делаем ход в текущей 
+позиции, который мы выбрали случайным образом из списка доступных 
+ходов. Выбором случайного элемента из списка, будет заниматься 
+функция `randomElem`, а функция `nextMoves` будет
+возвращать список доступных ходов для данного положения:
+
+~~~
+shuffle1 :: Game -> IO Game
+shuffle1 g = flip move g <$> (randomElem $ nextMoves g)
+
+randomElem :: [a] -> IO a
+randomElem = undefined
+
+nextMoves :: Game -> [Move]
+nextMoves = undefined
+~~~
 
 Нам осталось определить всего две функции, и всё готово для игры.
 Определим выбор случайного элемента из списка:
@@ -1016,9 +1025,9 @@ randomElem xs = (xs !! ) <$> randomRIO (0, length xs - 1)
 в текущем положении:
 
 ~~~
-nextMoves :: Game -> [Move]
-nextMoves g = filter (within . flip shift (emptyField g) . orient) 
-    [Up, Down, Left, Right]
+nextMoves g = filter (within . moveEmptyTo . orient) allMoves
+    where moveEmptyTo v = shift v (emtyField g)
+          allMoves = [Up, Down, Left, Right]
 ~~~
 
 Мы выполняем схожие операции с теми, что были в функции `move`.
