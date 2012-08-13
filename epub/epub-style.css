@@ -1,0 +1,27 @@
+/* This defines styles and classes used in the book */
+body { margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; text-align: justify; font-size: medium; }
+code { font-family: monospace; }
+h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+h4 { text-align: center; }
+h5 { text-align: center; }
+h6 { text-align: center; }
+h1.title { }
+h2.author { }
+
+pre {
+    border:2px solid #a1a1a1;
+    padding:13px 35px; 
+    background:#f2f2f2;
+    border-radius:25px;
+}
+
+a {
+    text-decoration: none;
+    color: #494949;
+}
+
+em {
+    color: #111111;    
+}
