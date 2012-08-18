@@ -3,6 +3,10 @@
 
 pandoc -S --toc \
     --epub-stylesheet=epub-style.css \
+    --epub-embed-font=liberation_serif/LiberationSerif-Italic.ttf \
+    --epub-embed-font=liberation_serif/LiberationSerif-Regular.ttf \
+    --epub-embed-font=liberation_serif/LiberationSerif-BoldItalic.ttf \
+    --epub-embed-font=liberation_serif/LiberationSerif-Bold.ttf \
     --epub-metadata=metadata.xml \
     -o ru-haskell-book.epub \
         title.txt \

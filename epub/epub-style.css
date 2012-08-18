@@ -1,5 +1,37 @@
 /* This defines styles and classes used in the book */
-body { margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; text-align: justify; font-size: medium; }
+
+@font-face {
+font-style: italic;
+font-family: 'Liberation', serif, sans-serif;
+font-weight: normal;
+src: url("LiberationSerif-Italic.ttf");
+}
+@font-face {
+font-style: normal;
+font-family: 'Liberation', serif, sans-serif;
+font-weight: normal;
+src: url("LiberationSerif-Regular.ttf");
+}
+@font-face {
+font-style: italic;
+font-family: 'Liberation', serif, sans-serif;
+font-weight: bold;
+src: url("LiberationSerif-BoldItalic.ttf");
+}
+@font-face {
+font-style: normal;
+font-family: 'Liberation', serif, sans-serif;
+font-weight: bold;
+src: url("LiberationSerif-Bold.ttf");
+}
+
+
+body { 
+    margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; 
+    text-align: justify; 
+    font-size: medium; 
+}
+
 code { font-family: monospace; }
 h1 { text-align: center; }
 h2 { text-align: center; }
@@ -24,4 +56,8 @@ a {
 
 em {
     color: #111111;    
+}
+
+body { 
+    font-family: "Liberation"; 
 }
