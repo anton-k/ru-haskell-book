@@ -1,6 +1,0 @@
-cd ~/lang/haskell-notes/tex
-
-xelatex --shell-escape notes.tex
-rm *.aux
-evince notes.pdf&
-

@@ -1,6 +1,0 @@
-
-
-set spell spelllang=ru,en
-
-map  <F5>       :wa<cr> :! sh notes.sh<cr> <cr>
-imap <F5> <Esc> :wa<cr> :! sh notes.sh<cr> <cr>

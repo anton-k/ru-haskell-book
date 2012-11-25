@@ -1,2 +1,0 @@
-\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
-\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{{\Russian  \CYRO \cyrg \cyrl \cyra \cyrv \cyrl \cyre \cyrn \cyri \cyre }}}{2}\relax 
