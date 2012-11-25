@@ -15,9 +15,13 @@ import Text.Pandoc(
         Format, nullAttr,
         readHtml, defaultParserState)
 
+import Text.PrettyPrint(render, text, punctuate, hcat)
+import Data.List.Split(splitOn)
+
 data Target = ToHtml | ToLatex
 
 -- html
+colourHtml :: Pandoc -> Pandoc
 colourHtml  = highlightPandoc ToHtml
 
 highlightInlineHtml, highlightCodeHtml :: String -> String
@@ -27,6 +31,7 @@ highlightCodeHtml   = highlightCode ToHtml
 
 
 -- latex
+colourLatex :: Pandoc -> Pandoc
 colourLatex = highlightPandoc ToLatex
     
 
@@ -45,7 +50,7 @@ getHscolour x = case x of
 getFormat :: Target -> Format
 getFormat x = case x of
     ToHtml  -> "html"
-    ToLatex -> "tex"
+    ToLatex -> "latex"
 
 -- Mixing bold with regular font breaks alignment in html, 
 -- so we use non-bold in html and mixed in latex
@@ -63,7 +68,8 @@ tfmCode to x = case x of
     _                   -> x
     where phi x attrs str   
             | isHs attrs    = rawBlock to $ highlightCode to str
-            | otherwise     = x
+            | otherwise     = x             
+
 
 
 tfmInline :: Target -> Inline -> Inline
@@ -84,13 +90,31 @@ rawBlock  = RawBlock  . getFormat
 type Hscolour = String -> String
 
 highlightInline :: Target -> String -> String
-highlightInline to = addCode . stripPre . getHscolour to
-
+highlightInline ToHtml = addCode . stripPre . getHscolour ToHtml
+highlightInline ToLatex = 
+    \str -> if (isSpecial str) 
+            then handleSpecialChars str
+            else inTexCmd "In" str
+    where isSpecial str = '\\' `elem` str || '\"' `elem` str
+          handleSpecialChars = phi (phi (inTexCmd "In") "\\") "\""
+            where phi cont delim a = render $ hcat $ punctuate (text $ escape delim) 
+                                $ map (text . cont) $ splitOn delim a
+                  escape a = "\\verb!" ++ a ++ "!"
 
 highlightCode :: Target -> String -> String
-highlightCode to x 
+highlightCode ToHtml x 
     | isSh x    = addPre x
-    | otherwise = getHscolour to x
+    | otherwise = getHscolour ToHtml x
+highlightCode ToLatex x
+    | isSh x    = inTexBlock "verbatim" x
+    | otherwise = inTexBlock "code" x
+    
+inTexCmd name x = "\\" ++ name ++ "{" ++ x ++ "}"
+
+inTexBlock name x = begin name ++ x ++ end name
+    where begin name = "\n\\begin{" ++ name ++ "}\n"
+          end   name = "\n\\end{" ++ name ++ "}\n"  
+
 
 isSh :: String -> Bool
 isSh = phi . filter (not . (`elem` ['\n', ' ']))

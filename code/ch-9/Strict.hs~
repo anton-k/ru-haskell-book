@@ -1,0 +1,16 @@
+module Strict where
+
+sum' :: Num a => [a] -> a
+sum' = iter 0 
+    where iter res []        = res
+          iter res (a:as)    = let res' = a + res
+                               in  res' `seq` iter res' as 
+
+product' :: Num a => [a] -> a
+product' = iter 1
+    where iter res []        = res
+          iter res (a:as)    = let res' = a * res
+                               in  seq res' $ iter res' as 
+
+
+main = print $ sum' [1 .. 1e7]

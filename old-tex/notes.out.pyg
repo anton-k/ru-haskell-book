@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},,fontsize=\small ]
+\PY{k+kr}{class} \PY{p}{(}\PY{k+kt}{Functor} \PY{n}{t}\PY{p}{,} \PY{k+kt}{Foldable} \PY{n}{t}\PY{p}{)} \PY{o+ow}{=\PYZgt{}} \PY{k+kt}{Traversable} \PY{n}{t} \PY{k+kr}{where}
+    \PY{n}{traverse} \PY{o+ow}{::} \PY{k+kt}{Applicative} \PY{n}{f} \PY{o+ow}{=\PYZgt{}} \PY{p}{(}\PY{n}{a} \PY{o+ow}{-\PYZgt{}} \PY{n}{f} \PY{n}{b}\PY{p}{)} \PY{o+ow}{-\PYZgt{}} \PY{n}{t} \PY{n}{a} \PY{o+ow}{-\PYZgt{}} \PY{n}{f} \PY{p}{(}\PY{n}{t} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}

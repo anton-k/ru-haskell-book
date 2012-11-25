@@ -1,0 +1,20 @@
+<#define pic|\Fig{#1}{../pic/<#currentChapter>/#2.ps}{#2}{#3}>
+<#define jpg|\Fig{#1}{../pic/<#currentChapter>/#2.jpg}{#2}{#3}>
+
+<#define tikz|
+\begin{figure}[ht]
+\centering
+\input{../pic/tikz/#2.tex}
+\caption{#1}
+\label{fig:#2}
+\end{figure}
+>
+
+<#define tikz_|
+\begin{centering}
+
+\input{../pic/tikz/#1.tex}
+
+\end{centering}
+>
+

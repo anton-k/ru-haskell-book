@@ -1,0 +1,4 @@
+rm -rf /home/anton/dev/hs-book/haskell-notes/make/../target
+mkdir /home/anton/dev/hs-book/haskell-notes/make/../target
+find /home/anton/dev/hs-book/haskell-notes/make/../pandoc
+../gpp-macros/gpp-html ../pandoc/preface.txt ../target/preface.txt

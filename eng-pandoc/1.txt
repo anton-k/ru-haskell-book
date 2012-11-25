@@ -1,0 +1,1041 @@
+# Basics
+
+Haskell is a big language. There are many syntax features.
+They make programs much more readable and clear. 
+There are tons of libriaries. Nevetherless,
+all this syntax prosperity has a very compact core. 
+It's easy to grasp in one go. Let's do it in this
+chapter! I'm going to show you all main constructs
+of the language. If you find that some points are too 
+difficult, keep going, just skip the hard moments 
+for the first time. You will find further
+explanations in the next chapters. 
+
+## Quick overview 
+
+There are two types of programs in Haskell.
+Program can be *executable* or *libriary*.
+An executable program is a useful standalone
+utility. It can be compiler for a new language,
+data miner, calendar or task manager. 
+A binary file represents an executable program, 
+you can invoke it in your OS environment. 
+Libriaries are useful too. But they solve 
+tasks inside the language. A libriary is a bunch
+of new functions or data structures. You
+can use them in your Haskell program.
+
+Program is built from *modules*. Remember the rule: 
+one file contains one module. A file name is a module name
+at the same time. The module name starts from capital letter.
+The file should have an extension `.hs`. For example, here is the
+module name `FirstModule.hs`. Let's look at the typical module: 
+
+~~~
+--------------------------------------
+-- header
+
+module Name(definition1, definition2,..., definitionN) where
+
+import Module1(...)
+import Module2(...)
+...
+
+---------------------------------------
+-- definitions
+
+definition1
+definition2
+...
+~~~
+
+A module contains a bunch of definitions. There are
+two types of definitions: *export* definitions 
+and *internal* definitions. Export definitions
+can be used outside the module. Internal definitions
+help us to define export definitions. A client of our
+module can not use them. 
+
+Two parts make a module:
+
+*Header*
+
+:   A header defines module name, list of export deinitions 
+    (you can see them in the parenthesis between the module name and
+    the keyword `where`) and import modules. We use export 
+    definitions from other modules with an `import` expression.
+    They become import modules.
+ 
+    We can skip the braces after the module name and
+    after import modules. It means that we want to
+    export all definitions or use all definitions
+    from external modules.
+
+*Definitions*
+
+:   This part contains all definitions. Order of definitions
+    doesn't matter, so to define a function you can use 
+    any other functions no matter where they are defined
+    before or after. 
+
+Modules talk to each other with `import` expressions. 
+The module A can say to the module B: give me the function `abracadabra`
+by `import B(abracadabra)`. A module is an iceberg. 
+We can see all export definitions on top of the module
+while all internal details are hidden under the water.
+
+So a program is a bunch of modules and a module is a bunch
+of definitions. What is a definition then?
+
+In Haskell a definition can describe one of four things:
+
+* Data type.
+
+* Value.
+
+* Type class.
+
+* Instance of type class.
+
+Let's see which is which.
+
+
+## Data types
+
+Data types form a spine of the program. 
+They describe all possible values in short notation. 
+It's very convinient. A seasoned haskell programer
+can understand what the function is going to do
+by looking at the function name and the type signature.
+Actually, it isn't that hard. Let's try:
+
+~~~
+not :: Bool -> Bool
+~~~
+
+The expression `v :: T` means value `v` has type `T`.
+Arrow `a -> b` signifies a function from values
+of type `a` to values of type `b`. If we have 
+a value of type `a` we can get a value of type `b`.
+Here we can see the function called `not` that takes
+`Bool` and gives `Bool`. We can suggest that it's
+logical negation. Let's try again:
+
+~~~
+reverse :: [a] -> [a]
+~~~
+
+The function is called `reverse`. It takes a list `[a]`
+and gives a list of the same type. Maybe it's going
+to reverse our list? Yes it is. Lowercase `a` in 
+the expression `[a]` means a type parameter. We can substitute `a`
+with any type. More specifically, the expression
+`[a]` describes a list of values of type `a`.
+For example this function can reverse only booleans:
+
+~~~
+reverseBool :: [Bool] -> [Bool]
+~~~
+
+A program describes some process or conception. 
+Data types define basic terms and how to combine
+the basic terms to form more complex ones. 
+Data types define a grammar for a little language. 
+A value is a concrete sentence in this language.   
+Sentences should obey the grammatical rules enforced
+by the data types. 
+
+Let's describe booleans. We have two basic terms.
+A boolean value can be `True` or `False`. 
+In haskell we write it like this:
+
+~~~
+data Bool = True | False
+~~~
+
+THe keyword `data` opens every data type definition.
+Sign `|` means "or". The new type `Bool` can be `True`
+or `False`.  We can see only basic terms in this type.
+There is no rules to combine them. Let's look at
+the type that contains not only basic terms:
+
+~~~
+data [a] = [] | a : [a]
+~~~
+
+Here we see definition of lists. We already know that `a`
+is a type parameter. List can be empty `[]` or it is
+a combination `a : [a]` that contains single value of 
+type `a` and another list `[a]`. It's recursive definition.
+Don't be scared by recursive definitions. 
+You will learn to like them as we go.
+There are many examples on the road to help you. 
+
+Let's see some other data type definitions.
+We can describe a calendar with data types.
+Everything that goes after `--` is a comment,
+it is ignored by compiler:
+
+~~~
+data Date = Date Year Month Day
+
+data Year  = Year Int       -- Int is an integer
+
+data Month  = January    | February   | March    | April          
+            | May        | June       | July     | August   
+            | September  | October    | November | December 
+
+data Day = Day Int
+
+data Week  = Monday     | Tuesday   | Wednesday 
+           | Thursday   | Friday    | Saturday     
+           | Sunday     
+
+data Time = Time Hour Minute Second
+
+data Hour   = Hour   Int    
+data Minute = Minute Int    
+data Second = Second Int    
+~~~
+
+Haskell founders were striving for clarity. 
+They were aimig at the language that is close to
+specifications as much as possible. Language expressions
+should be simple and self-evident.
+
+The sign `|` describes alternatives (it means "or"). 
+If we want to say "and" on type level we just
+list all subtypes. The space is a delimiter:
+
+~~~
+data Time = Time Hour Minute Second
+~~~
+
+Here `Time` is a value with the label `Time` that 
+consists of `Hour` and (space) `Minute` and (space)
+`Second` and nothing more. A label is called a *constructor*.
+
+The expression
+
+~~~
+data Year = Year Int
+~~~
+
+means that `Year` is a value with the constructor `Year`
+that holds only one subtype. A constructor goes first.
+Constructors can have no subtypes, for example, `True`
+or `January`.
+
+A program is executed in two runs. Compile-time and
+run-time. Type checking is going on at compile-time.
+Every value should obey the grammatical laws enforced by
+data types. It's checked automatically. If there is a value 
+that breaks the rules execution stops. The program is considered
+to be meaningless. The application that works at compile-time 
+is called *compiler*, and the application that works at run-time
+is called *run-time system* (RTS for short). 
+
+Types define basic terms of the model that we are
+trying to describe with our program. Also types define
+how to combine these basic terms. If we try to make
+a meaningless sentence, compiler will find this sentence
+and report it as a bug. This process is called typechecking. 
+If we try to add a string and a list instead of plain numbers
+the compiler will spot this error and moreover it spot the error
+*before* execution. The mistake will be found very quickly.
+If we made a mistake in the expression that is going to be
+executed an hour later the compiler will tell us about it in 
+an instant after we try to run the program. 
+
+So, if we try to say:
+
+~~~
+Time January True 23
+~~~
+
+the compiler will spot the error. You can say that this
+example is a very contrived one. Why should anyone 
+make a time out of booleans? But often you write 
+an expression and think about the other one and
+plan to come back to the third one. You may stop
+to worry about incoherent sentences. It's ok. There is
+a kind compiler. It will spot all stupid mistakes
+for you. Let's think about the real problems. 
+
+The languages that support typechecking are called
+*strongly typed*. There are other languages. 
+These languages doesn't force your sentences to
+be correct. Type errors will jump at you at run-time,
+when RTS starts to execute a wrong expression.
+It's called *dynamic typing*. 
+
+Types force you to think a lot at the very
+beginning of your project. Does our little
+language describes all terms? Are we missing 
+something important? You have to think. 
+But if types are good, it is very easy 
+to write a program. The types become your guide.
+
+
+## Values
+
+Types define basic terms and means of composition. 
+It's a very restricted language. For example
+with booleans we have only two words to play with. 
+Can we say anything with such a vocabulary?
+Yes we can! We can define a lot of synonyms. 
+So we have only two words: 
+
+~~~
+data Bool = True | False
+~~~
+
+Let's define two simple synonyms:
+
+~~~
+true :: Bool
+true = True
+
+false :: Bool
+false = False
+~~~
+
+A synonym starts with a lowercase letter. 
+We can define a synonym with the sign `=`.
+Let me stress that we doesn't execute anything.
+We just define a new name for the old sentence.
+
+So now we have four words! But we haven't got much far.
+Two new words doesn't enhance expressive power of
+our little language. These words are called *constants*.
+*Constant* gives a new name to a combination of words.
+In our case combinations are very simple.
+
+But we can define words in terms of the other ones.
+A synonym can take a parameter. Parameters go after
+the synonym name just before the sign `=`. 
+We should delimit parameters with the space:
+
+~~~
+not :: Bool -> Bool
+not True  = False
+not False = True
+~~~
+
+Here is the definition of the new word `not`. 
+The synonym `not` has type `Bool -> Bool`. 
+It's defined with two *clauses*. A clause
+has left hand side (just before `=`) and
+right hand side (after `=`). The first clause
+tells that the sentence `(not True)` is equal
+to `False`. The second clause tells that
+the sentence `not False` is equal to `True`. 
+We don't execute anything again! We just playing
+around with new names, but now names are made
+with several words (the new name `not` and paramter).
+
+If run-time system wants to know what synonym `not False` 
+is talking about it inspects all clauses for `not` in sequence from
+top to bottom trying to find the left hand side that
+matches `not False`. Let's try the first clause:
+
+~~~
+not True   == not False     -- no, it not what we need
+not False  == not False     -- here you are, let's look at the right hand side
+=> True
+~~~
+
+Let's define some more synonyms:
+
+~~~
+and :: Bool -> Bool -> Bool
+and False  _  = False
+and True   x  = x
+
+or  :: Bool -> Bool -> Bool
+or True   _ = True
+or False  x = x
+~~~
+
+It's logical "or" and "and". Here we can see
+some new syntax features. Don't panic here 
+is the explanation. Let's start with `_`
+
+~~~
+and False  _  = False
+~~~
+
+The sign `_` means anything. If the first parameter
+is 'False' than we don't care about the second one.
+Just try to remember the meaning of logical "and".
+If any argument is false than the whole expression is false.
+The same story for `or`.
+
+The second new construct:
+
+~~~
+and True   x  = x
+~~~
+
+We can get argument from the left side to the right
+if name it. Here parameter `x` is a name for an argument value.
+It means that `x` is the same thing on the left and on the right.
+
+So now we have seven words: `True`, `False`, `true`,
+`false`, `not`, `and`, `or`. Is it really just seven words?
+Actually we have an infinite number of synonyms.
+Three synonyms can have parameters and we can 
+make a lot of combinations with them:
+
+~~~
+not (and true False)
+or (and true true) (or False False)
+not (not true)
+not (or (or True True) (or False (not True)))
+...
+~~~
+
+Обратите внимание на использование скобок, они группируют 
+значения. Так, если бы мы написали `not not true` вместо
+`not (not true)`, мы бы получили ошибку компиляции, потому
+что `not` ожидает один параметр, а в выражении `not not true`
+их два. Параметры дописываются к имени через пробел.
+
+Посмотрим, как происходят вычисления. В сущности, 
+процесса вычислений нет, есть процесс замены синонимов
+на основные понятия согласно уравнениям. Базовые понятия мы 
+определили в типах. 
+Так давайте "вычислим" выражение `not (and true False)`:
+
+~~~
+-- выражение            --  уравнение
+
+not (and true False)    --  true        = True
+not (and True False)    --  and True  x = x     => and True False = False
+not False               --  not False   = True
+True
+~~~
+
+Слева в столбик написаны шаги "вычисления", а справа 
+уравнения, по которым синонимы заменяются на комбинации
+слов. Процесс замены синонима (левой части уравнения) на
+комбинацию слов (правую часть уравнения) называется 
+*редукцией* (reduction). 
+
+Сначала мы заменили синоним `true` на правую часть
+его уравнения, т.е.~на конструктор `True`. Затем мы заменили
+выражение `(and True False)` на правую часть из уравнения
+для синонима `and`. Обратите внимание на то, что переменная
+`x` была заменена на значение `False`.
+Последним шагом была замена синонима
+\In{not}. В конце концов мы пришли к базовому понятию, а именно -- к 
+одному из двух конструкторов. В данном случае `True`.
+
+Интересно, что новые синонимы могут быть использованы 
+в правых частях уравнений. Так мы можем определить операцию
+"исключающее или":
+
+~~~
+xor :: Bool -> Bool -> Bool
+xor a b = or (and (not a) b) (and a (not b))
+~~~
+
+Этим выражением мы говорим, что `xor a b` это
+или отрицание `a` и `b`, или `a` и отрицание `b`.
+Это и есть определение "исключающего или".
+
+Может показаться, что с типом `Bool` мы зациклены
+на двух конструкторах, и единственное, что нам остаётся -- 
+это давать всё новые и новые имена словам `True`
+и `False`. Но на самом деле это не так. 
+С помощью типов-параметров мы можем выйти за эти рамки.
+Определим функцию ветвления `ifThenElse`:
+
+~~~
+ifThenElse :: Bool -> a -> a -> a
+ifThenElse True   t  _ = t
+ifThenElse False  _  e = e
+~~~
+
+Эта функция первым аргументом принимает значение
+типа `Bool`, а вторым и третьим -- альтернативы 
+некоторого типа `a`. Если первый аргумент --
+`True`, возвращается второй аргумент, а если -- `False`,
+то третий. 
+
+Интересно, что в Haskell ничего не происходит,
+мир Haskell-значений стоит на месте. Мы просто даём 
+имена разным комбинациям слов. Определяем новые термины.
+Потом на этих терминах определяем  новые термины,
+и так далее. Кажется, если ничего не меняется, то зачем 
+язык? И что мы собираемся программировать без вычислений? 
+
+Разгадка кроется в функциях `not`, `and` и `or`.
+До того как мы их определили, у нас было четыре имени, но
+после их определения имён стало бесконечное множество.
+Три синонима пополнили наш язык бесконечным набором
+комбинаций. В этом суть. Мы определяем базовые элементы
+и способы составления новых, потом мы просим 
+"вычислить' комбинацию из них. Мы не определяли
+явно, 
+чему равна комбинация `not (and true False)`, это сделал за 
+нас вычислитель Haskell[^1].
+
+[^1]:   Было бы точнее называть вычислитель редуктором,
+        поскольку мы проводим редукции, т.е.~замену эквивалентных
+        значений, но закрепилось это название. 
+        К тому же, редуктор также обозначает прибор.
+
+       
+Вычислить стоит в кавычках, потому что на самом деле
+вычислений нет, есть замена синонимов на комбинации простейших
+элементов.
+
+
+Ещё один пример, положим у нас есть тип:
+
+~~~
+data Status = Work | Rest
+~~~
+
+Он определяет, что делать в данный день: работать (`Work`)
+или отдыхать (`Rest`). У разных рабочих разный график.
+Например, есть функции:
+
+~~~
+jonny :: Week -> Status
+jonny x = ...
+
+colin :: Week -> Status
+colin x = ...
+~~~
+
+Конкретное определение сейчас не важно, важно, что они определяют
+зависимость статуса (`Status`) от дня недели (`Week`) для 
+работников Джонни (`jonny`) и Колина (`colin`). 
+
+Также у нас есть полезная функция:
+
+~~~
+calendar :: Date -> Week
+calendar x = ...
+~~~
+
+Она определяет по дате день недели. И теперь, зная лишь
+эти функции, мы можем спросить у вычислителя будет ли
+у Джонни выходной 8 августа 3043 года:
+
+~~~
+jonny (calendar (Date (Year 3043) August (Day 8)))
+=> jonny Saturday
+=> Rest
+~~~
+
+Интересно, у нас опять всего лишь два значения, 
+но, дав такое большое имя одному из значений,
+мы смогли получить полезную нам информацию,
+ничего не вычисляя.
+
+
+### Классы типов
+
+Если типы и значения -- привычные понятия, которые можно найти
+в том или ином виде в любом языке программирования, то термин 
+класс типов встречается не часто. У него нет аналогов и в 
+обычном языке, поэтому я сначала постараюсь объяснить 
+его смысл на примере. 
+
+В типизированном языке у каждой 
+функции есть тип, но бывают функции, которые могут быть 
+определены на аргументах разных типов; по сути, они описывают
+схожие понятия, но определены для значений разных типов.
+Например, функция сравнения на равенство, говорящая о том, что два значения 
+одного типа `a` равны, имеет тип `a -> a -> Bool`, 
+или функция печати выражения имеет тип `a -> String`,
+но что такое `a` в этих типах? Тип `a` является
+любым типом, для которого сравнение на равенство или 
+печать (преобразование в строку) имеют смысл. Это
+понятие как раз и кодируется в классах типов. 
+`Классы типов` (type class)
+позволяют определять функции с одинаковым
+именем для разных типов. 
+
+У классов типов есть имена. Также как и имена классов, 
+они начинаются с большой буквы. Например, класс сравнений 
+на равенство называется 
+`Eq` (от англ. *equals* -- равняется),
+а класс печати выражений имеет имя `Show` (от англ. *show* 
+-- показывать). Посмотрим на их определения:
+
+Класс  `Eq`:
+
+~~~
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+~~~
+
+Класс `Show`:
+
+~~~
+class Show a where
+    show :: a -> String
+~~~
+
+За ключевым словом `class` следует имя класса, тип-параметр
+и ещё одно ключевое слово `where`. Далее с отступами пишутся
+имена определённых в классе значений. Значения класса называются
+*методами*.
+
+Мы определяем лишь типы методов, конкретная реализация будет
+зависеть от типа `a`. Методы определяются в экземплярах
+классов типов, мы скоро к ним перейдём.
+
+Программистская аналогия
+класса типов это интерфейс. В интерфейсе определён набор
+значений (как констант, так и функций), которые могут быть применены 
+ко всем типам, которые поддерживают данный интерфейс.
+К примеру, в интерфейсе "сравнение на равенство" для некоторого
+типа `a` определены две функции: равно `(==)` и 
+не равно `(/=)` с одинаковым
+типом `a -> a -> Bool`, или в интерфейсе "печати" для
+любого типа `a` определена одна функция `show` типа `a -> String`.
+
+Математическая аналогия 
+класса типов это алгебраическая система. Алгебра 
+изучает свойства объекта в терминах операций, определённых на нём,
+и взаимных ограничениях этих операций. Алгебраическая система представляет
+собой набор операций и свойств этих операций. Этот подход позволяет
+абстрагироваться от конкретного представления объектов. Например группа -- 
+это все объекты данного типа `a`,  для которых определены
+значения: константа -- единица типа `a`, бинарная операция
+типа `a -> a -> a` и операция взятия обратного элемента,
+типа `a -> a`. При этом на операции накладываются 
+ограничения, называемые свойствами операций. Например, ассоциативность
+бинарной операции, или тот факт, что единица с любым другим
+элементом, применённые к бинарной операции, дают на выходе
+исходный элемент.
+
+Давайте определим класс для группы:
+
+~~~
+class Group a where
+    e   :: a
+    (+) :: a -> a -> a
+    inv :: a -> a
+~~~
+
+Класс с именем `Group` имеет для некоторого типа `a` 
+три метода: константу `e :: a`, операцию `(+) :: a -> a -> a`
+и операцию взятия обратного элемента `inv :: a -> a`.
+
+Как и в алгебре, в Haskell классы типов позволяют описывать 
+сущности в терминах определённых на них операций или значений.
+В примерах мы указываем лишь наличие операций и их типы, так же
+и в классах типов. Класс типов содержит набор имён его значений 
+с информацией о типах значений.
+
+Определив класс `Group`, мы можем начать строить 
+различные выражения, которые будут потом интерпретироваться
+специфическим для типа образом:
+
+~~~
+twice :: Group a => a -> a
+twice a = a + a
+
+isE :: (Group a, Eq a) => a -> Bool
+isE x = (x == e)
+~~~
+
+Обратите внимание на запись `Group a =>` и 
+`(Group a, Eq a) =>`. Это называется контекстом объявления типа. 
+В контексте мы говорим, что данный тип должен быть из 
+класса `Group` или из классов `Group` и `Eq`. Это
+значит, что для этого типа мы можем пользоваться методами
+из этих классов.
+
+В первой функции `twice` мы воспользовались методом
+`(+)` из класса `Group`, поэтому функция имеет
+контекст `Group a =>`. А во второй функции `isE` 
+мы воспользовались методом `e` из класса `Group` и
+методом `(==)` из класса `Eq`, поэтому функция
+имеет контекст `(Group a, Eq a) =>`.
+
+### Контекст классов типов. Суперклассы
+
+Класс типов также может содержать контекст. Он указывается
+между словом `class` и именем класса. Например
+
+
+~~~
+class IsPerson a
+
+class IsPerson a => HasName a where
+    name :: a -> String
+~~~
+
+Это определение говорит о том, что мы можем сделать 
+экземпляр класса `HasName` 
+только для тех типов, которые содержатся в `IsPerson`.
+Мы говорим, что класс `HasName` содержится в `IsPerson`.
+В этом случае класс из контекста `IsPerson` 
+называют *суперклассом* для данного класса `HasName`.
+
+Это сказывается на контексте объявления типа. Теперь, если мы пишем
+
+~~~
+fun :: HasName a => a -> a
+~~~
+
+Это означает, что мы можем пользоваться для значений типа
+`a` как методами из класса `HasName`, так и методами 
+из класса `IsPerson`. Поскольку если тип принадлежит 
+классу `HasName`, то он также принадлежит и `IsPerson`. 
+
+Запись `(IsPerson a => HasName a)` немного обманывает, было бы точнее 
+писать `IsPerson a <= HasName a`, если тип `a` в классе `HasName`, то 
+он точно в классе `IsPerson`, но в Haskell  закрепилась другая запись.
+
+### Экземпляры классов типов
+
+В *экземплярах* (instance) классов типов мы даём конкретное
+наполнение для методов класса типов. Определение экземпляра
+пишется так же, как и определение класса типа, но вместо `class`
+мы пишем `instance`, вместо некоторого типа наш конкретный
+тип, а вместо типов методов -- уравнения для них. 
+
+Определим экземпляры для `Bool`
+
+Класс `Eq`:
+
+~~~
+instance Eq Bool where
+    (==) True  True  = True
+    (==) False False = True
+    (==) _     _     = False
+
+    (/=) a b         = not (a == b)
+~~~
+
+Класс `Show`:
+
+~~~
+instance Show Bool where
+    show True  = "True"
+    show False = "False"
+~~~
+
+Класс `Group`:
+
+~~~
+instance Group Bool where
+    e       = True
+    (+) a b = and a b
+    inv a   = not a
+~~~
+   
+
+Отметим важность наличия свойств (ограничений) у значений,
+определённых в классе типов. Так, например, в классе типов 
+"сравнение на равенство" для любых двух значений данного типа
+одна из операций должна вернуть "истину", а другая "ложь",
+т.е.~два элемента данного типа либо равны, либо не равны.
+Недостаточно определить равенство для конкретного типа, необходимо
+убедиться в том, что для всех элементов данного типа свойства 
+понятия равенства не нарушаются.
+
+На самом деле приведённое выше определение экземпляра для `Group`
+не верно, хотя по типам оно подходит. Оно не верно как раз 
+из-за нарушения свойств. Для группы необходимо, чтобы для любого `a`
+выполнялось:
+
+~~~
+ inv a + a == e
+~~~
+
+У нас лишь два значения, и это свойство не выполняется ни для одного
+из них. Проверим:
+
+~~~
+    inv True   + True
+ => (not True) + True
+ => False      + True
+ => and False    True
+ => False
+
+    inv False   + False
+ => (not False) + False
+ => True        + False
+ => and True      False
+ => False
+~~~
+
+Проверять свойства очень важно, потому что другие люди,
+читая ваш код и используя ваши функции, будут на них рассчитывать.
+
+## Ядро Haskell
+
+Фуууухх. Мы закончили наш пробег. Теперь можно остановиться,
+отдышаться и подвести итоги.
+Давайте вспомним синтаксические конструкции, которые нам встретились.
+
+#### Модули
+
+~~~
+module New(edef1, edef2, ..., edefN) where
+
+import Old1(idef11, idef12, ..., idef1N)
+import Old2(idef21, idef22, ..., idef2M)
+...
+import OldK(idefK1, idefK2, ..., idefKP)
+
+-- определения :
+...
+~~~
+
+Ключевые слова: `module`, `where`, `import`. Мы определили
+модуль с именем `New`, который экспортирует определения
+`edef1`, `edef2`, ... , `edefN`. И импортирует определения
+из модулей `Old1`, `Old2`, и т.д.,
+определения написаны в скобках за ключевыми словами `import` и
+именами модулей.
+
+#### Типы
+
+Тип определяется с помощью:
+
+* Перечисления альтернатив через `|` 
+        
+    ~~~
+    data Type = Alt1 | Alt2 | ... | AltN
+    ~~~
+
+    Эту операцию называют *суммой* типов.
+
+* Составления сложного типа из подтипов, пишем
+        конструктор первым, затем через пробел подтипы:
+   
+    ~~~
+    data Type = Name  Sub1  Sub2  ...  SubN
+    ~~~
+
+    Эту операцию называют *произведением* типов.
+
+    Есть одно исключение: если тип состоит из двух подтипов,
+    мы можем дать конструктору символьное (а не буквенное) имя,
+    но оно должно начинаться с двоеточия `:`, как в случае списка,
+    например, можно делать такие определения типов:
+
+    ~~~
+    data Type = Sub1 :+ Sub2 
+    data Type = Sub1 :| Sub2 
+    ~~~
+
+
+* Комбинации суммы и произведения типов:
+
+    ~~~
+    data Type = Name1  Sub11  Sub12  ...  Sub1N
+              | Name2  Sub21  Sub22  ...  Sub2M
+              ...
+              | NameK  SubK1  SubK2  ...  SubKP
+    ~~~
+
+Такие типы называют *алгебраическими типами данных*.
+С помощью типов мы определяем основные понятия и способы
+их комбинирования.
+
+#### Значения
+
+Как это ни странно, нам встретилась лишь одна операция
+создания значений: *определение синонима*. Она пишется так
+
+~~~
+name x1  x2 ... xN = Expr1
+name x1  x2 ... xN = Expr2
+name x1  x2 ... xN = Expr3
+~~~
+
+Слева от знака равно стоит составное имя, а справа от знака
+равно некоторое выражение, построенное согласно типам.
+Разные комбинации имени `name` с параметрами определяют
+разные уравнения для синонима `name`.
+
+Также мы видели символ `_`, который означает "всё, что угодно"
+на месте аргумента. А также мы  увидели, как с помощью переменных
+можно перетаскивать значения из аргументов в результат.
+
+
+#### Классы типов
+
+Нам встретилась одна конструкция определения классов типов:
+
+~~~
+class Name a where
+    method1 :: a -> ...
+    method2 :: a -> ...
+    ...
+    methodN :: a -> ...
+~~~
+
+#### Экземпляры классов типов
+
+Нам встретилась одна конструкция определения экземпляров
+классов типов:
+
+~~~
+instance Name Type where
+    method1 x1 ... xN = ...
+    method2 x1 ... xM = ...
+    ...
+    methodN x1 ... xP = ...
+~~~
+
+#### Типы, значения и классы типов
+
+Каждое значение имеет тип.
+Значение `v` имеет тип `T` на Haskell: 
+
+~~~
+v :: T
+~~~
+
+Функциональный тип обозначается стрелкой: `a -> b`
+
+~~~
+fun :: a -> b
+~~~
+
+Тип значения может иметь контекст, он говорит о том, что
+параметр должен принадлежать классу типов:
+
+~~~
+fun1 :: С a                 => a -> a
+fun2 :: (C1 a, C2, ..., CN) => a -> a
+~~~
+
+#### Суперклассы
+
+Также контекст может быть и у классов, запись
+
+~~~
+class A a => B a where
+    ...
+~~~
+
+Означает, что класс `B` целиком содержится в `A`,
+и перед тем как объявлять экземпляр для класса `B`,
+необходимо определить экземпляр для класса `A`. 
+При этом класс `A` называют суперклассом для `B`.
+
+## Двумерный синтаксис
+
+Наверное вы обратили внимание на то, что в Haskell
+нет разделителей строк и дополнительных скобок, которые
+бы указывали границы определения классов или функций. 
+Компилятор Haskell ориентируется по переносам строки и 
+знакам табуляции.
+
+Так если мы пишем в классе:
+
+~~~
+class Eq a where
+    (==) :: a -> a -> a
+    (/=) :: a -> a -> a
+~~~
+
+По отступам за первой строкой определения компилятор
+понимает, что класс содержит два метода. Если бы мы написали:
+
+~~~
+class Eq a where
+    (==) :: a -> a -> a
+(/=) :: a -> a -> a
+~~~
+
+То смысл был бы совсем другим. Теперь мы определяем
+класс `Eq` с одним методом `==` и указываем
+тип некоторого значения `(/=)`. Основное правило
+такое: конструкции, расположенные на одном уровне, 
+выравниваются с помощью табуляции. Чем правее находится определение,
+тем глубже оно вложено в какую-нибудь специальную
+конструкцию. Пока нам встретилось лишь несколько специальных
+конструкций, но дальше появятся и другие. 
+
+## Краткое содержание
+
+Итак подведём итоги: у нас есть две операции для определения типов
+(сумма и произведение) и по одной для значений (синонимы), 
+классов типов и экземпляров. А также
+бесконечное множество их комбинаций, из которых и состоит
+увлекательный мир Haskell. Конечно не только из них, есть
+нюансы, синтаксический сахар, расширения языка. Об этом
+и многом другом мы узнаем из этой книги. 
+
+Интересно, что в Haskell, несмотря на обилие 
+конструкций и библиотек, ты чувствуешь, что за ними стоит
+нечто из мира науки, мира чистого знания. Ты не просто учишься 
+пользоваться определёнными функциями или классами, а узнаёшь
+что-то новое и красивое.
+
+## Упражнения
+
+Потренируйтесь в описаниях в рамках системы типов.
+Вы определяете базовые понятия и способы их комбинирования.
+У вас есть три операции:
+
+* Сумма типов `data T = A1 | A2`. Перечисление альтернатив
+            
+* Произведение типов `data T = S S1 S2`. 
+    Этим мы говорим, что понятие состоит из нескольких.
+
+* Взятие в список `[T]`. Обозначает множественное
+    число, элементов типа `T` их может быть несколько.
+
+Опишите что-либо: комнату, дорогу, город, человека,
+главу из книги, математическую теорию, всё что угодно.
+
+Ниже приведён пример для понятий из этой главы:
+
+~~~
+data Program = Programm ProgramType [Module]
+data ProgramType = Executable | Library
+
+data Module = Module [Definition]
+
+data Definition = Definition DefinitionType Element
+data DefinitionType = Export | Inner
+
+data Element = ET Type | EV Value | EC Class | EI Instance
+
+data Type     = Type String
+data Value    = Value String
+data Class    = Class String
+data Instance = Instance String
+~~~
+
+После того как вы закончите с описанием, подумайте,
+какие производные связи могли бы вас заинтересовать.
+Какие функции вам бы хотелось определить в
+этом описании. Выпишите их типы без определений, например так:
+
+~~~
+-- Все объявления типов в модуле
+getTypes :: Module -> [Type]
+
+-- Провести редукцию значения:
+reduce :: Value -> Program -> Value
+
+-- Проверить типы:
+checkTypes :: Program -> Bool
+
+-- Заменить все определения в модуле на новые
+setDefinitions    :: Module -> [Definition] -> Module
+
+-- Упорядочить определения по какому-лбо принципу
+orderDefinitions :: [Definition] -> [Definition]
+~~~
+
+Подумайте: если у вас есть все эти функции, какие производные
+значения могли бы вам сказать что-нибудь интересное.
+

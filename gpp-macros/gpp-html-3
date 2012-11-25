@@ -1,0 +1,2 @@
+#!/bin/bash
+gpp -U "<#" ">" "\B" "|" ">" "<" ">" "#" "" -DHTML --include $3 -o $2 $1

@@ -1,0 +1,8 @@
+cd /home/anton/dev/hs-book/haskell-notes/
+find /home/anton/dev/hs-book/haskell-notes/pandoc
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/preface.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-html tmp.txt ../target/html/book/preface.txt
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros/gpp-macros
+echo 'not a directory: /home/anton/dev/hs-book/haskell-notes/gpp-macros/gpp-macros'
+exit 1

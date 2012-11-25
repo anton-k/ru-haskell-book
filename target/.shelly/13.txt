@@ -1,0 +1,114 @@
+cd /home/anton/dev/hs-book/haskell-notes/
+rm -rf /home/anton/dev/hs-book/haskell-notes/target/html/book
+mkdir /home/anton/dev/hs-book/haskell-notes/target/html/book
+ls tex
+cp /home/anton/dev/hs-book/haskell-notes/tex/commands.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/header.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/notes.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/res.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/notes-all.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/notes-all.sh /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/ifplatform.sty /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/minted.sty /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/shorttoc.sty /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/titles.tex /home/anton/dev/hs-book/haskell-notes/target
+cp /home/anton/dev/hs-book/haskell-notes/tex/cc_beamer.tex /home/anton/dev/hs-book/haskell-notes/target
+cd /home/anton/dev/hs-book/haskell-notes/pandoc
+ls ./
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/preface.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/preface.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/4.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/4.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/7.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/7.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/9.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/9.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/2.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/2.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/14.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/14.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/11.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/11.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/12.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/12.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/appendix.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/appendix.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/1.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/1.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/3.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/3.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/16.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/16.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/8.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/8.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/5.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/5.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/18.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/18.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/19.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/19.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/21.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/21.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/20.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/20.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/13.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/13.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/17.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/17.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/6.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/6.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/10.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/10.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/gpp-macros
+cp /home/anton/dev/hs-book/haskell-notes/gpp-macros/../pandoc/15.txt /home/anton/dev/hs-book/haskell-notes/gpp-macros/tmp.txt
+./gpp-tex tmp.txt ../target/15.txt
+cd /home/anton/dev/hs-book/haskell-notes/
+cd /home/anton/dev/hs-book/haskell-notes/target
+ls ./
+ls ./
+pandoc -o preface.tex -S -t tex --latex-engine=xelatex -f native --chapters --no-highlight preface.txt

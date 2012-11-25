@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+./gpp-tex $1 res.txt
+pandoc --chapters -S --latex-engine=xelatex --no-highlight -o res.tex res.txt
+xelatex --shell-escape notes.tex
+evince notes.pdf&

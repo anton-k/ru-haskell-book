@@ -1,0 +1,2 @@
+#!/bin/bash
+gpp -U "<#" ">" "\B" "|" ">" "<" ">" "#" "" -DHTML -o $2 $1 --include macros.gpp

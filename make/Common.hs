@@ -10,7 +10,7 @@ import qualified System.IO.Strict as StrictIO
 import Data.String(fromString)
 -- import Shelly hiding ((</>))
 -- import Shelly.Find
-import Shelly.Pipe
+import Shelly
 
 import Data.Text.Lazy as LT hiding (init, filter, all, find)
 import Filesystem.Path
@@ -38,10 +38,10 @@ isPdf = hasExt "pdf"
 isCss = hasExt "css"
 isHtml = hasExt "html"
 
-lsBy pred = findWhen (return . pred) 
+lsBy pred dir = filter pred <$> ls dir
 
 remake dir =  rm_rf dir >> mkdir dir
-copyFromTo from to = ls from >>= flip cp to
+copyFromTo from to = ls from >>= mapM_ (flip cp to)
 
 -- pandoc to pandoc
 

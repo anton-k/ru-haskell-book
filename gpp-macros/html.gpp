@@ -1,0 +1,5 @@
+<#define pic|![#1](../pic/<#currentChapter>/#2.png)>
+<#define jpg|![#1](../pic/<#currentChapter>/#2.jpg)>
+<#define tikz|<#htmlPic #1|#2>>
+
+<#define tikz_|<#htmlPic  |#1>>

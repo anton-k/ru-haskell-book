@@ -1,0 +1,3938 @@
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2012.3.26)  25 NOV 2012 14:19
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**notes-all
+(./notes-all.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2011-07-01, ngerman-x-2011-07-01, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, galician, german, ngerman, swissgerman, monogreek, greek, hungarian,
+ icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, or
+iya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, kurmanji,
+ lao, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, pol
+ish, portuguese, romanian, russian, sanskrit, serbian, serbianc, slovak, sloven
+ian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, welsh, loaded
+.
+\@input{header.aux}
+\openout2 = `header.aux'.
+
+(./header.tex (/usr/local/texlive/2011/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks16
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box26
+(/usr/local/texlive/2011/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
+))
+Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: xetex.def on input line 91.
+
+(/usr/local/texlive/2011/texmf-dist/tex/xelatex/xetex-def/xetex.def
+File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
+
+))
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks19
+))
+\pgf@x=\dimen113
+\pgf@y=\dimen114
+\pgf@xa=\dimen115
+\pgf@ya=\dimen116
+\pgf@xb=\dimen117
+\pgf@yb=\dimen118
+\pgf@xc=\dimen119
+\pgf@yc=\dimen120
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count92
+\c@pgf@countb=\count93
+\c@pgf@countc=\count94
+\c@pgf@countd=\count95
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Package pgfsys Info: Driver file for pgf: pgfsys-xetex.def on input line 900.
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.de
+f
+File: pgfsys-xetex.def 2010/02/16  (rcs-revision 1.3)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df-via-dvi.def
+File: pgfsys-common-pdf-via-dvi.def 2008/05/19  (rcs-revision 1.7)
+)))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
+\pgfsyssoftpath@smallbuffer@items=\count96
+\pgfsyssoftpath@bigbuffer@items=\count97
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) (/usr/local/texlive/2011/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen121
+\pgfmath@count=\count98
+\pgfmath@box=\box27
+\pgfmath@toks=\toks20
+\pgfmath@stack@operand=\toks21
+\pgfmath@stack@operation=\toks22
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count99
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
+\pgf@picminx=\dimen122
+\pgf@picmaxx=\dimen123
+\pgf@picminy=\dimen124
+\pgf@picmaxy=\dimen125
+\pgf@pathminx=\dimen126
+\pgf@pathmaxx=\dimen127
+\pgf@pathminy=\dimen128
+\pgf@pathmaxy=\dimen129
+\pgf@xx=\dimen130
+\pgf@xy=\dimen131
+\pgf@yx=\dimen132
+\pgf@yy=\dimen133
+\pgf@zx=\dimen134
+\pgf@zy=\dimen135
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
+\pgf@path@lastx=\dimen136
+\pgf@path@lasty=\dimen137
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
+\pgf@shorten@end@additional=\dimen138
+\pgf@shorten@start@additional=\dimen139
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
+\pgfpic=\box28
+\pgf@hbox=\box29
+\pgf@layerbox@main=\box30
+\pgf@picture@serial@count=\count100
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
+\pgflinewidth=\dimen140
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
+\pgf@pt@x=\dimen141
+\pgf@pt@y=\dimen142
+\pgf@pt@temp=\dimen143
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
+\pgf@max=\dimen144
+\pgf@sys@shading@range@num=\count101
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
+\pgfexternal@startupbox=\box31
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
+)))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
+\pgfnodeparttextbox=\box32
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen145
+\pgf@nodesepend=\dimen146
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
+\pgffor@iter=\dimen147
+\pgffor@skip=\dimen148
+\pgffor@stack=\toks23
+\pgffor@toks=\toks24
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
+\pgf@plot@mark@count=\count102
+\pgfplotmarksize=\dimen149
+)
+\tikz@lastx=\dimen150
+\tikz@lasty=\dimen151
+\tikz@lastxsaved=\dimen152
+\tikz@lastysaved=\dimen153
+\tikzleveldistance=\dimen154
+\tikzsiblingdistance=\dimen155
+\tikz@figbox=\box33
+\tikz@tempbox=\box34
+\tikztreelevel=\count103
+\tikznumberofchildren=\count104
+\tikznumberofcurrentchild=\count105
+\tikz@fig@count=\count106
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
+\pgfmatrixcurrentrow=\count107
+\pgfmatrixcurrentcolumn=\count108
+\pgf@matrix@numberofcolumns=\count109
+)
+\tikz@expandcount=\count110
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
+)))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+Package: tikz-cd 2012/03/18 v0.2b Commutative diagrams with tikz.
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2008/06/18 v2.10 (rcs-revision 1.2)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+code.tex
+File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
+\arrowsize=\dimen156
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex
+\pgfdecoratedcompleteddistance=\dimen157
+\pgfdecoratedremainingdistance=\dimen158
+\pgfdecoratedinputsegmentcompleteddistance=\dimen159
+\pgfdecoratedinputsegmentremainingdistance=\dimen160
+\pgf@decorate@distancetomove=\dimen161
+\pgf@decorate@repeatstate=\count111
+\pgfdecorationsegmentamplitude=\dimen162
+\pgfdecorationsegmentlength=\dimen163
+)
+\tikz@lib@dec@box=\box35
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+\tikzcd@temptoksa=\toks25
+\tikzcd@temptoksb=\toks26
+\tikzcd@temptoksc=\toks27
+\tikzcd@currcol=\count112
+\tikzcd@currrow=\count113
+\tikzcd@targetrow=\count114
+\tikzcd@targetcol=\count115
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2008/10/07 v2.10 (rcs-revision 1.3)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2009/10/27 v2.10 (rcs-revision 1.3)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.callouts.code.tex
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.callouts.code.tex))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
+\pgfnodepartlowerbox=\box36
+\pgfnodeparttwobox=\box37
+\pgfnodepartthreebox=\box38
+\pgfnodepartfourbox=\box39
+\pgfnodeparttwentybox=\box40
+\pgfnodepartnineteenbox=\box41
+\pgfnodeparteighteenbox=\box42
+\pgfnodepartseventeenbox=\box43
+\pgfnodepartsixteenbox=\box44
+\pgfnodepartfifteenbox=\box45
+\pgfnodepartfourteenbox=\box46
+\pgfnodepartthirteenbox=\box47
+\pgfnodeparttwelvebox=\box48
+\pgfnodepartelevenbox=\box49
+\pgfnodeparttenbox=\box50
+\pgfnodepartninebox=\box51
+\pgfnodeparteightbox=\box52
+\pgfnodepartsevenbox=\box53
+\pgfnodepartsixbox=\box54
+\pgfnodepartfivebox=\box55
+)))
+(/usr/local/texlive/2011/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2011/09/18 v2.2a Advanced font selection for XeLaTeX/LuaLaTeX
+
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3names.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3bootstrap.sty
+Package: l3bootstrap 2011/12/29 v3110 L3 Experimental bootstrap code
+)
+Package: l3names 2011/12/30 v3113 L3 Experimental namespace for primitives
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count116
+)
+Package: expl3 2012/02/26 v3471 L3 Experimental code bundle wrapper
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3basics.sty
+Package: l3basics 2012/02/26 v3460 L3 Experimental basic definitions
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3expan.sty
+Package: l3expan 2012/02/26 v3460 L3 Experimental argument expansion
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3tl.sty
+Package: l3tl 2012/02/26 v3460 L3 Experimental token lists
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3seq.sty
+Package: l3seq 2012/01/09 v3158 L3 Experimental sequences and stacks
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3int.sty
+Package: l3int 2012/02/26 v3460 L3 Experimental integers
+\c_max_int=\count117
+\l_tmpa_int=\count118
+\l_tmpb_int=\count119
+\l_tmpc_int=\count120
+\g_tmpa_int=\count121
+\g_tmpb_int=\count122
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3quark.sty
+Package: l3quark 2012/02/12 v3384 L3 Experimental quarks
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3prg.sty
+Package: l3prg 2012/02/26 v3464 L3 Experimental control structures
+\g_prg_map_int=\count123
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3clist.sty
+Package: l3clist 2012/02/26 v3460 L3 Experimental comma separated lists
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3token.sty
+Package: l3token 2012/02/26 v3460 L3 Experimental token manipulation
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3prop.sty
+Package: l3prop 2012/02/26 v3460 L3 Experimental property lists
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3msg.sty
+Package: l3msg 2012/02/26 v3470 L3 Experimental messages
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3file.sty
+Package: l3file 2012/02/26 v3464 L3 Experimental file and I/O operations
+\l_iow_stream_int=\count124
+\l_iow_line_length_int=\count125
+\l_iow_target_length_int=\count126
+\l_iow_current_line_int=\count127
+\l_iow_current_word_int=\count128
+\l_iow_current_indentation_int=\count129
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3skip.sty
+Package: l3skip 2012/02/26 v3460 L3 Experimental dimensions and skips
+\l_tmpa_dim=\dimen164
+\l_tmpb_dim=\dimen165
+\l_tmpc_dim=\dimen166
+\g_tmpa_dim=\dimen167
+\g_tmpb_dim=\dimen168
+\l_tmpa_skip=\skip43
+\l_tmpb_skip=\skip44
+\l_tmpc_skip=\skip45
+\g_tmpa_skip=\skip46
+\g_tmpb_skip=\skip47
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3keys.sty
+Package: l3keys 2011/12/22 v3086 L3 Experimental key-value interfaces
+\g_keyval_level_int=\count130
+\l_keys_choice_int=\count131
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3fp.sty
+Package: l3fp 2012/02/06 v3315 L3 Experimental floating-point operations
+\c_one_hundred_million=\count132
+\c_five_hundred_million=\count133
+\c_one_thousand_million=\count134
+\c_fp_pi_by_four_decimal_int=\count135
+\c_fp_pi_by_four_extended_int=\count136
+\c_fp_pi_decimal_int=\count137
+\c_fp_pi_extended_int=\count138
+\c_fp_two_pi_decimal_int=\count139
+\c_fp_two_pi_extended_int=\count140
+\l_fp_count_int=\count141
+\l_fp_div_offset_int=\count142
+\l_fp_exp_integer_int=\count143
+\l_fp_exp_decimal_int=\count144
+\l_fp_exp_extended_int=\count145
+\l_fp_exp_exponent_int=\count146
+\l_fp_input_a_sign_int=\count147
+\l_fp_input_a_integer_int=\count148
+\l_fp_input_a_decimal_int=\count149
+\l_fp_input_a_exponent_int=\count150
+\l_fp_input_b_sign_int=\count151
+\l_fp_input_b_integer_int=\count152
+\l_fp_input_b_decimal_int=\count153
+\l_fp_input_b_exponent_int=\count154
+\l_fp_input_a_extended_int=\count155
+\l_fp_input_b_extended_int=\count156
+\l_fp_mul_a_i_int=\count157
+\l_fp_mul_a_ii_int=\count158
+\l_fp_mul_a_iii_int=\count159
+\l_fp_mul_a_iv_int=\count160
+\l_fp_mul_a_v_int=\count161
+\l_fp_mul_a_vi_int=\count162
+\l_fp_mul_b_i_int=\count163
+\l_fp_mul_b_ii_int=\count164
+\l_fp_mul_b_iii_int=\count165
+\l_fp_mul_b_iv_int=\count166
+\l_fp_mul_b_v_int=\count167
+\l_fp_mul_b_vi_int=\count168
+\l_fp_mul_output_int=\count169
+\l_fp_output_sign_int=\count170
+\l_fp_output_integer_int=\count171
+\l_fp_output_decimal_int=\count172
+\l_fp_output_exponent_int=\count173
+\l_fp_output_extended_int=\count174
+\l_fp_round_position_int=\count175
+\l_fp_round_target_int=\count176
+\l_fp_split_sign_int=\count177
+\l_fp_internal_int=\count178
+\l_fp_trig_octant_int=\count179
+\l_fp_trig_sign_int=\count180
+\l_fp_trig_decimal_int=\count181
+\l_fp_trig_extended_int=\count182
+\l_fp_internal_dim=\dimen169
+\l_fp_internal_skip=\skip48
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3box.sty
+Package: l3box 2012/02/18 v3432 L3 Experimental boxes
+\l_tmpb_box=\box56
+\l_box_top_dim=\dimen170
+\l_box_bottom_dim=\dimen171
+\l_box_left_dim=\dimen172
+\l_box_right_dim=\dimen173
+\l_box_top_new_dim=\dimen174
+\l_box_bottom_new_dim=\dimen175
+\l_box_left_new_dim=\dimen176
+\l_box_right_new_dim=\dimen177
+\l_box_internal_box=\box57
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3coffins.sty
+Package: l3coffins 2012/02/26 v3460 L3 Experimental coffin code layer
+\l_coffin_internal_box=\box58
+\l_coffin_internal_dim=\dimen178
+\l_coffin_offset_x_dim=\dimen179
+\l_coffin_offset_y_dim=\dimen180
+\l_coffin_x_dim=\dimen181
+\l_coffin_y_dim=\dimen182
+\l_coffin_x_prime_dim=\dimen183
+\l_coffin_y_prime_dim=\dimen184
+\l_coffin_Depth_dim=\dimen185
+\l_coffin_Height_dim=\dimen186
+\l_coffin_TotalHeight_dim=\dimen187
+\l_coffin_Width_dim=\dimen188
+\c_empty_coffin=\box59
+\l_coffin_aligned_coffin=\box60
+\l_coffin_aligned_internal_coffin=\box61
+\l_coffin_bounding_shift_dim=\dimen189
+\l_coffin_left_corner_dim=\dimen190
+\l_coffin_right_corner_dim=\dimen191
+\l_coffin_bottom_corner_dim=\dimen192
+\l_coffin_top_corner_dim=\dimen193
+\l_coffin_scaled_total_height_dim=\dimen194
+\l_coffin_scaled_width_dim=\dimen195
+\l_coffin_display_coffin=\box62
+\l_coffin_display_coord_coffin=\box63
+\l_coffin_display_pole_coffin=\box64
+\l_coffin_display_offset_dim=\dimen196
+\l_coffin_display_x_dim=\dimen197
+\l_coffin_display_y_dim=\dimen198
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3color.sty
+Package: l3color 2011/09/07 v2776 L3 Experimental colour support
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3kernel/l3luatex.sty
+Package: l3luatex 2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
+\g_cctab_allocate_int=\count183
+\g_cctab_stack_int=\count184
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2012/02/26 v3471 L3 Experimental document command parser
+\l_xparse_current_arg_int=\count185
+\l_xparse_m_args_int=\count186
+\l_xparse_mandatory_args_int=\count187
+\l_xparse_processor_int=\count188
+\l_xparse_v_nesting_int=\count189
+)
+\l_fontspec_script_int=\count190
+\l_fontspec_language_int=\count191
+\l_fontspec_strnum_int=\count192
+\l_fontspec_tmpa_dim=\dimen199
+\l_fontspec_tmpb_dim=\dimen200
+\l_fontspec_tmpc_dim=\dimen201
+Variant \tl_gset:cV already defined; not changing it on line 66
+
+*************************************************
+* fontspec warning: "cm-default-obsolete"
+* 
+* The "cm-default" package option is obsolete.
+*************************************************
+(/usr/local/texlive/2011/texmf-dist/tex/latex/fontspec/fontspec-patches.sty
+Package: fontspec-patches 2011/09/18 v2.2a Advanced font selection for XeLaTeX/
+LuaLaTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+)
+LaTeX Info: Redefining \em on input line 22.
+LaTeX Info: Redefining \emph on input line 29.
+LaTeX Info: Redefining \- on input line 32.
+
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \oldstylenums with arg. spec. 'm' on line 107.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \liningnums with arg. spec. 'm' on line 111.
+.................................................
+) (/usr/local/texlive/2011/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2011/09/18 v2.2a Advanced font selection for XeLaTeX/Lu
+aLaTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/euenc/eu1enc.def
+File: eu1enc.def 2010/05/27 v0.1h Experimental Unicode font encodings
+)
+LaTeX Font Info:    Try loading font information for EU1+lmr on input line 100.
+
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/euenc/eu1lmr.fd
+File: eu1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+(/usr/local/texlive/2011/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many 
+other characters in Unicode lower plane
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+LaTeX Font Info:    Try loading font information for EU1+lmss on input line 357
+.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/euenc/eu1lmss.fd
+File: eu1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+\tipaTiiicode=\count193
+\tipasavetokens=\toks28
+\tipachecktokens=\toks29
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \fontspec with arg. spec. 'O{}m' on line 39.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmainfont with arg. spec. 'O{}m' on line 43.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setsansfont with arg. spec. 'O{}m' on line 47.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmonofont with arg. spec. 'O{}m' on line 51.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathrm with arg. spec. 'O{}m' on line 59.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setboldmathrm with arg. spec. 'O{}m' on line 62.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathsf with arg. spec. 'O{}m' on line 65.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathtt with arg. spec. 'O{}m' on line 68.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfamily with arg. spec. 'mO{}m' on line 84.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontface with arg. spec. 'mO{}m' on line 87.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \defaultfontfeatures with arg. spec. 'm' on line
+. 91.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addfontfeatures with arg. spec. 'm' on line 107.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfeature with arg. spec. 'mm' on line 118.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newAATfeature with arg. spec. 'mmmm' on line 125.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newICUfeature with arg. spec. 'mmm' on line 132.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeature with arg. spec. 'mm' on line
+. 159.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeatureoption with arg. spec. 'mmm' on
+. line 164.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontscript with arg. spec. 'mm' on line 169.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontlanguage with arg. spec. 'mm' on line 192.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareFontsExtensions with arg. spec. 'm' on
+. line 211.
+.................................................
+Variant \prop_gput:cnV already defined; not changing it on line 485
+Variant \prop_gput:cnx already defined; not changing it on line 486
+Variant \keys_set:nx already defined; not changing it on line 963
+\c@fontspec_tmp_int=\count194
+LaTeX Info: Redefining \itshape on input line 1881.
+LaTeX Info: Redefining \slshape on input line 1885.
+LaTeX Info: Redefining \scshape on input line 1889.
+LaTeX Info: Redefining \upshape on input line 1893.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip49
+\f@ncyO@elh=\skip50
+\f@ncyO@erh=\skip51
+\f@ncyO@olh=\skip52
+\f@ncyO@orh=\skip53
+\f@ncyO@elf=\skip54
+\f@ncyO@erf=\skip55
+\f@ncyO@olf=\skip56
+\f@ncyO@orf=\skip57
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks30
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/babel/russianb.ldf
+Language: russianb 2008/03/21 v1.1r Russian support from the babel system
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count195
+Normal \dimen register pool exhausted, switching to extended pool.
+\U@D=\dimen256
+)
+
+Package babel Warning: No input encoding specified for Russian language on inpu
+t line 136.
+
+Package babel Info: Making " an active character on input line 199.
+)) (/usr/local/texlive/2011/texmf-dist/tex/xelatex/xecyr/xecyr.sty
+Package: xecyr 2008/03/08 v1.0 Definitions for Cyrillic Babel/XeLaTeX compatibi
+lity
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/xltxtra/xltxtra.sty
+Package: xltxtra 2010/09/20 v0.5e Improvements for the "XeLaTeX" format
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/realscripts/realscripts.sty
+Package: realscripts 2010/09/30 v0.3 Access OpenType subscripts and superscript
+s
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \fakesubscript with arg. spec. 'm' on line 19.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \fakesuperscript with arg. spec. 'm' on line 22.
+.................................................
+
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \textsubscript with arg. spec. 's' on line 25.
+*************************************************
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+* 
+* Redefining document command \textsuperscript with arg. spec. 's' on line 28.
+*************************************************
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \realsubscript with arg. spec. 'm' on line 45.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \realsuperscript with arg. spec. 'm' on line 60.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \textsubsuperscript with arg. spec. 'sO{l}mm' on
+. line 137.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \textsupersubscript with arg. spec. 'sO{l}mm' on
+. line 140.
+.................................................
+\subsupersep=\dimen257
+) (/usr/local/texlive/2011/texmf-dist/tex/latex/metalogo/metalogo.sty
+Package: metalogo 2010/05/29 v0.12 Extended TeX logo macros
+\xl@everylogo=\toks31
+\xl@@everylogo=\toks32
+LaTeX Info: Redefining \TeX on input line 193.
+LaTeX Info: Redefining \LaTeX on input line 202.
+LaTeX Info: Redefining \LaTeXe on input line 219.
+)
+\xxt@tempbox=\box65
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
+
+
+Package cmap Warning: pdftex not detected - exiting.
+
+) (/usr/local/texlive/2011/texmf-dist/tex/latex/ctable/ctable.sty
+Package: ctable 2011/09/05 v1.21 ctable package
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks33
+\XKV@tempa@toks=\toks34
+\XKV@depth=\count196
+File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen258
+\extrarowheight=\dimen259
+\NC@list=\toks35
+\extratabsurround=\skip58
+\backup@length=\skip59
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+\TX@col@width=\dimen260
+\TX@old@table=\dimen261
+\TX@old@col=\dimen262
+\TX@target=\dimen263
+\TX@delta=\dimen264
+\TX@cols=\count197
+\TX@ftn=\toks36
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen265
+\lightrulewidth=\dimen266
+\cmidrulewidth=\dimen267
+\belowrulesep=\dimen268
+\belowbottomsep=\dimen269
+\aboverulesep=\dimen270
+\abovetopsep=\dimen271
+\cmidrulesep=\dimen272
+\cmidrulekern=\dimen273
+\defaultaddspace=\dimen274
+\@cmidla=\count198
+\@cmidlb=\count199
+\@aboverulesep=\dimen275
+\@belowrulesep=\dimen276
+\@thisruleclass=\count200
+\@lastruleclass=\count201
+\@thisrulewidth=\dimen277
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+Normal \count register pool exhausted, switching to extended pool.
+\c@r@tfl@t=\count277
+\rotFPtop=\skip60
+\rotFPbot=\skip61
+\rot@float@box=\box66
+\rot@mess@toks=\toks37
+)
+\@ctblframesep=\dimen278
+\@defaultctblframesep=\dimen279
+\@ctblframerule=\dimen280
+\@defaultctblframerule=\dimen281
+\@ctblwidth=\dimen282
+\@defaultctblwidth=\dimen283
+\@ctblcaptionskip=\dimen284
+\@defaultctblcaptionskip=\dimen285
+\@ctblmaxwidth=\dimen286
+\@defaultctblmaxwidth=\dimen287
+\@ctblmincapwidth=\dimen288
+\@defaultctblmincapwidth=\dimen289
+\@ctblw=\dimen290
+\@ctblfloatwidth=\dimen291
+\@ctbloldsep=\dimen292
+\@ctbloldrule=\dimen293
+\ctbl@t=\box67
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/colonequals.sty
+Package: colonequals 2006/08/01 v1.0 Colon equals symbols (HO)
+)
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL scale = 0.8943133290.
+.................................................
+\g_fontspec_family_Charis SIL_int=\count278
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL scale = 0.8943133290.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL scale = 0.8943133290.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/B scale = 0.8835715140.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/B scale = 0.8835715140.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/I scale = 0.8722224470.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/I scale = 0.8722224470.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/BI scale = 0.8620000000.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Charis SIL/BI scale = 0.8620000000.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'Charis SIL' with options
+. [Scale=MatchLowercase, Mapping=tex-text,].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->s*[0.8943133290]"Charis
+. SIL/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. <->s*[0.8943133290]"Charis
+. SIL/ICU:script=latn;language=DFLT;mapping=tex-text;+smcp;"
+. 
+. * 'bold' with NFSS spec.:
+. <->s*[0.8835715140]"Charis
+. SIL/B/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. <->s*[0.8835715140]"Charis
+. SIL/B/ICU:script=latn;language=DFLT;mapping=tex-text;+smcp;"
+. 
+. * 'italic' with NFSS spec.:
+. <->s*[0.8722224470]"Charis
+. SIL/I/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'italic small caps' with NFSS spec.:
+. <->s*[0.8722224470]"Charis
+. SIL/I/ICU:script=latn;language=DFLT;mapping=tex-text;+smcp;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->s*[0.8620000000]"Charis
+. SIL/BI/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold italic small caps' with NFSS spec.:
+. <->s*[0.8620000000]"Charis
+. SIL/BI/ICU:script=latn;language=DFLT;mapping=tex-text;+smcp;"
+.................................................
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 8.94318pt on input line 37.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Liberation Sans scale = 0.8157953510.
+.................................................
+\g_fontspec_family_Liberation Sans_int=\count279
+.................................................
+. fontspec info: "set-scale"
+. 
+. Liberation Sans scale = 0.8157953510.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Liberation Sans/B scale = 0.8157953510.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Liberation Sans/I scale = 0.8157953510.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Liberation Sans/BI scale = 0.8157953510.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LiberationSans(0)' created for font 'Liberation Sans' with
+. options [Scale=MatchLowercase, Mapping=tex-text,].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->s*[0.8157953510]"Liberation
+. Sans/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. <->s*[0.8157953510]"Liberation
+. Sans/B/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'italic' with NFSS spec.:
+. <->s*[0.8157953510]"Liberation
+. Sans/I/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->s*[0.8157953510]"Liberation
+. Sans/BI/ICU:script=latn;language=DFLT;mapping=tex-text;"
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVu Sans Mono scale = 0.7881161140.
+.................................................
+\g_fontspec_family_DejaVu Sans Mono_int=\count280
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVu Sans Mono scale = 0.7881161140.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVu Sans Mono/B scale = 0.7881161140.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVu Sans Mono/I scale = 0.7881161140.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVu Sans Mono/BI scale = 0.7881161140.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'DejaVuSansMono(0)' created for font 'DejaVu Sans Mono' with
+. options [Scale=MatchLowercase, Mapping=tex-text,].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->s*[0.7881161140]"DejaVu Sans
+. Mono/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. <->s*[0.7881161140]"DejaVu Sans
+. Mono/B/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'italic' with NFSS spec.:
+. <->s*[0.7881161140]"DejaVu Sans
+. Mono/I/ICU:script=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->s*[0.7881161140]"DejaVu Sans
+. Mono/BI/ICU:script=latn;language=DFLT;mapping=tex-text;"
+.................................................
+Unknown feature `style=Bold' in font `Ubuntu'.
+Unknown feature `style=Bold/ICU' in font `Ubuntu'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Ubuntu:style=Bold scale = 0.8288480760.
+.................................................
+\g_fontspec_family_Ubuntu:style=Bold_int=\count281
+.................................................
+. fontspec info: "set-scale"
+. 
+. Ubuntu:style=Bold scale = 0.8288480760.
+.................................................
+Unknown feature `style=Bold/B/ICU' in font `Ubuntu'.
+Unknown feature `style=Bold/B/B/ICU' in font `Ubuntu'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Ubuntu:style=Bold/B scale = 0.8288480760.
+.................................................
+Unknown feature `style=Bold/I/ICU' in font `Ubuntu'.
+Unknown feature `style=Bold/I/I/ICU' in font `Ubuntu'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Ubuntu:style=Bold/I scale = 0.8288480760.
+.................................................
+Unknown feature `style=Bold/BI/ICU' in font `Ubuntu'.
+Unknown feature `style=Bold/BI/BI/ICU' in font `Ubuntu'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Ubuntu:style=Bold/BI scale = 0.8288480760.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'Ubuntu:style=Bold(0)' created for font 'Ubuntu:style=Bold' with
+. options [Scale=MatchLowercase, Mapping=tex-text,].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->s*[0.8288480760]"Ubuntu:style=Bold/ICU:script=latn;language=DFLT;mapping=t
+ex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->s*[0.8288480760]"Ubuntu:style=Bold/B/ICU:script=latn;language=DFLT;mapping
+=tex-text;"
+. 
+. * 'italic' with NFSS spec.:
+. 
+. <->s*[0.8288480760]"Ubuntu:style=Bold/I/ICU:script=latn;language=DFLT;mapping
+=tex-text;"
+. 
+. * 'bold italic' with NFSS spec.:
+. 
+. <->s*[0.8288480760]"Ubuntu:style=Bold/BI/ICU:script=latn;language=DFLT;mappin
+g=tex-text;"
+.................................................
+Unknown feature `style=Bold' in font `Monaco'.
+Unknown feature `style=Bold/ICU' in font `Monaco'.
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font Monaco:style=Bold does not contain any OpenType `Script' information.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Monaco:style=Bold scale = 0.7902330350.
+.................................................
+\g_fontspec_family_Monaco:style=Bold_int=\count282
+.................................................
+. fontspec info: "set-scale"
+. 
+. Monaco:style=Bold scale = 0.7902330350.
+.................................................
+Unknown feature `style=Bold/B/ICU' in font `Monaco'.
+Unknown feature `style=Bold/B/B/ICU' in font `Monaco'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Monaco:style=Bold/B scale = 0.7902330350.
+.................................................
+Unknown feature `style=Bold/I/ICU' in font `Monaco'.
+Unknown feature `style=Bold/I/I/ICU' in font `Monaco'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Monaco:style=Bold/I scale = 0.7902330350.
+.................................................
+Unknown feature `style=Bold/BI/ICU' in font `Monaco'.
+Unknown feature `style=Bold/BI/BI/ICU' in font `Monaco'.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Monaco:style=Bold/BI scale = 0.7902330350.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'Monaco:style=Bold(0)' created for font 'Monaco:style=Bold' with
+. options [Scale=MatchLowercase, Mapping=tex-text,].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->s*[0.7902330350]"Monaco:style=Bold/ICU:mapping=tex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. <->s*[0.7902330350]"Monaco:style=Bold/B/ICU:mapping=tex-text;"
+. 
+. * 'italic' with NFSS spec.:
+. <->s*[0.7902330350]"Monaco:style=Bold/I/ICU:mapping=tex-text;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->s*[0.7902330350]"Monaco:style=Bold/BI/ICU:mapping=tex-text;"
+.................................................
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip62
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks38
+\ex@=\dimen294
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen295
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count283
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count284
+\leftroot@=\count285
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count286
+\DOTSCASE@=\count287
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box68
+\strutbox@=\box69
+\big@size=\dimen296
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count288
+\c@MaxMatrixCols=\count289
+\dotsspace@=\muskip11
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks39
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks40
+\eqnshift@=\dimen297
+\alignsep@=\dimen298
+\tagshift@=\dimen299
+\tagwidth@=\dimen300
+\totwidth@=\dimen301
+\lineht@=\dimen302
+\@envbody=\toks41
+\multlinegap=\skip63
+\multlinetaggap=\skip64
+\mathdisplay@stack=\toks42
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/t2/mathtext.sty
+Package: mathtext 1999/01/28 v1.0 transparent text-and-math defs
+LaTeX Info: Redefining \halign on input line 111.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box70
+\UL@hyphenbox=\box71
+\UL@skip=\skip65
+\UL@hook=\toks43
+\UL@height=\dimen303
+\UL@pe=\count295
+\UL@pixel=\dimen304
+\ULC@box=\box72
+Package: ulem 2011/03/18
+\ULdepth=\dimen305
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
+(./shorttoc.sty
+Package: shorttoc 2002/08/20 v1.3 Short table of contents (JPFD)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip66
+\LTright=\skip67
+\LTpre=\skip68
+\LTpost=\skip69
+\LTchunksize=\count296
+\LTcapwidth=\dimen306
+\LT@head=\box73
+\LT@firsthead=\box74
+\LT@foot=\box75
+\LT@lastfoot=\box76
+\LT@cols=\count297
+\LT@rows=\count298
+\c@LT@tables=\count299
+\c@LT@chunks=\count300
+\LT@p@ftn=\toks44
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/t2/citehack.sty
+Package: citehack 
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 68.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/02/06 v6.82o Hypertext links for LaTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2011/04/23 v1.4 Bundle oberdiek, subset hyperref (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2011/04/23 v1.4 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2011/04/23 v1.4 Subsetting bundle oberdiek (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2011/04/07 v1.13 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Defining keys (HO)
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+Package: pdfescape 2011/04/04 v1.12 Provides string conversions (HO)
+Package: bigintcalc 2011/01/30 v1.2 Expandable big integer calculations (HO)
+Package: bitset 2011/01/30 v1.1 Data type bit set (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provides unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/01/30 v1.0 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/04/23 v1.7 Hooks at very end of document (HO)
+Package: atbegshi 2011/01/30 v1.15 At begin shipout hook (HO)
+Package: refcount 2010/12/01 v3.2 Data extraction from references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options of hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
+)
+\@linkdim=\dimen307
+\Hy@linkcounter=\count301
+\Hy@pagecounter=\count302
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/02/06 v6.82o Hyperref: PDFDocEncoding definition (HO)
+\symPD1letters=\mathgroup7
+)
+\Hy@SavedSpaceFactor=\count303
+Package hyperref Info: Option `unicode' set `true' on input line 3177.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2012/02/06 v6.82o Hyperref: PDF Unicode definition (HO)
+\symPUletters=\mathgroup8
+)
+(/usr/local/texlive/2011/texmf-dist/tex/xelatex/xetexconfig/hyperref.cfg
+File: hyperref.cfg 2008/07/11 v1.2 hyperref configuration for XeLaTeX
+)
+Package hyperref Info: Hyper figures OFF on input line 4046.
+Package hyperref Info: Link nesting OFF on input line 4051.
+Package hyperref Info: Hyper index ON on input line 4054.
+Package hyperref Info: Plain pages OFF on input line 4061.
+Package hyperref Info: Backreferencing OFF on input line 4066.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4284.
+\c@Hy@tempcnt=\count304
+LaTeX Info: Redefining \url on input line 4637.
+\Fld@menulength=\count305
+\Field@Width=\dimen308
+\Fld@charsize=\dimen309
+Package hyperref Info: Hyper figures OFF on input line 5757.
+Package hyperref Info: Link nesting OFF on input line 5762.
+Package hyperref Info: Hyper index ON on input line 5765.
+Package hyperref Info: backreferencing OFF on input line 5772.
+Package hyperref Info: Link coloring OFF on input line 5777.
+Package hyperref Info: Link coloring with OCG OFF on input line 5782.
+Package hyperref Info: PDF/A mode OFF on input line 5787.
+LaTeX Info: Redefining \ref on input line 5827.
+LaTeX Info: Redefining \pageref on input line 5831.
+\Hy@abspage=\count306
+\c@Item=\count307
+\c@Hfootnote=\count308
+)
+
+Package hyperref Message: Driver (autodetected): hxetex.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2012/02/06 v6.82o Hyperref driver for XeTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2010/03/01 v1.8 Converts strings between encodings (HO)
+)
+\pdfm@box=\box77
+\c@Hy@AnnotLevel=\count309
+\HyField@AnnotCount=\count310
+\Fld@listcount=\count311
+\c@bookmark@seq@number=\count312
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package rerunfilecheck Info: Feature \pdfmdfivesum is not available
+(rerunfilecheck)             (e.g. pdfTeX or LuaTeX with package `pdftexcmds').
+
+(rerunfilecheck)             Therefore file contents cannot be checked efficien
+tly
+(rerunfilecheck)             and the loading of the package is aborted.
+)
+\Hy@SectionHShift=\skip70
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/hypcap.sty
+Package: hypcap 2011/02/16 v1.11 Adjusting anchors of captions (HO)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 77.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 77.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 77.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks45
+\verbatim@line=\toks46
+\verbatim@in@stream=\read2
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count313
+\FV@InFile=\read3
+\FV@TabBox=\box78
+\c@FancyVerbLine=\count314
+\FV@StepNumber=\count315
+\FV@OutFile=\write4
+) (./minted.sty
+Package: minted 2011/01/04 v1.7 Yet another Pygments shim for LaTeX
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count316
+\float@exts=\toks47
+\float@box=\box79
+\@float@everytoks=\toks48
+\@floatcapt=\box80
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count317
+\calc@Bcount=\count318
+\calc@Adimen=\dimen310
+\calc@Bdimen=\dimen311
+\calc@Askip=\skip71
+\calc@Bskip=\skip72
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count319
+\calc@Cskip=\skip73
+) (./ifplatform.sty
+Package: ifplatform 2009/09/10 v0.3a Testing for the operating system
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2011/03/01 v1.6 Catches the contents of a file (HO)
+)
+runsystem(uname -s > "notes-all.w18")...executed.
+
+
+(./notes-all.w18)
+runsystem(rm -- "notes-all.w18")...executed.
+
+)
+\minted@bgbox=\box81
+\minted@code=\write5
+\@float@every@listing=\toks49
+\c@listing=\count320
+)
+runsystem(which pygmentize && touch notes-all.aex)...executed.
+
+runsystem(rm notes-all.aex)...executed.
+
+runsystem(pygmentize -S woods -f latex > notes-all.pyg)...executed.
+
+ (./notes-all.pyg))
+\@input{commands.aux}
+\openout2 = `commands.aux'.
+
+(./commands.tex
+\c@Ltheorem=\count321
+)
+\@input{cc_beamer.aux}
+\openout2 = `cc_beamer.aux'.
+
+(./cc_beamer.tex)
+\@input{titles.aux}
+\openout2 = `titles.aux'.
+
+(./titles.tex)
+\@indexfile=\write6
+\openout6 = `notes-all.idx'.
+
+
+Writing index file notes-all.idx
+(./notes-all.aux (./preface.aux))
+\openout1 = `notes-all.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 15.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 15.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tipa/t3cmr.fd
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includefoot twoside 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(28.45274pt, 773.91498pt, 42.67912pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=748.62004pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-55.81725pt
+* \headheight=12.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+.................................................
+. fontspec info: "setup-math"
+. 
+. Adjusting the maths setup (use [no-math] to avoid this).
+.................................................
+\symlegacymaths=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 15.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 15.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 15.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 15.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 15.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 15.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 15.
+LaTeX Font Info:    Redeclaring math accent \check on input line 15.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 15.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 15.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 15.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 15.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 15.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 15.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> EU1/CharisSIL(0)/m/n on input line 15.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 15.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> EU1/CharisSIL(0)/m/n on input line 15.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  EU1/CharisSIL(0)/m/n --> EU1/CharisSIL(0)/m/n on input 
+line 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  EU1/CharisSIL(0)/m/n --> EU1/CharisSIL(0)/m/n on input 
+line 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> EU1/CharisSIL(0)/m/it on input line 15
+.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> EU1/CharisSIL(0)/bx/n on input line 15
+.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> EU1/LiberationSans(0)/m/n on input lin
+e 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> EU1/DejaVuSansMono(0)/m/n on input lin
+e 15.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  EU1/CharisSIL(0)/m/n --> EU1/CharisSIL(0)/bx/n on input
+ line 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  EU1/CharisSIL(0)/m/n --> EU1/CharisSIL(0)/bx/n on input
+ line 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> EU1/CharisSIL(0)/bx/it on input line 
+15.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> EU1/LiberationSans(0)/bx/n on input l
+ine 15.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> EU1/DejaVuSansMono(0)/bx/n on input li
+ne 15.
+\AtBeginShipoutBox=\box82
+Package hyperref Info: Link coloring ON on input line 15.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count322
+)
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
+
+(./notes-all.out) (./notes-all.out)
+\@outlinefile=\write7
+\openout7 = `notes-all.out'.
+
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 22.25063pt on input line 24.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 21.98335pt on input line 24.
+LaTeX Font Info:    Font shape `EU1/Ubuntu:style=Bold(0)/bx/n' will be
+(Font)              scaled to size 20.62158pt on input line 24.
+Unknown feature `style=Bold/B/ICU' in font `Ubuntu'.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 12.87816pt on input line 24.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/it' will be
+(Font)              scaled to size 12.56pt on input line 24.
+ [1
+
+
+
+
+
+
+
+
+
+
+
+
+]
+File: creative_commons/cc_by_30.pdf Graphic file (type QTm)
+
+<use  "creative_commons/cc_by_30.pdf" >
+File: creative_commons/cc_nc_30.pdf Graphic file (type QTm)
+
+<use  "creative_commons/cc_nc_30.pdf" >
+File: creative_commons/cc_nd_30.pdf Graphic file (type QTm)
+
+<use  "creative_commons/cc_nd_30.pdf" > [2
+
+
+] (./notes-all.toc
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 8.83575pt on input line 2.
+)
+LaTeX Font Info:    Font shape `EU1/Ubuntu:style=Bold(0)/m/n' will be
+(Font)              scaled to size 8.28842pt on input line 38.
+Unknown feature `style=Bold/ICU' in font `Ubuntu'.
+ [3
+
+
+]
+(./notes-all.toc
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 6.26022pt on input line 3.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 4.47159pt on input line 3.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+ (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+ (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+stmry on input line 3.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+LaTeX Font Info:    Try loading font information for PD1+CharisSIL(0) on input 
+line 3.
+LaTeX Font Info:    No file PD1CharisSIL(0).fd. on input line 3.
+
+
+LaTeX Font Warning: Font shape `PD1/CharisSIL(0)/m/n' undefined
+(Font)              using `PD1/pdf/m/n' instead on input line 3.
+
+LaTeX Font Info:    Try loading font information for PU+CharisSIL(0) on input l
+ine 3.
+LaTeX Font Info:    No file PUCharisSIL(0).fd. on input line 3.
+
+LaTeX Font Warning: Font shape `PU/CharisSIL(0)/m/n' undefined
+(Font)              using `PU/pdf/m/n' instead on input line 3.
+
+[4
+
+]
+Overfull \hbox (1.24277pt too wide) detected at line 142
+ []\EU1/CharisSIL(0)/m/n/10 101
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 143
+ []\EU1/CharisSIL(0)/m/n/10 102
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 144
+ []\EU1/CharisSIL(0)/m/n/10 104
+ []
+
+[5]
+Overfull \hbox (1.24277pt too wide) detected at line 145
+ []\EU1/CharisSIL(0)/m/n/10 106
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 146
+ []\EU1/CharisSIL(0)/m/n/10 107
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 147
+ []\EU1/CharisSIL(0)/m/n/10 108
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 148
+ []\EU1/CharisSIL(0)/m/n/10 109
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 149
+ []\EU1/CharisSIL(0)/m/n/10 110
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 150
+ []\EU1/CharisSIL(0)/m/n/10 110
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 151
+ []\EU1/CharisSIL(0)/m/n/10 111
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 152
+ []\EU1/CharisSIL(0)/m/n/10 112
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 153
+ []\EU1/CharisSIL(0)/m/n/10 114
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 154
+ []\EU1/CharisSIL(0)/m/n/10 114
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 155
+ []\EU1/CharisSIL(0)/m/n/10 116
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 156
+ []\EU1/CharisSIL(0)/m/n/10 118
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 157
+ []\EU1/CharisSIL(0)/m/n/10 118
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 159
+ []\EU1/CharisSIL(0)/m/n/10 121
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 160
+ []\EU1/CharisSIL(0)/m/n/10 122
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 161
+ []\EU1/CharisSIL(0)/m/n/10 124
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 162
+ []\EU1/CharisSIL(0)/m/n/10 125
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 163
+ []\EU1/CharisSIL(0)/m/n/10 125
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 164
+ []\EU1/CharisSIL(0)/m/n/10 125
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 165
+ []\EU1/CharisSIL(0)/m/n/10 126
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 166
+ []\EU1/CharisSIL(0)/m/n/10 126
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 167
+ []\EU1/CharisSIL(0)/m/n/10 127
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 168
+ []\EU1/CharisSIL(0)/m/n/10 128
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 169
+ []\EU1/CharisSIL(0)/m/n/10 128
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 171
+ []\EU1/CharisSIL(0)/m/n/10 131
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 172
+ []\EU1/CharisSIL(0)/m/n/10 132
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 173
+ []\EU1/CharisSIL(0)/m/n/10 133
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 174
+ []\EU1/CharisSIL(0)/m/n/10 134
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 175
+ []\EU1/CharisSIL(0)/m/n/10 134
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 176
+ []\EU1/CharisSIL(0)/m/n/10 136
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 177
+ []\EU1/CharisSIL(0)/m/n/10 136
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 179
+ []\EU1/CharisSIL(0)/m/n/10 139
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 180
+ []\EU1/CharisSIL(0)/m/n/10 140
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 181
+ []\EU1/CharisSIL(0)/m/n/10 141
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 182
+ []\EU1/CharisSIL(0)/m/n/10 143
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 183
+ []\EU1/CharisSIL(0)/m/n/10 143
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 184
+ []\EU1/CharisSIL(0)/m/n/10 144
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 185
+ []\EU1/CharisSIL(0)/m/n/10 145
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 186
+ []\EU1/CharisSIL(0)/m/n/10 146
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 187
+ []\EU1/CharisSIL(0)/m/n/10 147
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 188
+ []\EU1/CharisSIL(0)/m/n/10 147
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 189
+ []\EU1/CharisSIL(0)/m/n/10 149
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 190
+ []\EU1/CharisSIL(0)/m/n/10 149
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 192
+ []\EU1/CharisSIL(0)/m/n/10 151
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 193
+ []\EU1/CharisSIL(0)/m/n/10 152
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 194
+ []\EU1/CharisSIL(0)/m/n/10 155
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 195
+ []\EU1/CharisSIL(0)/m/n/10 155
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 196
+ []\EU1/CharisSIL(0)/m/n/10 156
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 197
+ []\EU1/CharisSIL(0)/m/n/10 156
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 198
+ []\EU1/CharisSIL(0)/m/n/10 157
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 199
+ []\EU1/CharisSIL(0)/m/n/10 158
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 200
+ []\EU1/CharisSIL(0)/m/n/10 158
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 201
+ []\EU1/CharisSIL(0)/m/n/10 159
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 202
+ []\EU1/CharisSIL(0)/m/n/10 160
+ []
+
+[6]
+Overfull \hbox (1.24277pt too wide) detected at line 203
+ []\EU1/CharisSIL(0)/m/n/10 160
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 204
+ []\EU1/CharisSIL(0)/m/n/10 163
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 207
+ []\EU1/CharisSIL(0)/m/n/10 168
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 208
+ []\EU1/CharisSIL(0)/m/n/10 169
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 209
+ []\EU1/CharisSIL(0)/m/n/10 169
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 210
+ []\EU1/CharisSIL(0)/m/n/10 169
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 211
+ []\EU1/CharisSIL(0)/m/n/10 171
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 213
+ []\EU1/CharisSIL(0)/m/n/10 173
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 214
+ []\EU1/CharisSIL(0)/m/n/10 175
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 215
+ []\EU1/CharisSIL(0)/m/n/10 175
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 217
+ []\EU1/CharisSIL(0)/m/n/10 177
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 218
+ []\EU1/CharisSIL(0)/m/n/10 177
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 219
+ []\EU1/CharisSIL(0)/m/n/10 178
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 220
+ []\EU1/CharisSIL(0)/m/n/10 179
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 221
+ []\EU1/CharisSIL(0)/m/n/10 180
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 226
+ []\EU1/CharisSIL(0)/m/n/10 181
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 227
+ []\EU1/CharisSIL(0)/m/n/10 182
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 228
+ []\EU1/CharisSIL(0)/m/n/10 182
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 229
+ []\EU1/CharisSIL(0)/m/n/10 185
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 230
+ []\EU1/CharisSIL(0)/m/n/10 188
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 231
+ []\EU1/CharisSIL(0)/m/n/10 188
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 233
+ []\EU1/CharisSIL(0)/m/n/10 189
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 234
+ []\EU1/CharisSIL(0)/m/n/10 189
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 235
+ []\EU1/CharisSIL(0)/m/n/10 190
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 236
+ []\EU1/CharisSIL(0)/m/n/10 191
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 237
+ []\EU1/CharisSIL(0)/m/n/10 191
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 239
+ []\EU1/CharisSIL(0)/m/n/10 193
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 240
+ []\EU1/CharisSIL(0)/m/n/10 194
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 241
+ []\EU1/CharisSIL(0)/m/n/10 194
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 242
+ []\EU1/CharisSIL(0)/m/n/10 195
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 243
+ []\EU1/CharisSIL(0)/m/n/10 195
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 244
+ []\EU1/CharisSIL(0)/m/n/10 196
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 245
+ []\EU1/CharisSIL(0)/m/n/10 196
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 247
+ []\EU1/CharisSIL(0)/m/n/10 198
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 248
+ []\EU1/CharisSIL(0)/m/n/10 198
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 249
+ []\EU1/CharisSIL(0)/m/n/10 198
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 250
+ []\EU1/CharisSIL(0)/m/n/10 199
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 251
+ []\EU1/CharisSIL(0)/m/n/10 200
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 252
+ []\EU1/CharisSIL(0)/m/n/10 202
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 253
+ []\EU1/CharisSIL(0)/m/n/10 202
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 257
+ []\EU1/CharisSIL(0)/m/n/10 205
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 261
+ []\EU1/CharisSIL(0)/m/n/10 206
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 262
+ []\EU1/CharisSIL(0)/m/n/10 207
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 263
+ []\EU1/CharisSIL(0)/m/n/10 208
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 268
+ []\EU1/CharisSIL(0)/m/n/10 212
+ []
+
+[7]
+Overfull \hbox (1.24277pt too wide) detected at line 270
+ []\EU1/CharisSIL(0)/m/n/10 214
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 271
+ []\EU1/CharisSIL(0)/m/n/10 214
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 272
+ []\EU1/CharisSIL(0)/m/n/10 216
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 273
+ []\EU1/CharisSIL(0)/m/n/10 216
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 277
+ []\EU1/CharisSIL(0)/m/n/10 218
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 278
+ []\EU1/CharisSIL(0)/m/n/10 218
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 281
+ []\EU1/CharisSIL(0)/m/n/10 220
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 282
+ []\EU1/CharisSIL(0)/m/n/10 220
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 283
+ []\EU1/CharisSIL(0)/m/n/10 220
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 284
+ []\EU1/CharisSIL(0)/m/n/10 221
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 285
+ []\EU1/CharisSIL(0)/m/n/10 222
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 286
+ []\EU1/CharisSIL(0)/m/n/10 223
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 287
+ []\EU1/CharisSIL(0)/m/n/10 223
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 288
+ []\EU1/CharisSIL(0)/m/n/10 223
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 290
+ []\EU1/CharisSIL(0)/m/n/10 225
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 291
+ []\EU1/CharisSIL(0)/m/n/10 227
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 292
+ []\EU1/CharisSIL(0)/m/n/10 228
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 293
+ []\EU1/CharisSIL(0)/m/n/10 230
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 294
+ []\EU1/CharisSIL(0)/m/n/10 230
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 295
+ []\EU1/CharisSIL(0)/m/n/10 231
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 296
+ []\EU1/CharisSIL(0)/m/n/10 232
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 297
+ []\EU1/CharisSIL(0)/m/n/10 232
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 298
+ []\EU1/CharisSIL(0)/m/n/10 233
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 299
+ []\EU1/CharisSIL(0)/m/n/10 233
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 300
+ []\EU1/CharisSIL(0)/m/n/10 236
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 301
+ []\EU1/CharisSIL(0)/m/n/10 237
+ []
+
+
+Overfull \hbox (2.07246pt too wide) detected at line 302
+\EU1/CharisSIL(0)/m/n/10 15.10 
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 302
+ []\EU1/CharisSIL(0)/m/n/10 237
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 304
+ []\EU1/CharisSIL(0)/m/n/10 238
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 305
+ []\EU1/CharisSIL(0)/m/n/10 242
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 306
+ []\EU1/CharisSIL(0)/m/n/10 243
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 309
+ []\EU1/CharisSIL(0)/m/n/10 245
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 310
+ []\EU1/CharisSIL(0)/m/n/10 248
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 311
+ []\EU1/CharisSIL(0)/m/n/10 248
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 313
+ []\EU1/CharisSIL(0)/m/n/10 250
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 314
+ []\EU1/CharisSIL(0)/m/n/10 250
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 317
+ []\EU1/CharisSIL(0)/m/n/10 251
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 319
+ []\EU1/CharisSIL(0)/m/n/10 253
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 320
+ []\EU1/CharisSIL(0)/m/n/10 254
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 321
+ []\EU1/CharisSIL(0)/m/n/10 257
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 322
+ []\EU1/CharisSIL(0)/m/n/10 260
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 323
+ []\EU1/CharisSIL(0)/m/n/10 260
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 324
+ []\EU1/CharisSIL(0)/m/n/10 260
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 325
+ []\EU1/CharisSIL(0)/m/n/10 261
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 326
+ []\EU1/CharisSIL(0)/m/n/10 262
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 327
+ []\EU1/CharisSIL(0)/m/n/10 262
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 328
+ []\EU1/CharisSIL(0)/m/n/10 263
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 329
+ []\EU1/CharisSIL(0)/m/n/10 264
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 330
+ []\EU1/CharisSIL(0)/m/n/10 264
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 332
+ []\EU1/CharisSIL(0)/m/n/10 265
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 333
+ []\EU1/CharisSIL(0)/m/n/10 265
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 336
+ []\EU1/CharisSIL(0)/m/n/10 266
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 337
+ []\EU1/CharisSIL(0)/m/n/10 266
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 338
+ []\EU1/CharisSIL(0)/m/n/10 267
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 339
+ []\EU1/CharisSIL(0)/m/n/10 269
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 340
+ []\EU1/CharisSIL(0)/m/n/10 269
+ []
+
+[8]
+Overfull \hbox (1.24277pt too wide) detected at line 341
+ []\EU1/CharisSIL(0)/m/n/10 270
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 342
+ []\EU1/CharisSIL(0)/m/n/10 270
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 343
+ []\EU1/CharisSIL(0)/m/n/10 271
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 344
+ []\EU1/CharisSIL(0)/m/n/10 271
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 345
+ []\EU1/CharisSIL(0)/m/n/10 272
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 346
+ []\EU1/CharisSIL(0)/m/n/10 272
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 347
+ []\EU1/CharisSIL(0)/m/n/10 273
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 358
+ []\EU1/CharisSIL(0)/m/n/10 274
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 359
+ []\EU1/CharisSIL(0)/m/n/10 274
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 361
+ []\EU1/CharisSIL(0)/m/n/10 276
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 362
+ []\EU1/CharisSIL(0)/m/n/10 280
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 363
+ []\EU1/CharisSIL(0)/m/n/10 281
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 364
+ []\EU1/CharisSIL(0)/m/n/10 282
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 365
+ []\EU1/CharisSIL(0)/m/n/10 283
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 366
+ []\EU1/CharisSIL(0)/m/n/10 284
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 367
+ []\EU1/CharisSIL(0)/m/n/10 285
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 368
+ []\EU1/CharisSIL(0)/m/n/10 287
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 369
+ []\EU1/CharisSIL(0)/m/n/10 287
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 372
+ []\EU1/CharisSIL(0)/m/n/10 289
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 373
+ []\EU1/CharisSIL(0)/m/n/10 290
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 376
+ []\EU1/CharisSIL(0)/m/n/10 291
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 378
+ []\EU1/CharisSIL(0)/m/n/10 296
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 379
+ []\EU1/CharisSIL(0)/m/n/10 301
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 380
+ []\EU1/CharisSIL(0)/m/n/10 303
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 381
+ []\EU1/CharisSIL(0)/m/n/10 304
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 382
+ []\EU1/CharisSIL(0)/m/n/10 304
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 383
+ []\EU1/CharisSIL(0)/m/n/10 306
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 384
+ []\EU1/CharisSIL(0)/m/n/10 306
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 385
+ []\EU1/CharisSIL(0)/m/n/10 306
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 387
+ []\EU1/CharisSIL(0)/m/n/10 307
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 388
+ []\EU1/CharisSIL(0)/m/n/10 307
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 389
+ []\EU1/CharisSIL(0)/m/n/10 308
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 390
+ []\EU1/CharisSIL(0)/m/n/10 309
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 391
+ []\EU1/CharisSIL(0)/m/n/10 310
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 393
+ []\EU1/CharisSIL(0)/m/n/10 310
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 394
+ []\EU1/CharisSIL(0)/m/n/10 311
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 395
+ []\EU1/CharisSIL(0)/m/n/10 311
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 396
+ []\EU1/CharisSIL(0)/m/n/10 312
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 402
+ []\EU1/CharisSIL(0)/m/n/10 313
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 403
+ []\EU1/CharisSIL(0)/m/n/10 317
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 404
+ []\EU1/CharisSIL(0)/m/n/10 318
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 405
+ []\EU1/CharisSIL(0)/m/n/10 319
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 406
+ []\EU1/CharisSIL(0)/m/n/10 319
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 408
+ []\EU1/CharisSIL(0)/m/n/10 321
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 411
+ []\EU1/CharisSIL(0)/m/n/10 322
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 412
+ []\EU1/CharisSIL(0)/m/n/10 322
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 413
+ []\EU1/CharisSIL(0)/m/n/10 322
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 424
+ []\EU1/CharisSIL(0)/m/n/10 325
+ []
+
+[9]
+Overfull \hbox (1.24277pt too wide) detected at line 425
+ []\EU1/CharisSIL(0)/m/n/10 326
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 426
+ []\EU1/CharisSIL(0)/m/n/10 326
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 427
+ []\EU1/CharisSIL(0)/m/n/10 327
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 428
+ []\EU1/CharisSIL(0)/m/n/10 327
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 429
+ []\EU1/CharisSIL(0)/m/n/10 327
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 430
+ []\EU1/CharisSIL(0)/m/n/10 329
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 431
+ []\EU1/CharisSIL(0)/m/n/10 329
+ []
+
+
+Overfull \hbox (1.24277pt too wide) detected at line 432
+ []\EU1/CharisSIL(0)/m/n/10 329
+ []
+
+)
+\tf@toc=\write8
+\openout8 = `notes-all.toc'.
+
+ [10]
+\openout2 = `preface.aux'.
+
+ (./preface.tex
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 18.54814pt on input line 1.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 18.32535pt on input line 1.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 12.72348pt on input line 31.
+[11
+
+
+
+
+]
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/it' will be
+(Font)              scaled to size 8.72223pt on input line 98.
+) [12] (./1.tex
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
+\openout5 = `notes-all.pyg'.
+
+LaTeX Font Info:    Font shape `EU1/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 7.88116pt on input line 5.
+runsystem(pygmentize -l haskell -f latex -F tokenmerge       -P "verboptions=" 
+-o notes-all.out.pyg notes-all.pyg)...executed.
+
+(./notes-all.out.pyg
+LaTeX Font Info:    Font shape `EU1/DejaVuSansMono(0)/bx/n' will be
+(Font)              scaled to size 7.88116pt on input line 2.
+)
+runsystem(rm notes-all.pyg)...executed.
+
+\openout5 = `notes-all.pyg'.
+
+runsystem(pygmentize -l haskell -f latex -F tokenmerge       -P "verboptions=" 
+-o notes-all.out.pyg notes-all.pyg)...executed.
+
+ (./notes-all.out.pyg)
+runsystem(rm notes-all.pyg)...executed.
+
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/it' will be
+(Font)              scaled to size 8.62pt on input line 63.
+ [13
+
+
+
+
+] [14] [15] [16]
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 7.15454pt on input line 468.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 5.3659pt on input line 468.
+ [17] [18]
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/m/n' will be
+(Font)              scaled to size 10.73181pt on input line 636.
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 10.6029pt on input line 636.
+
+[19] [20] [21] [22]) (./2.tex [23]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
+[24
+
+] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+Underfull \hbox (badness 1137) in paragraph at lines 1100--1106
+[]\EU1/CharisSIL(0)/m/n/10 Для поиска в стандартных биб
+лиотеках есть замечательный интернет-серв�
+�с Hoogle ([][]$[][][][] [] [] [] [][][] []
+ []
+
+[37]) (./3.tex [38]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 3.
+[39
+
+] [40]
+File: ../pic/3/graph.ps Graphic file (type eps)
+ <../pic/3/graph.ps>
+File: ../pic/3/tree1.ps Graphic file (type eps)
+ <../pic/3/tree1.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41]
+File: ../pic/3/tree2.ps Graphic file (type eps)
+ <../pic/3/tree2.ps>
+File: ../pic/3/tree3.ps Graphic file (type eps)
+ <../pic/3/tree3.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[42]
+File: ../pic/3/tree4.ps Graphic file (type eps)
+ <../pic/3/tree4.ps> [43]
+File: ../pic/3/tree5.ps Graphic file (type eps)
+ <../pic/3/tree5.ps> [44] [45] [46] [47] [48]
+[49] [50] [51] [52] [53] [54] [55]
+File: ../pic/3/vis1.ps Graphic file (type eps)
+ <../pic/3/vis1.ps> [56]
+File: ../pic/3/vis2.ps Graphic file (type eps)
+ <../pic/3/vis2.ps>
+File: ../pic/3/vis3.ps Graphic file (type eps)
+
+<../pic/3/vis3.ps>
+File: ../pic/3/vis4.ps Graphic file (type eps)
+ <../pic/3/vis4.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./4.tex [57] [58]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 4.
+
+Underfull \hbox (badness 2197) in paragraph at lines 74--77
+[]\EU1/CharisSIL(0)/m/n/10 За определением функции сле�
+�ует специальное слово \EU1/DejaVuSansMono(0)/m/n/10 where\E
+U1/CharisSIL(0)/m/n/10 , которое вводит локальные име�
+�а-
+ []
+
+[59
+
+] [60]
+Underfull \hbox (badness 2512) in paragraph at lines 252--254
+[]\EU1/CharisSIL(0)/m/n/10 Оказывается декомпозицию мо
+жно проводить в любом выражении, для этого �
+�уществуют []\EU1/DejaVuSansMono(0)/m/n/10 case\EU1/CharisSIL(0)/m/n/1
+0 -
+ []
+
+[61] [62] [63] [64] [65] [66] [67] [68]
+Overfull \hbox (36.00697pt too wide) in paragraph at lines 1012--1012
+ []$[]$ 
+ []
+
+[69] [70]) (./5.tex [71]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 5.
+[72
+
+] [73] [74]
+Underfull \hbox (badness 4518) in paragraph at lines 303--306
+[]\EU1/CharisSIL(0)/m/n/10 Мы импортировали в интерпре�
+�атор модуль \EU1/DejaVuSansMono(0)/m/n/10 Data.List \EU1/CharisSIL(0
+)/m/n/10 для функции \EU1/DejaVuSansMono(0)/m/n/10 sortBy \EU1/Charis
+SIL(0)/m/n/10 а также модуль
+ []
+
+[75] [76] [77] [78] [79] [80] [81] [82] [83] [84]
+Underfull \hbox (badness 1264) in paragraph at lines 1158--1163
+[]\EU1/CharisSIL(0)/m/n/10 Она принимает ленту входящи�
+� значений и возвращает ленту выходов. Опре�
+�елите для этого
+ []
+
+
+Underfull \hbox (badness 1448) in paragraph at lines 1158--1163
+\EU1/CharisSIL(0)/m/n/10 типа несоколько основных фун�
+�ций высшего порядка. Чтобы не возникало ко�
+�фликта имён с
+ []
+
+) (./6.tex [85]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 6.
+File: ../pic/6/fun1.ps Graphic file (type eps)
+<../pic/6/fun1.ps> [86
+
+] [87]
+File: ../pic/6/maybe0.ps Graphic file (type eps)
+ <../pic/6/maybe0.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[88]
+File: ../pic/6/maybe1.ps Graphic file (type eps)
+ <../pic/6/maybe1.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[89] [90]
+File: ../pic/6/list0.ps Graphic file (type eps)
+ <../pic/6/list0.ps>
+File: ../pic/6/list1.ps Graphic file (type eps)
+ <../pic/6/list1.ps> [91] [92] [93] [94] [95]
+[96] [97] [98] [99]
+File: ../pic/6/state0.ps Graphic file (type eps)
+ <../pic/6/state0.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[100]
+File: ../pic/6/state1.ps Graphic file (type eps)
+ <../pic/6/state1.ps> [101]
+File: ../pic/6/reader0.ps Graphic file (type eps)
+ <../pic/6/reader0.ps>
+File: ../pic/6/reader1.ps Graphic file (type eps)
+ <../pic/6/reader1.ps>
+File: ../pic/6/writer0.ps Graphic file (type eps)
+
+<../pic/6/writer0.ps> [102]
+File: ../pic/6/writer1.ps Graphic file (type eps)
+ <../pic/6/writer1.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[103]) (./7.tex [104]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 7.
+[105
+
+]
+Underfull \hbox (badness 7740) in paragraph at lines 128--134
+[]\EU1/CharisSIL(0)/m/n/10 Нам встретилась новая запис�
+� в экспорте модуля. Для удобства мы экспорт
+ируем модули
+ []
+
+[106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117]
+[118] [119] [120] [121] [122] [123] [124] [125]) (./8.tex [126]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 8.
+[127
+
+]
+File: ../pic/8/io.ps Graphic file (type eps)
+ <../pic/8/io.ps> [128] [129] [130] [131] [132] [133] [134]
+Underfull \hbox (badness 2158) in paragraph at lines 703--709
+[]\EU1/CharisSIL(0)/m/n/10 Функция \EU1/DejaVuSansMono(0)/m/n/10 getStdG
+en \EU1/CharisSIL(0)/m/n/10 запрашивает глобальный для 
+системы генератор случайных чисел. Функция
+
+ []
+
+[135] [136] [137] [138] [139]
+Underfull \hbox (badness 1147) in paragraph at lines 1111--1114
+[]\EU1/CharisSIL(0)/m/n/10 Раз уж речь зашла о “грязных
+” возможностях языка стоит упомянуть функ�
+�ию \EU1/DejaVuSansMono(0)/m/n/10 trace \EU1/CharisSIL(0)/m/n/10 из мод�
+�ля
+ []
+
+[140] [141] [142]) (./9.tex [143]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 9.
+[144
+
+] [145] [146] [147] [148] [149] [150] [151] [152] [153] [154] [155])
+(./10.tex [156]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 10.
+(../pic/tikz/ghc.tex) [157
+
+]
+
+LaTeX Warning: Reference `fig:SyntaxSTG' on page 158 undefined on input line 12
+7.
+
+[158] (../pic/tikz/stg1.tex
+Overfull \hbox (9.50938pt too wide) detected at line 51
+[]
+ []
+
+) [159] [160] [161] (../pic/tikz/stg2.tex) (../pic/tikz/stg-rules-let.tex)
+(../pic/tikz/stg-rules-case.tex) (../pic/tikz/stg-rules-thunk.tex) [162]
+(../pic/tikz/stg-rules-apply.tex) (../pic/tikz/stg-rules-push-enter.tex)
+[163] (../pic/tikz/stg-rules-eval-apply.tex) [164] [165] [166] [167] [168]
+[169] [170]
+File: ../pic/10/leak.ps Graphic file (type eps)
+ <../pic/10/leak.ps>
+File: ../pic/10/leak_1.ps Graphic file (type eps)
+ <../pic/10/leak_1.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[171]
+File: ../pic/10/leak_2.ps Graphic file (type eps)
+ <../pic/10/leak_2.ps> [172]
+File: ../pic/10/leak2.ps Graphic file (type eps)
+ <../pic/10/leak2.ps> [173]
+File: ../pic/10/leak3.ps Graphic file (type eps)
+
+<../pic/10/leak3.ps> [174] [175]
+Overfull \hbox (5.74982pt too wide) in paragraph at lines 1318--1324
+[]\EU1/CharisSIL(0)/m/n/10 Задать порог величины функц�
+�и для встраивания можно с помощью флага \EU1/
+DejaVuSansMono(0)/m/n/10 -funfolding-use-threshold=16\EU1/CharisSIL(0)/m/n/10 .
+
+ []
+
+[176] [177] [178] [179] [180] [181]) (./11.tex [182]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 11.
+[183
+
+] [184] [185] [186] [187] [188]
+Underfull \hbox (badness 1515) in paragraph at lines 532--535
+[]\EU1/CharisSIL(0)/m/n/10 Для представления двумерног
+о массива мы воспользуемся типом \EU1/DejaVuSansMon
+o(0)/m/n/10 Array \EU1/CharisSIL(0)/m/n/10 из стандартного мод
+уля
+ []
+
+[189] [190] [191] [192] [193]) (./12.tex [194]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 12.
+\openout5 = `notes-all.pyg'.
+
+runsystem(pygmentize -l haskell -f latex -F tokenmerge       -P "verboptions=" 
+-o notes-all.out.pyg notes-all.pyg)...executed.
+
+(./notes-all.out.pyg)
+runsystem(rm notes-all.pyg)...executed.
+
+ [195
+
+] [196] [197]
+Underfull \hbox (badness 1997) in paragraph at lines 289--291
+[]\EU1/CharisSIL(0)/m/n/10 Перенесём два последних арг�
+�мента определения \EU1/DejaVuSansMono(0)/m/n/10 foldl \EU1/Cha
+risSIL(0)/m/n/10 в правую часть, воспользуемся лям�
+�да-
+ []
+
+[198] [199] [200] [201] [202]) (./13.tex [203]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 13.
+File: ../pic/13/15.ps Graphic file (type eps)
+<../pic/13/15.ps> [204
+
+] [205]
+
+LaTeX Warning: Reference `fig:taskTree' on page 206 undefined on input line 196
+.
+
+File: ../pic/13/tree.ps Graphic file (type eps)
+<../pic/13/tree.ps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[206] [207] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217]
+[218]) (./14.tex [219]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 14.
+[220
+
+]
+Overfull \hbox (36.00697pt too wide) in paragraph at lines 150--150
+ []$[]$ 
+ []
+
+[221] [222] [223] [224] [225] [226] [227] [228] [229]) (./15.tex [230]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 15.
+(../pic/tikz/arrow.tex) (../pic/tikz/composition.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 44
+.
+
+LaTeX Font Info:    Font shape `EU1/CharisSIL(0)/bx/n' will be
+(Font)              scaled to size 7.0686pt on input line 44.
+LaTeX Font Info:    Font shape `EU1/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 6.30493pt on input line 44.
+LaTeX Font Info:    Font shape `EU1/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 4.7287pt on input line 44.
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 44.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 51
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 51.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 51
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 51.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 51
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 51.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 51
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 51.
+
+[231
+
+]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 81
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 81.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 82
+.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 82.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 11
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 111.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 12
+5.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 125.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 12
+7.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 127.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 12
+9.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 129.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 13
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 131.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 13
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 131.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 13
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 131.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 13
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 131.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 16
+2.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 162.
+
+
+[232] [233]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 271.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 271.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 271.
+
+
+(../pic/tikz/functor.tex) [234]
+\openout5 = `notes-all.pyg'.
+
+runsystem(pygmentize -l haskell -f latex -F tokenmerge       -P "verboptions=" 
+-o notes-all.out.pyg notes-all.pyg)...executed.
+
+ (./notes-all.out.pyg)
+runsystem(rm notes-all.pyg)...executed.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 43
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 430.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 43
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 430.
+
+
+(../pic/tikz/natural.tex) [235]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 47
+8.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 478.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 48
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 480.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 48
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 480.
+
+
+(../pic/tikz/monad1.tex) (../pic/tikz/monad2.tex) [236]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 53
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 531.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 53
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 531.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 56
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 560.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 56
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 560.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 58
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 580.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 58
+2.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 582.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 58
+2.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 582.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 59
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 591.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 59
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 593.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 59
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 593.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 60
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 604.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 60
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 604.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 60
+8.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 608.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 60
+8.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 608.
+
+
+[237] (../pic/tikz/init1.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 67
+0.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 670.
+
+
+(../pic/tikz/init2.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 69
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 693.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 69
+5.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 695.
+
+
+[238] (../pic/tikz/final1.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 72
+6.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 726.
+
+
+(../pic/tikz/final2.tex) [239]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 78
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 784.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 78
+6.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 786.
+
+
+(../pic/tikz/sum1.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 80
+2.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 802.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 80
+2.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 802.
+
+
+(../pic/tikz/sum2.tex) [240] (../pic/tikz/sum3.tex) (../pic/tikz/prod1.tex)
+(../pic/tikz/prod2.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 92
+1.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 921.
+
+
+[241]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 92
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 923.
+
+
+(../pic/tikz/exponent1.tex) (../pic/tikz/exponent2.tex) [242]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 10
+39.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1039
+.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 10
+39.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1039
+.
+
+) (./16.tex [243]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 16.
+[244
+
+] [245] (../pic/tikz/fold.tex) (../pic/tikz/unfold.tex) [246] [247]
+(../pic/tikz/alg1.tex)
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 40
+7.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 407.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 40
+7.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 407.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 42
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 424.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 42
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 424.
+
+
+(../pic/tikz/alg2.tex) [248]
+Missing character: There is no Т in font cmmi10!
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 45
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 453.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 45
+3.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 453.
+
+
+(../pic/tikz/alg3.tex) [249] [250] [251] [252] [253] [254]) (./17.tex [255]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 17.
+[256
+
+]
+\openout5 = `notes-all.pyg'.
+
+runsystem(pygmentize -l haskell -f latex -F tokenmerge       -P "verboptions=" 
+-o notes-all.out.pyg notes-all.pyg)...executed.
+
+ (./notes-all.out.pyg)
+runsystem(rm notes-all.pyg)...executed.
+
+ [257] [258] [259] [260] [261] [262] [263] [264]
+[265]
+Underfull \hbox (badness 3449) in paragraph at lines 850--855
+[]\EU1/CharisSIL(0)/m/n/10 Скоро в ghc появится поддержк�
+� чисел на уровне типов. Это будет специальн
+ое расширение
+ []
+
+[266] [267] [268] [269]) (./18.tex [270]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 18.
+[271
+
+]
+Underfull \hbox (badness 3746) in paragraph at lines 126--136
+[]\EU1/CharisSIL(0)/m/n/10 После описания пакета, идёт �
+�лово \EU1/DejaVuSansMono(0)/m/n/10 Library\EU1/CharisSIL(0)/m/n/10 , ве�
+�ь мы создаём библиотеку. Далее в атрибуте
+ []
+
+[272] [273]
+Overfull \hbox (20.8235pt too wide) in paragraph at lines 319--319
+[]\EU1/DejaVuSansMono(0)/m/n/10 [1 of 4] Compiling Utility.World    ( src/Utili
+ty/World.hs, dist/build/hello/hello-tmp/Utility/World.o )[] 
+ []
+
+
+Overfull \hbox (20.8235pt too wide) in paragraph at lines 320--320
+[]\EU1/DejaVuSansMono(0)/m/n/10 [2 of 4] Compiling Utility.Hello    ( src/Utili
+ty/Hello.hs, dist/build/hello/hello-tmp/Utility/Hello.o )[] 
+ []
+
+[274] [275] [276] [277] [278] [279]) (./19.tex [280]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 19.
+File: ../pic/19/metro.ps Graphic file (type eps)
+<../pic/19/metro.ps> [281
+
+] [282] [283] [284] [285]
+Underfull \hbox (badness 7012) in paragraph at lines 417--421
+[]\EU1/CharisSIL(0)/m/n/10 Эти функции очень простые, о�
+�и специализируют более общие функции для т
+ипов \EU1/DejaVuSansMono(0)/m/n/10 Set \EU1/CharisSIL(0)/m/n/10 и
+ []
+
+
+Underfull \hbox (badness 2035) in paragraph at lines 417--421
+\EU1/DejaVuSansMono(0)/m/n/10 PQueue\EU1/CharisSIL(0)/m/n/10 , вы навер�
+�яка легко разберётесь с ними, заглянув в до
+кументацию к модулям \EU1/DejaVuSansMono(0)/m/n/10 Data.Set \
+EU1/CharisSIL(0)/m/n/10 и
+ []
+
+[286] [287] [288] [289] [290] [291] [292] [293]) (./20.tex [294]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 20.
+[295
+
+] [296] [297] [298]
+File: ../pic/20/Static.ps Graphic file (type eps)
+ <../pic/20/Static.ps> [299] [300]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [301]
+[302] [303]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [304]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [305]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [306]
+[307] [308] [309] [310] [311]) (./21.tex [312]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 21.
+File: ../pic/21/notes.jpg Graphic file (type QTm)
+<use  "../pic/21/notes.jpg" > [313
+
+] [314] [315] [316] [317] [318] [319]
+[320] [321] [322] [323] [324]) [325] (./appendix.tex [326
+
+
+
+] [327] [328] [329]
+[330] [331] [332] [333] [334])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+ [335]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+ (./notes-all.aux (./preface.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 106.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 106.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 34730 strings out of 494142
+ 701611 string characters out of 3152841
+ 805118 words of memory out of 3000000
+ 37092 multiletter control sequences out of 15000+200000
+ 11293 words of font info for 110 fonts, out of 3000000 for 9000
+ 1018 hyphenation exceptions out of 8191
+ 60i,15n,73p,620b,888s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on notes-all.pdf (335 pages).

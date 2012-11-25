@@ -1,0 +1,18 @@
+<#define tex|<#ifdef TEX>#1<#endif>>
+
+<#define html|<#ifdef HTML>#1<#endif>>
+
+<#define DtexFile|tex/#1.tex>
+<#define texFile|<#tex <#include tex/#1.tex>>>
+
+<#ifdef TEX>
+    <#include tex.gpp>
+<#else>
+    <#include html.gpp>
+<#endif>
+
+<#define refFig |<#tex \ (\RefFig{#1})>>
+
+
+<#define htmlPic |<#html ![#1](../pic/<#currentChapter>/#2.png)>>
+

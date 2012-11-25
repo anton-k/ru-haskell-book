@@ -1,0 +1,5 @@
+#!/bin/bash
+# set -e
+./gpp-html $1 res.txt
+pandoc --toc -sS --chapters --latexmathml -o res.html res.txt
+firefox res.html&
