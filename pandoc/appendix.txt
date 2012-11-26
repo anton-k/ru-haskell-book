@@ -1,19 +1,4 @@
 
-<#define appChapter|
-<#tex \addchapter{#1}>
-<#html # #1>
->
-
-<#define appSection|
-<#tex \newpage \addsection{#1}>
-<#html ## #1>
->
-
-<#define appSubsection|
-<#tex \addsubsection{#1}>
-<#html ### #1>
->
-
 
 <#appChapter Приложения>
 

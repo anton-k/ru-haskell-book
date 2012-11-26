@@ -16,3 +16,23 @@
 
 <#define htmlPic |<#html ![#1](../pic/<#currentChapter>/#2.png)>>
 
+<#define appChapter|
+<#tex \addchapter{#1}>
+<#html # #1>
+>
+
+<#define appSection|
+<#tex \newpage \addsection{#1}>
+<#html ## #1>
+>
+
+<#define appSubsection|
+<#tex \addsubsection{#1}>
+<#html ### #1>
+>
+
+<#define appSectionNoNewPage|
+<#tex \addsection{#1}>
+<#html ## #1>
+>
+
