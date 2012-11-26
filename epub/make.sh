@@ -1,36 +1,36 @@
 #!/bin/bash
 # set -e # abort script when a command exits with non-zero status
-
-pandoc -S --toc \
+dir=target
+pandoc -sS --toc \
     --epub-stylesheet=epub-style.css \
     --epub-embed-font=liberation_serif/LiberationSerif-Italic.ttf \
     --epub-embed-font=liberation_serif/LiberationSerif-Regular.ttf \
     --epub-embed-font=liberation_serif/LiberationSerif-BoldItalic.ttf \
     --epub-embed-font=liberation_serif/LiberationSerif-Bold.ttf \
     --epub-metadata=metadata.xml \
-    -o ru-haskell-book.epub \
+    -o ../target/epub/ru-haskell-book.epub \
         title.txt \
-        ../pandoc/preface.txt \
-        ../pandoc/1.txt \
-        ../pandoc/2.txt \
-        ../pandoc/3.txt \
-        ../pandoc/4.txt \
-        ../pandoc/5.txt \
-        ../pandoc/6.txt \
-        ../pandoc/7.txt \
-        ../pandoc/8.txt \
-        ../pandoc/9.txt \
-        ../pandoc/10.txt \
-        ../pandoc/11.txt \
-        ../pandoc/12.txt \
-        ../pandoc/13.txt \
-        ../pandoc/14.txt \
-        ../pandoc/15.txt \
-        ../pandoc/16.txt \
-        ../pandoc/17.txt \
-        ../pandoc/18.txt \
-        ../pandoc/19.txt \
-        ../pandoc/20.txt \
-        ../pandoc/21.txt \
-        ../pandoc/appendix.txt
+        ../$dir/preface.txt \
+        ../$dir/1.txt \
+        ../$dir/2.txt \
+        ../$dir/3.txt \
+        ../$dir/4.txt \
+        ../$dir/5.txt \
+        ../$dir/6.txt \
+        ../$dir/7.txt \
+        ../$dir/8.txt \
+        ../$dir/9.txt \
+        ../$dir/10.txt \
+        ../$dir/11.txt \
+        ../$dir/12.txt \
+        ../$dir/13.txt \
+        ../$dir/14.txt \
+        ../$dir/15.txt \
+        ../$dir/16.txt \
+        ../$dir/17.txt \
+        ../$dir/18.txt \
+        ../$dir/19.txt \
+        ../$dir/20.txt \
+        ../$dir/21.txt \
+        ../$dir/appendix.txt
 
