@@ -2,6 +2,25 @@ em {
     color: #2149B1;    
 }
 
+hr {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.figure p.caption {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+
 body {
     margin-left: 20%;
     margin-right: 20%;
@@ -65,7 +84,7 @@ pre {
 #home {
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    width: 20%;
 }
 
 #home:hover {

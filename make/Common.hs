@@ -41,7 +41,7 @@ isHtml = hasExt "html"
 lsBy pred dir = filter pred <$> ls dir
 
 remake dir =  rm_rf dir >> mkdir dir
-copyFromTo from to = ls from >>= mapM_ (flip cp to)
+copyFromTo from to = ls from >>= mapM_ (flip cp_r to)
 
 -- pandoc to pandoc
 

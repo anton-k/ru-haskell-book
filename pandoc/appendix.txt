@@ -258,7 +258,7 @@ Haskell Platform содержит стабильную версию компил
 
     > <www.home.cs.utwente.nl/~fokkinga/mmf92b.pdf>
 
-Также где-то в сети есть и перевод на русский.
+    Также где-то в сети есть и перевод на русский.
 
 *   Steve Awodey. Category Theory.
 

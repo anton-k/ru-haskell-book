@@ -95,11 +95,14 @@ highlightInline ToLatex =
     \str -> if (isSpecial str) 
             then handleSpecialChars str
             else inTexCmd "In" str
-    where isSpecial str = '\\' `elem` str || '\"' `elem` str
-          handleSpecialChars = phi (phi (inTexCmd "In") "\\") "\""
+    where isSpecial = any (`elem` specChars)
+          handleSpecialChars = phis $ map return specChars
             where phi cont delim a = render $ hcat $ punctuate (text $ escape delim) 
                                 $ map (text . cont) $ splitOn delim a
                   escape a = "\\verb!" ++ a ++ "!"
+                  phis = foldl phi (inTexCmd "In")
+
+          specChars = "\\\"{}#" 
 
 highlightCode :: Target -> String -> String
 highlightCode ToHtml x 
