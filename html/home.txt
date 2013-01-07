@@ -39,3 +39,7 @@ Haskell был основан на исходе восьмидесятых, ка
 
 * [О книге](about.html)
 
+* [pdf](../files/ru-haskell-book.pdf) и [epub](../files/ru-haskell-book.epub)
+
+* [Исходный код примеров](../files/ru-haskell-book-code.zip) 
+
