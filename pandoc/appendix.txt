@@ -7,7 +7,7 @@
 #### Компилятор
 
 Для программирования в Haskell нам понадобится компилятор.
-Мы будем пользоваться наиболее развитым компилятором~-- GHC. 
+Мы будем пользоваться наиболее развитым компилятором -- GHC. 
 Лучше всего устанавливать его вместе с Haskell Platform:
 
 > <http://hackage.haskell.org/platform/>
@@ -299,7 +299,7 @@ Haskell Platform содержит стабильную версию компил
 *   Don Stewart. Multi-paradigm Just-In-Time Compilation. BS Thesis, 2002.
 
     Автор пробует компилировать Haskell-код в Java-код. При этом
-    очень доступно объясняеются внутренности STG. 
+    очень доступно объясняются внутренности STG. 
 
 *   Simon Marlow, Simon Peyton Jones. The Glasgow Haskell Compiler. 
     The Architecture of Open Source Application, Volume 2, 2012.
