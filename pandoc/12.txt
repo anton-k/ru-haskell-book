@@ -49,7 +49,7 @@ foldBool true false = \b -> case b of
 
 ~~~
 not :: Bool -> Bool
-not = foldNat False True
+not = foldBool False True
 ~~~
 
 Мы поменяли конструкторы местами, если на вход поступит
@@ -59,8 +59,8 @@ not = foldNat False True
 ~~~
 (||), (&&) :: Bool -> Bool -> Bool
 
-(||) = foldNat  (const True)  id
-(&&) = foldNat  id            (const False)
+(||) = foldBool  (const True)  id
+(&&) = foldBool  id            (const False)
 ~~~
 
 Определение функций "и" и "или" через свёртки
