@@ -6,7 +6,8 @@ module Template(
 where
 
 import Control.Monad.Trans.Writer
-import Text.Pandoc
+import Text.Pandoc hiding (Writer) 
+import Data.Default
 
 import Inits
 
@@ -89,10 +90,10 @@ parseToc = tail .  -- first link is a link to logo
 
 
 parse :: String -> Pandoc
-parse = readMarkdown defaultParserState 
+parse = readMarkdown def
 
 write :: Pandoc -> String
-write = writeMarkdown defaultWriterOptions
+write = writeMarkdown def
 
 -- templates (bydlokod, oh my)
 

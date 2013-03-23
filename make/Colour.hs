@@ -13,7 +13,7 @@ import Language.Haskell.HsColour.Colourise
 import Text.Pandoc(
         bottomUp, Pandoc(..), Block(..), Inline(..), 
         Format, nullAttr,
-        readHtml, defaultParserState)
+        readHtml)
 
 import Text.PrettyPrint(render, text, punctuate, hcat)
 import Data.List.Split(splitOn)

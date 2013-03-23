@@ -54,8 +54,8 @@ inFile with from to =
     =<< StrictIO.readFile from
 
 
-parserState = defaultParserState { stateSmart = True } 
-writerState = defaultWriterOptions { writerColumns = 121 }
+parserState = def { readerSmart = True } 
+writerState = def { writerColumns = 121 }
 
 
 
