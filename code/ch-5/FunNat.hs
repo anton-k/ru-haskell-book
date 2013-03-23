@@ -1,15 +1,5 @@
 module FunNat where
 
-import Prelude(Show(..), Eq(..), Ord(..), Num(..), error)
-import Data.Function(id, const, (.), ($), flip, on)
-import Prelude(map, foldr, filter, zipWith)
-
-instance Show (t -> a) where
-    show _ = error "Sorry, no show. It's just for Num"
-
-instance Eq a => Eq (t -> a) where
-    (==) _ _ = error "Sorry, no Eq. It's just for Num"
-
 instance Num a => Num (t -> a) where
     (+) = fun2 (+)
     (*) = fun2 (*)
