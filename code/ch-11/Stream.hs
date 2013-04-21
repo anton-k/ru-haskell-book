@@ -3,6 +3,7 @@ module Stream where
 import Control.Applicative((<$>))
 import Data.List(foldl')
 
+time :: (Enum a, Fractional a) => [a]
 time = [0, dt .. ]
 
 dt :: Fractional a => a

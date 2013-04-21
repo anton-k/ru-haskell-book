@@ -413,7 +413,7 @@ $f = 0$. Переведём на Haskell:
 
 
 ~~~
-class Fractional a => Fractional (Ps a) where
+instance (Eq a, Fractional a) => Fractional (Ps a) where
     (0 :+: fs) / (0 :+: gs) = fs / gs
     (f :+: fs) / (g :+: gs) = q :+: ((fs - q .* gs)/(g :+: gs))
         where q = f/g
@@ -663,12 +663,14 @@ import Data.Array
 type Coord = (Int, Int)
 type HeightMap = Array Coord Int
 type SinkMap   = Array Coord Coord
+type LabelMap  = Array Coord Char
 ~~~
 
 Значение типа `HeightMap` хранит карту высот, 
 значение типа `SinkMap` хранит в каждой координате,
 ту точку, которая является водостоком для данной точки.
-Нам необходимо построить функцию:
+Тип `LabelMap` обозначает итоговую разметку водостоков.
+Начнём с функции:
 
 ~~~
 flow :: HeightMap -> SinkMap
@@ -887,7 +889,7 @@ int x0 (f:fs) = x0 : int (x0 + dt * f) fs
 Определим две вспомогательные функции:
 
 ~~~
-time :: Fractional a => [a]
+time :: (Enum a, Fractional a) => [a]
 time = [0, dt ..]
 
 dist :: Fractional a => Int -> [a] -> [a] -> a

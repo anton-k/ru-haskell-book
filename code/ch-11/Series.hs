@@ -45,7 +45,7 @@ k .* (f :+: fs) = (k * f) :+: (k .* fs)
 
 -- Деление 
 
-instance Fractional a => Fractional (Ps a) where
+instance (Eq a, Fractional a) => Fractional (Ps a) where
     (0 :+: fs) / (0 :+: gs) = fs / gs
     (f :+: fs) / (g :+: gs) = q :+: ((fs - q .* gs)/(g :+: gs))
         where q = f/g
@@ -64,7 +64,7 @@ int fs = 0 :+: (int' 1 fs)
 
 -- Элементарные функции
 
-expx, sinx, cosx, tanx :: Fractional a => Ps a
+expx, sinx, cosx, tanx :: (Eq a, Fractional a) => Ps a
 
 expx = 1 + int expx
 
