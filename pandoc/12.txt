@@ -538,7 +538,7 @@ unfoldr f = \b -> case (f b) of
 
 ~~~
 unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
-unfoldr f = maybe [] (\(a, b) -> a : unfoldr f b)
+unfoldr f = maybe [] (\(a, b) -> a : unfoldr f b) . f
 ~~~
 
 Смотрите, перед нами коробочка (типа `b`) с подарком (типа `a`), 
@@ -617,7 +617,7 @@ zip = curry $ unfoldStream $ \(a :& as, b :& bs) -> ((a, b), (as, bs))
 
 ~~~
 unfoldNat :: (a -> Maybe a) -> a -> Nat
-unfoldNat f = maybe Zero (Succ . unfoldNat f)
+unfoldNat f = maybe Zero (Succ . unfoldNat f) . f
 ~~~
 
 Напишем функцию преобразования из целых чисел в натуральные:
