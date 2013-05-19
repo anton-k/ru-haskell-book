@@ -1033,7 +1033,7 @@ randomElem xs = (xs !! ) <$> randomRIO (0, length xs - 1)
 
 ~~~
 nextMoves g = filter (within . moveEmptyTo . orient) allMoves
-    where moveEmptyTo v = shift v (emtyField g)
+    where moveEmptyTo v = shift v (emptyField g)
           allMoves = [Up, Down, Left, Right]
 ~~~
 
