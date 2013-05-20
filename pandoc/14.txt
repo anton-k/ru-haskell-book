@@ -571,7 +571,7 @@ $s$. Например так выглядит число два:
 $$Succ\ (Succ\ Zero) \RA (\lambda nsz \D s(nsz)) (Succ\ Zero) 
     \RA \lambda sz \D s((Succ\ Zero) sz) \RA$$
 
-$$\lambda sz \D s((\lambda nsz \D s(nsz))\ Zero)sz \RA
+$$\lambda sz \D s((\lambda nsz \D s(nsz))\ Zero sz) \RA
    \lambda sz \D s (s(Zero\ s\ z)) \RA \lambda sz \D s(sz)$$
 
 И мы получили два вхождения первого аргумента в теле функции.
