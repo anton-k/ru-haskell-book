@@ -116,7 +116,7 @@ $f \Co id_A$           $=$          $f$
 <#tex
 \begin{eqnarray*}
 id_A \Co f &=& f \\
-f \Co id_A &=& f \\
+f \Co id_B &=& f \\
 \end{eqnarray*}
 >
 
