@@ -571,8 +571,11 @@ $s$. Например так выглядит число два:
 $$Succ\ (Succ\ Zero) \RA (\lambda nsz \D s(nsz)) (Succ\ Zero) 
     \RA \lambda sz \D s((Succ\ Zero) sz) \RA$$
 
-$$\lambda sz \D s((\lambda nsz \D s(nsz))\ Zero)sz \RA
-   \lambda sz \D s (s(Zero\ s\ z)) \RA \lambda sz \D s(sz)$$
+$$\lambda sz \D s(((\lambda ns'z' \D s'(ns'z'))\ Zero)sz) \RA
+   \lambda sz \D s((\lambda s'z' \D s'(Zero\ s'z'))\ sz) \RA$$
+
+$$\lambda sz \D s((\lambda s'z' \D s'z')\ sz) \RA
+   \lambda sz \D s(sz)$$
 
 И мы получили два вхождения первого аргумента в теле функции.
 Определим сложение и умножение. Сложение принимает две функции
