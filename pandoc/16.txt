@@ -102,6 +102,7 @@ newtype Fix f = Fix { unFix :: f (Fix f) }
 
 ~~~
 data N a = Zero | Succ a
+    deriving (Show, Eq)
 
 type Nat = Fix N
 ~~~
@@ -145,7 +146,7 @@ instance Eq (f (Fix f)) => Eq (Fix f) where
 
 ~~~
 data L a b = Nil | Cons a b
-    deriving (Show)
+    deriving (Show, Eq)
 
 type List a = Fix (L a)
 
