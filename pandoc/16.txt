@@ -359,6 +359,11 @@ takeL :: Int -> List a -> List a
 takeL = curry $ unfold $ \(n, xs) -> 
     if n == 0 then Nil
               else Cons (headL xs) (n-1, tailL xs)
+              
+appendL :: List a -> List a -> List a
+appendL a b = fold (\x -> case x of
+                        Nil -> b
+                        Cons x' y' -> x' `cons` y') a              
 ~~~
 
 Сравните эти функции с теми, что мы определяли в главе 
@@ -371,7 +376,7 @@ Ok, modules loaded: Fix.
 *Fix> takeL 3 $ iterateL (+1) zero
 (Cons (Zero) (Cons (Succ (Zero)) (Cons (Succ (Succ (Zero))) (Nil))))
 *Fix> let x = 1 `cons` 2 `cons` 3 `cons` nil
-*Fix> mapL (+10) $ x `concatL` x
+*Fix> mapL (+10) $ x `appendL` x
 (Cons 11 (Cons 12 (Cons 13 (Cons 11 (Cons 12 (Cons 13 (Nil)))))))
 ~~~
 
