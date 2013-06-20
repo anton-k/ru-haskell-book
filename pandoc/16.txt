@@ -359,6 +359,9 @@ takeL :: Int -> List a -> List a
 takeL = curry $ unfold $ \(n, xs) -> 
     if n == 0 then Nil
               else Cons (headL xs) (n-1, tailL xs)
+              
+iterateL :: (a -> a) -> a -> List a
+iterateL f  = unfold  $ \a -> Cons a $ f a              
 ~~~
 
 Сравните эти функции с теми, что мы определяли в главе 
