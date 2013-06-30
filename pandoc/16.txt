@@ -364,6 +364,9 @@ appendL :: List a -> List a -> List a
 appendL a b = fold (\x -> case x of
                         Nil -> b
                         Cons x' y' -> x' `cons` y') a              
+
+iterateL :: (a -> a) -> a -> List a
+iterateL f  = unfold  $ \a -> Cons a $ f a              
 ~~~
 
 Сравните эти функции с теми, что мы определяли в главе 
