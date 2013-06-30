@@ -741,7 +741,7 @@ fix = foldr ($) undefined . repeat
 
 ~~~
 Prelude> let fix = foldr ($) undefined . repeat
-Prelude> take 3 $ y (1:)
+Prelude> take 3 $ fix (1:)
 [1,1,1]
 Prelude> fix (\f n -> if n==0 then 0 else n + f (n-1)) 10
 55
@@ -751,6 +751,12 @@ Prelude> fix (\f n -> if n==0 then 0 else n + f (n-1)) 10
 `cata` и `ana`:
 
 ~~~
+cata :: Functor f => (f a -> a) -> Fix f -> a
+cata = fold
+
+ana :: Functor f => (a -> f a) -> a -> Fix f
+ana = unfold
+
 fix :: (a -> a) -> a
 fix = cata (\(Cons f a) -> f a) . ana (\a -> Cons a a)
 ~~~
