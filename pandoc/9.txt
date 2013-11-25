@@ -230,7 +230,7 @@ isZero (add Zero two)
 от одного до четырёх с помощью такой функции:
 
 ~~~
-sum :: Int -> [Int] -> Int
+sum :: [Int] -> Int -> Int
 sum []      res = res
 sum (x:xs)  res = sum xs (res + x)
 ~~~
