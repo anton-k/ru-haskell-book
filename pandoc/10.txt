@@ -217,8 +217,8 @@ foldNat :: a -> (a -> a) -> Nat -> a
 foldNat z  s  Zero      = z
 foldNat z  s  (Succ n)  = s (foldNat z s n)
 
-add a = foldNat a   Succ
-mul a = foldNat one (add a) 
+add a = foldNat a    Succ
+mul a = foldNat zero (add a)
 
 exp = (\x -> add (add x x) x) (add Zero two)
 ~~~
@@ -248,7 +248,7 @@ add     = FUN( a ->
 
 mul     = FUN( a -> 
             let succ = THUNK (add a)
-            in  foldNat one succ
+            in  foldNat zero succ
           )
 
 exp     = THUNK( 
@@ -338,7 +338,7 @@ Making a Fast Curry: Push/Enter vs. Eval/Apply.
 ~~~
 mul     = FUN( a -> 
             let succ = THUNK (add a)
-            in  foldNat one succ
+            in  foldNat zero succ
           )
 ~~~
 
