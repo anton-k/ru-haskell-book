@@ -765,8 +765,8 @@ Ok, modules loaded: FunNat.
 вычислять сумму квадратов двух аргументов:
 
 ~~~
-*FunNat> let x = const id
-*FunNat> let y = flip $ const id
+*FunNat> let x = const
+*FunNat> let y = flip const
 *FunNat> let d = x * x + y * y
 *FunNat> d 1 2
 5
@@ -783,7 +783,7 @@ Ok, modules loaded: FunNat.
 *FunNat> zipWith d [1,2,3] [3,2,1]
 [10,8,10]
 *FunNat> foldr (x*x - y*y) 0 [1,2,3,4]
-3721610024
+-3721610024
 ~~~
 
 ## Функции, возвращающие несколько значений
