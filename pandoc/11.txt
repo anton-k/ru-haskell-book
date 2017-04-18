@@ -160,7 +160,7 @@ easyintegrate f a b = (f a + f b) * (b - a) / 2
 ~~~
 integrate :: Fractional a => (a -> a) -> a -> a -> [a]
 integrate f a b = easyintegrate f a b : 
-    zipWith (+) (integrate a mid) (integrate mid b)
+    zipWith (+) (integrate f a mid) (integrate f mid b)
     where mid = (a + b)/2
 ~~~
 
