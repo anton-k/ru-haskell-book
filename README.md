@@ -7,7 +7,7 @@
 
 Вы попали в репозиторий учебника по Haskell, здесь живут исходные файлы
 книги, почитать саму книгу можно 
-[online](http://anton-k.github.com/ru-haskell-book/book/home.html).
+[online](http://anton-k.github.io/ru-haskell-book/book/home.html).
 Там же находятся pdf, epub и архив с исходным кодом примеров. 
 
 ~~Буду рад вашим комментариям и предложениям.~~
