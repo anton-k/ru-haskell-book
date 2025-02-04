@@ -254,7 +254,7 @@ algorithm2  :: Int -> Result1 -> Result2
 getChar :: IO Char
 
 -- выводит значение на экран
-print :: IO ()
+print :: Show a => a -> IO ()
 ~~~
 
 Функция `print` возвращает значение единичного
